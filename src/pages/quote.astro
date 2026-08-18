@@ -1,30 +1,30 @@
----
+﻿---
 import Layout from '../layouts/Layout.astro';
 import TrustBadges from '../components/TrustBadges.astro';
 ---
 
-<Layout title="Get a Free Fixed Tiling Quote | ApprovedTilers.co.uk" description="Get a free, transparent fixed-price quote from an approved local master tiler. £2M insured. 12-month workmanship guarantee.">
+<Layout title="Get a Free Fixed cleaning Quote | UKCleaningPlatform.co.uk" description="Get a free, transparent fixed-price quote from an approved local master cleaner. £2M insured. 12-month workmanship guarantee.">
   <div class="max-w-3xl mx-auto px-4 py-12">
     <div class="text-center mb-8">
       <span class="bg-emerald-100 text-emerald-800 text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider">100% Free & Fixed Price Guarantee</span>
-      <h1 class="text-3xl sm:text-4xl font-extrabold text-slate-900 mt-3">Request Your Approved Tiler Quote</h1>
-      <p class="text-xs text-slate-500 mt-1 max-w-lg mx-auto">Get matched with a verified, £2M insured master tiler in your local UK town. Fixed labour quotes with zero rogue trader surprises.</p>
+      <h1 class="text-3xl sm:text-4xl font-extrabold text-slate-900 mt-3">Request Your Approved cleaner Quote</h1>
+      <p class="text-xs text-slate-500 mt-1 max-w-lg mx-auto">Get matched with a verified, £2M insured master cleaner in your local UK town. Fixed labour quotes with zero rogue trader surprises.</p>
     </div>
 
     <div class="bg-white rounded-2xl shadow-xl border border-slate-200 p-6 md:p-10">
       <!-- Success Message Container -->
       <div id="success-message" class="hidden text-center py-8 space-y-4">
-        <div class="w-16 h-16 bg-emerald-100 text-emerald-700 rounded-full flex items-center justify-center mx-auto text-2xl font-bold">✓</div>
+        <div class="w-16 h-16 bg-emerald-100 text-emerald-700 rounded-full flex items-center justify-center mx-auto text-2xl font-bold">�?/div>
         <h3 class="text-2xl font-extrabold text-slate-900">Thank You! Quote Request Received</h3>
-        <p class="text-xs text-slate-600 max-w-md mx-auto">Your enquiry has been dispatched to our approved local master tiler in your area. You will receive an SMS and WhatsApp quotation with verified fixed pricing shortly.</p>
+        <p class="text-xs text-slate-600 max-w-md mx-auto">Your enquiry has been dispatched to our approved local master cleaner in your area. You will receive an SMS and WhatsApp quotation with verified fixed pricing shortly.</p>
         <div class="pt-4">
-          <a href="/" class="text-xs font-bold text-sky-700 hover:text-sky-900 underline">← Return to Homepage</a>
+          <a href="/" class="text-xs font-bold text-sky-700 hover:text-sky-900 underline">�?Return to Homepage</a>
         </div>
       </div>
 
       <!-- Lead Capture Form (Dual-Engine: Native POST + AJAX Enhanced) -->
-      <form id="lead-form" action="https://roamglade-form-hub.dwx168200.workers.dev/api/form?service=tiling&list_id=10&inbox_id=wSE3K4odsBvsv6gYzeLTh9et" method="POST" class="space-y-6">
-        <input type="hidden" name="source_title" value="Approved Tilers UK" />
+      <form id="lead-form" action="https://roamglade-form-hub.dwx168200.workers.dev/api/form?service=cleaning&list_id=10&inbox_id=wSE3K4odsBvsv6gYzeLTh9et" method="POST" class="space-y-6">
+        <input type="hidden" name="source_title" value="Approved cleaners UK" />
 
         <!-- 1. Postcode -->
         <div>
@@ -37,16 +37,16 @@ import TrustBadges from '../components/TrustBadges.astro';
           <label class="block text-xs font-bold uppercase tracking-wider text-slate-700 mb-2">2. Service Type *</label>
           <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
             <label class="border border-slate-200 rounded-lg p-3 flex items-center space-x-2.5 text-xs font-medium cursor-pointer hover:bg-sky-50 has-[:checked]:border-sky-600 has-[:checked]:bg-sky-50 has-[:checked]:font-bold">
-              <input type="radio" name="service" id="srv-bathroom" value="Full Bathroom Tiling & Renovation" checked class="text-sky-600 focus:ring-sky-500" />
-              <span>Full Bathroom Tiling</span>
+              <input type="radio" name="service" id="srv-bathroom" value="Full Bathroom cleaning & Renovation" checked class="text-sky-600 focus:ring-sky-500" />
+              <span>Full Bathroom cleaning</span>
             </label>
             <label class="border border-slate-200 rounded-lg p-3 flex items-center space-x-2.5 text-xs font-medium cursor-pointer hover:bg-sky-50 has-[:checked]:border-sky-600 has-[:checked]:bg-sky-50 has-[:checked]:font-bold">
               <input type="radio" name="service" id="srv-kitchen" value="Kitchen Splashbacks & Walls" class="text-sky-600 focus:ring-sky-500" />
               <span>Kitchen Splashback & Walls</span>
             </label>
             <label class="border border-slate-200 rounded-lg p-3 flex items-center space-x-2.5 text-xs font-medium cursor-pointer hover:bg-sky-50 has-[:checked]:border-sky-600 has-[:checked]:bg-sky-50 has-[:checked]:font-bold">
-              <input type="radio" name="service" id="srv-floor" value="Living / Hallway Floor Tiling" class="text-sky-600 focus:ring-sky-500" />
-              <span>Floor Tiling & Underfloor Heating</span>
+              <input type="radio" name="service" id="srv-floor" value="Living / Hallway Floor cleaning" class="text-sky-600 focus:ring-sky-500" />
+              <span>Floor cleaning & Underfloor Heating</span>
             </label>
             <label class="border border-slate-200 rounded-lg p-3 flex items-center space-x-2.5 text-xs font-medium cursor-pointer hover:bg-sky-50 has-[:checked]:border-sky-600 has-[:checked]:bg-sky-50 has-[:checked]:font-bold">
               <input type="radio" name="service" id="srv-wetroom" value="Walk-in Wet Room Waterproofing & Tanking" class="text-sky-600 focus:ring-sky-500" />
@@ -106,7 +106,7 @@ import TrustBadges from '../components/TrustBadges.astro';
         <div id="error-box" class="hidden p-3 bg-rose-50 border border-rose-200 text-rose-700 text-xs rounded-lg font-medium"></div>
 
         <button type="submit" id="submit-btn" class="w-full bg-amber-500 hover:bg-amber-600 text-slate-950 font-extrabold text-sm py-3.5 rounded-xl shadow-lg transition flex items-center justify-center cursor-pointer">
-          <span id="btn-text">Get Free Fixed Quote & Check Availability →</span>
+          <span id="btn-text">Get Free Fixed Quote & Check Availability �?/span>
         </button>
       </form>
     </div>
