@@ -18,22 +18,22 @@ export async function getStaticPaths() {
 const { data } = Astro.props;
 
 // For the select dropdown, get unique services
-const allServices = [...new Map(dataset.map(item => [item.service.id, { name: item.service.name, slug: item.service.id }])).values()];
+const allServices = [...new Map(dataset.map(item => [item.service.id, { name: item.service.name_zh_tw, slug: item.service.id }])).values()];
 ---
 
-<Layout title={data.content_zh_tw.h1 + " | 100% 退回押金保障"} description={`${data.city.name} 頂級華人 ${data.service.name.toLowerCase()} 團隊。為留學生和房東提供100%退房押金保障。免費報價。`}>
+<Layout title={data.content_zh_tw.h1 + " | 100% 退回押金保障"} description={`${data.city.name_zh_tw} 頂級華人 ${data.service.name_zh_tw} 團隊。為留學生和房東提供100%退房押金保障。小紅書同款推薦，免費微信報價。`}>
   <!-- Hero Section -->
   <section class="bg-gradient-to-b from-slate-900 via-slate-800 to-slate-900 text-white pt-12 pb-16 px-4 relative">
     <div class="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
       <div class="lg:col-span-7 space-y-5">
-        <div class="inline-flex items-center space-x-2 bg-sky-950/80 border border-sky-500/30 text-sky-300 text-xs font-semibold px-3 py-1.5 rounded-full">
-          <span>📍 覆蓋 {data.city.name} ({data.city.postcode}) 及 {data.city.region} 地區的華人保潔團隊</span>
+        <div class="inline-flex items-center space-x-2 bg-rose-500/20 border border-rose-500/50 text-rose-300 text-xs font-semibold px-3 py-1.5 rounded-full">
+          <span>🔥 小紅書爆款推薦：覆蓋 {data.city.name_zh_tw} ({data.city.postcode}) 的神仙保潔團隊</span>
         </div>
         <h1 class="text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight text-white leading-tight">
           {data.content_zh_tw.h1}
         </h1>
         <p class="text-slate-300 text-base leading-relaxed">
-          針對華人留學生的定制級退房保潔服務，專門解決重油煙、頑固污漬，我們是 {data.city.name} 留學生和華人房東的首選團隊。
+          針對華人留學生的定制級退房保潔服務，專門解決重油煙、頑固污漬，包過仲介檢查，我們是 {data.city.name_zh_tw} 留學生和華人房東的安心首選。
         </p>
         
         <!-- Local Pain Points Block -->
@@ -46,66 +46,71 @@ const allServices = [...new Map(dataset.map(item => [item.service.id, { name: it
         <!-- Trust Signals - Bullet Highlights -->
         <div class="grid grid-cols-1 sm:grid-cols-2 gap-2.5 pt-2 text-xs text-slate-200">
           <div class="flex items-center space-x-2">
-            <span class="text-emerald-400 flex-shrink-0 text-lg">✓</span>
+            <span class="text-emerald-400 flex-shrink-0 text-lg">✅</span>
             <span>48小時內無條件免費返工保押金</span>
           </div>
           <div class="flex items-center space-x-2">
-            <span class="text-emerald-400 flex-shrink-0 text-lg">✓</span>
-            <span>200萬英鎊公共責任險，安心無憂</span>
+            <span class="text-emerald-400 flex-shrink-0 text-lg">✅</span>
+            <span>200萬英鎊公共責任險，損壞包賠</span>
           </div>
           <div class="flex items-center space-x-2">
-            <span class="text-emerald-400 flex-shrink-0 text-lg">✓</span>
-            <span>中文客服，全程無障礙溝通</span>
+            <span class="text-emerald-400 flex-shrink-0 text-lg">✅</span>
+            <span>中文客服，加微信溝通零障礙</span>
           </div>
           <div class="flex items-center space-x-2">
-            <span class="text-emerald-400 flex-shrink-0 text-lg">✓</span>
-            <span>一口價報價，絕無任何隱藏費用</span>
+            <span class="text-emerald-400 flex-shrink-0 text-lg">✅</span>
+            <span>發圖秒報一口價，絕無隱藏費用</span>
           </div>
         </div>
       </div>
 
       <!-- Quick Fast Quote Card -->
       <div class="lg:col-span-5 bg-white text-slate-900 p-6 rounded-2xl shadow-2xl border border-slate-100 relative z-10">
-        <div class="border-b border-slate-100 pb-4 mb-4">
-          <span class="text-xs font-bold uppercase tracking-wider text-sky-700">快速本地響應</span>
-          <h3 class="text-xl font-extrabold text-slate-900 mt-1">預約 {data.city.name} 的保潔服務</h3>
-          <p class="text-xs text-slate-500 mt-1">退房旺季請提前預定檔期，避免臨近退房手忙腳亂。</p>
+        <div class="border-b border-slate-100 pb-4 mb-4 flex justify-between items-center">
+          <div>
+            <span class="text-xs font-bold uppercase tracking-wider text-rose-600">添加微信 快速報價</span>
+            <h3 class="text-xl font-extrabold text-slate-900 mt-1">預約 {data.city.name_zh_tw} 檔期</h3>
+            <p class="text-xs text-slate-500 mt-1">退房旺季檔期緊張，建議提前鎖定位置</p>
+          </div>
+          <div class="text-4xl text-green-500">
+            💬 <!-- Placeholder for WeChat Icon -->
+          </div>
         </div>
 
         <!-- Lead Capture Form -->
         <form action="/api/submit-lead" method="POST" class="space-y-4" id="leadForm">
-          <input type="hidden" name="city" value={data.city.name} />
-          <input type="hidden" name="service" value={data.service.name} />
+          <input type="hidden" name="city" value={data.city.name_zh_tw} />
+          <input type="hidden" name="service" value={data.service.name_zh_tw} />
           
           <div>
-            <label class="block text-xs font-semibold text-slate-700 mb-1">Name / 稱呼</label>
-            <input type="text" name="name" required class="w-full bg-slate-50 border border-slate-300 rounded-lg p-2.5 text-sm font-medium focus:ring-2 focus:ring-sky-500" placeholder="例如: Li Lei" />
+            <label class="block text-xs font-semibold text-slate-700 mb-1">姓名或稱呼 (Name)</label>
+            <input type="text" name="name" required class="w-full bg-slate-50 border border-slate-300 rounded-lg p-2.5 text-sm font-medium focus:ring-2 focus:ring-green-500" placeholder="例如: 小李 / Li Lei" />
           </div>
           
           <div class="grid grid-cols-2 gap-4">
             <div>
-              <label class="block text-xs font-semibold text-slate-700 mb-1">Email / 郵箱</label>
-              <input type="email" name="email" required class="w-full bg-slate-50 border border-slate-300 rounded-lg p-2.5 text-sm font-medium focus:ring-2 focus:ring-sky-500" placeholder="your@email.com" />
+              <label class="block text-xs font-semibold text-slate-700 mb-1">微信號 (WeChat ID)</label>
+              <input type="text" name="wechat" required class="w-full bg-slate-50 border border-slate-300 rounded-lg p-2.5 text-sm font-medium focus:ring-2 focus:ring-green-500" placeholder="方便客服添加您" />
             </div>
             <div>
-              <label class="block text-xs font-semibold text-slate-700 mb-1">Phone / 電話 或 微信</label>
-              <input type="tel" name="phone" required class="w-full bg-slate-50 border border-slate-300 rounded-lg p-2.5 text-sm font-medium focus:ring-2 focus:ring-sky-500" placeholder="07123 456789" />
+              <label class="block text-xs font-semibold text-slate-700 mb-1">手機號 (可選)</label>
+              <input type="tel" name="phone" class="w-full bg-slate-50 border border-slate-300 rounded-lg p-2.5 text-sm font-medium focus:ring-2 focus:ring-green-500" placeholder="英國手機號" />
             </div>
           </div>
 
           <div>
-            <label class="block text-xs font-semibold text-slate-700 mb-1">Project Type / 服務類型</label>
-            <select name="service_slug" class="w-full bg-slate-50 border border-slate-300 rounded-lg p-2.5 text-sm focus:ring-2 focus:ring-sky-500">
+            <label class="block text-xs font-semibold text-slate-700 mb-1">您需要的服務類型</label>
+            <select name="service_slug" class="w-full bg-slate-50 border border-slate-300 rounded-lg p-2.5 text-sm focus:ring-2 focus:ring-green-500">
               {allServices.map((svc: any) => (
                 <option value={svc.slug} selected={data.service.id === svc.slug}>{svc.name}</option>
               ))}
             </select>
           </div>
           
-          <button type="submit" class="w-full bg-amber-500 hover:bg-amber-600 text-slate-900 font-bold py-3 rounded-lg shadow text-sm transition mt-2">
-            獲取免費一口價報價 &rarr;
+          <button type="submit" class="w-full bg-green-500 hover:bg-green-600 text-white font-bold py-3 rounded-lg shadow text-sm transition mt-2">
+            提交獲取微信報價 &rarr;
           </button>
-          <p class="text-[10px] text-center text-slate-400 mt-2">中文客服通常會在 15 分鐘內回覆您。</p>
+          <p class="text-[10px] text-center text-slate-400 mt-2">客服小姐姐收到後會火速加您微信溝通細節 🏃‍♀️</p>
         </form>
       </div>
     </div>
@@ -117,22 +122,22 @@ const allServices = [...new Map(dataset.map(item => [item.service.id, { name: it
     <!-- Local Pricing Table -->
     <div class="bg-white rounded-xl shadow-sm border border-slate-200 overflow-hidden">
       <div class="bg-slate-50 border-b border-slate-200 p-6">
-        <h2 class="text-2xl font-bold text-slate-900">{data.city.name} {data.service.name} 均價參考</h2>
-        <p class="text-sm text-slate-600 mt-2">{data.city.region} 地區的具體價格會根據房屋大小和髒亂程度有所變動，以下為基礎指導價：</p>
+        <h2 class="text-2xl font-bold text-slate-900">{data.city.name_zh_tw} {data.service.name_zh_tw} 均價參考</h2>
+        <p class="text-sm text-slate-600 mt-2">具體價格會根據房屋大小和髒亂程度有所變動，以下為 {data.city.region} 地區的留學生指導價：</p>
       </div>
       <div class="p-6">
         <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
           <div class="border border-slate-100 rounded-lg p-5 text-center shadow-sm">
-            <h4 class="text-sm font-bold text-slate-500 uppercase tracking-wide">Studio / 一居室</h4>
+            <h4 class="text-sm font-bold text-slate-500 uppercase tracking-wide">Studio / 一居室 (Flat)</h4>
             <p class="text-2xl font-extrabold text-sky-700 mt-2">£{data.content_zh_tw.pricing.small} 起</p>
           </div>
-          <div class="border border-sky-100 bg-sky-50/50 rounded-lg p-5 text-center shadow-sm relative">
-            <span class="absolute -top-3 left-1/2 transform -translate-x-1/2 bg-sky-600 text-white text-[10px] font-bold px-2 py-1 rounded-full uppercase">留學生最常見</span>
-            <h4 class="text-sm font-bold text-sky-800 uppercase tracking-wide">兩到三居室 (House/Flat)</h4>
-            <p class="text-2xl font-extrabold text-sky-900 mt-2">£{data.content_zh_tw.pricing.medium} 起</p>
+          <div class="border border-rose-100 bg-rose-50/30 rounded-lg p-5 text-center shadow-sm relative">
+            <span class="absolute -top-3 left-1/2 transform -translate-x-1/2 bg-rose-500 text-white text-[10px] font-bold px-2 py-1 rounded-full uppercase">留學生最常見</span>
+            <h4 class="text-sm font-bold text-rose-800 uppercase tracking-wide">兩居到三居 (House/Flat)</h4>
+            <p class="text-2xl font-extrabold text-rose-900 mt-2">£{data.content_zh_tw.pricing.medium} 起</p>
           </div>
           <div class="border border-slate-100 rounded-lg p-5 text-center shadow-sm">
-            <h4 class="text-sm font-bold text-slate-500 uppercase tracking-wide">四居室以上 / 極度髒亂需深度</h4>
+            <h4 class="text-sm font-bold text-slate-500 uppercase tracking-wide">四居室以上 / 極度髒亂開荒</h4>
             <p class="text-2xl font-extrabold text-sky-700 mt-2">£{data.content_zh_tw.pricing.large} 起</p>
           </div>
         </div>
@@ -142,7 +147,7 @@ const allServices = [...new Map(dataset.map(item => [item.service.id, { name: it
     <!-- Local FAQs -->
     {data.content_zh_tw.faqs && (
       <div class="py-6">
-        <h2 class="text-2xl font-bold text-slate-900 mb-6">{data.city.name} 常見問題解答</h2>
+        <h2 class="text-2xl font-bold text-slate-900 mb-6">{data.city.name_zh_tw} 常見問題解答</h2>
         <div class="space-y-4">
           {data.content_zh_tw.faqs.map((faq: any) => (
             <div class="bg-white p-5 rounded-lg border border-slate-200">
@@ -156,8 +161,8 @@ const allServices = [...new Map(dataset.map(item => [item.service.id, { name: it
     
     <!-- Cross-Service Internal Mesh (Other services in this city) -->
     <div class="bg-white rounded-xl p-6 border border-slate-200 shadow-sm mt-8">
-      <h3 class="text-lg font-bold text-slate-900 mb-2">{data.city.name} 的其他清潔與清理服務</h3>
-      <p class="text-xs text-slate-600 mb-4">還需要別的幫忙？我們的本地團隊同樣提供以下服務：</p>
+      <h3 class="text-lg font-bold text-slate-900 mb-2">{data.city.name_zh_tw} 的其他清潔與清理服務</h3>
+      <p class="text-xs text-slate-600 mb-4">還需要別的幫忙？我們 {data.city.name_zh_tw} 的本地團隊同樣提供以下服務：</p>
       <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-3">
         {allServices.filter(svc => svc.slug !== data.service.id).map((svc: any) => (
           <a href={`/zh-tw/${svc.slug}/${data.city.name.toLowerCase().replace(/ /g, '-')}`} class="flex items-center space-x-2 text-sm text-slate-700 hover:text-sky-700 font-medium group transition">
@@ -170,7 +175,7 @@ const allServices = [...new Map(dataset.map(item => [item.service.id, { name: it
 
     <!-- Nearby Areas Coverage Block (pSEO Internal Mesh) -->
     <div class="bg-slate-100 rounded-xl p-6 border border-slate-200">
-      <h3 class="text-lg font-bold text-slate-900 mb-2">{data.city.name} 周邊覆蓋城鎮</h3>
+      <h3 class="text-lg font-bold text-slate-900 mb-2">{data.city.name_zh_tw} 周邊覆蓋城鎮</h3>
       <p class="text-xs text-slate-600 mb-4">我們的流動清潔車隊不僅服務市中心，還覆蓋 {data.city.region} 及以下周邊地區：</p>
       <div class="flex flex-wrap gap-2">
         {data.content_zh_tw.nearby_areas.map((area: string) => (

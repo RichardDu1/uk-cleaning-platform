@@ -1,10 +1,11 @@
-﻿import type { APIRoute } from 'astro';
+import type { APIRoute } from 'astro';
 
 export const POST: APIRoute = async ({ request }) => {
   try {
     const data = await request.formData();
     const rawName = data.get('name') as string || 'Guest';
     const rawEmail = data.get('email') as string || 'Not provided';
+    const rawWechat = data.get('wechat') as string || 'Not provided';
     const rawPhone = data.get('phone') as string || 'Not provided';
     const city = data.get('city') as string || 'Unknown';
     const service = data.get('service') as string || 'Cleaning';
@@ -17,8 +18,9 @@ export const POST: APIRoute = async ({ request }) => {
     const messageContent = `
 New Lead for ${service} in ${city}!
 - Name: ${rawName}
-- Email: ${rawEmail}
+- WeChat ID: ${rawWechat}
 - Phone: ${rawPhone}
+- Email: ${rawEmail}
 
 Service requested: ${service}
 City: ${city}
