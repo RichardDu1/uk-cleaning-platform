@@ -1,0 +1,52 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+import dataset from '../../../data/seo_pages.json';
+
+export async function getStaticPaths() {
+  const uniqueServices = [...new Map(dataset.map(item => [item.service.id, item.service])).values()];
+  return uniqueServices.map(service => ({
+    params: { service: service.id },
+    props: { service }
+  }));
+}
+
+const { service } = Astro.props;
+const serviceData = dataset.filter(item => item.service.id === service.id);
+
+// Group cities by region
+const citiesByRegion = serviceData.reduce((acc: any, item: any) => {
+  const region = item.city.region;
+  if (!acc[region]) acc[region] = [];
+  acc[region].push(item.city);
+  return acc;
+}, {});
+const regions = Object.keys(citiesByRegion).sort();
+---
+
+<Layout title={`${service.name_zh_cn} | 选择您的城市`} description={`我们在全英 116 个城市及行政区提供专业的${service.name_zh_cn}。100%退房押金保障。`}>
+  <div class="bg-slate-900 py-12 px-4">
+    <div class="max-w-6xl mx-auto text-center">
+      <h1 class="text-3xl md:text-5xl font-extrabold text-white mb-4">
+        {service.name_zh_cn}
+      </h1>
+      <p class="text-slate-300 text-lg">请在下方选择您所在的城市或行政区，获取本地团队报价</p>
+    </div>
+  </div>
+
+  <div class="max-w-6xl mx-auto px-4 py-16">
+    <div class="space-y-12">
+      {regions.map((region) => (
+        <div>
+          <h2 class="text-2xl font-bold text-slate-800 mb-6 border-b pb-2">{region}</h2>
+          <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-3">
+            {citiesByRegion[region].sort((a: any, b: any) => a.name_zh_cn.localeCompare(b.name_zh_cn)).map((city: any) => (
+              <a href={`/zh-cn/${service.id}/${city.name.toLowerCase().replace(/ /g, '-')}`} class="bg-white hover:bg-sky-50 border border-slate-200 p-3 rounded-lg text-center text-sm font-medium text-slate-800 hover:text-sky-800 shadow-sm transition">
+                {city.name_zh_cn}
+              </a>
+            ))}
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</Layout>

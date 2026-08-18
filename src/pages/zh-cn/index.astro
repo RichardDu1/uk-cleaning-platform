@@ -48,8 +48,8 @@ const uniqueCities = [...new Map(dataset.map(item => [item.city.name, { city: it
           </div>
           <h3 class="text-lg font-bold text-slate-900 mb-2">{srv.name}</h3>
           <p class="text-xs text-slate-600 leading-relaxed mb-4">{srv.summary}</p>
-          <a href={`/zh-cn/${srv.slug}/london`} class="text-xs font-bold text-sky-700 hover:text-sky-900 flex items-center">
-            查看价格与详情 →
+          <a href={`/zh-cn/${srv.slug}`} class="text-xs font-bold text-sky-700 hover:text-sky-900 flex items-center">
+            查看支持的城市与报价 →
           </a>
         </div>
       ))}
