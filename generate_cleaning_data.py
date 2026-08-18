@@ -175,11 +175,43 @@ for service in SERVICES:
                 "pricing": pricing,
                 "faqs": faqs,
                 "nearby_areas": city["nearby"]
+            },
+            "content_zh_cn": {
+                "h1": f"{city['name']} 顶级{service['name']}服务 (邮编: {city['postcode']})",
+                "pain_points": f"特别针对中国留学生和房东的痛点：专业清理重度厨房油烟、彻底除垢，包过中介 Check-out 检查，100% 保证退回押金！",
+                "pricing": pricing,
+                "faqs": [
+                    {
+                        "question": f"在 {city['name']} 你们保证能退回押金吗？",
+                        "answer": "是的，我们的退房清洁提供48小时无条件返工保障。如果中介或房东对清洁不满意，我们会免费上门重新清理直到过关为止。"
+                    },
+                    {
+                        "question": "我需要自己准备清洁剂和工具吗？",
+                        "answer": f"完全不需要，我们 {city['name']} 的专业团队自带商用级清洁设备和强力环保清洁剂（对中式重油烟特别有效）。"
+                    }
+                ],
+                "nearby_areas": city["nearby"]
+            },
+            "content_zh_tw": {
+                "h1": f"{city['name']} 頂級{service['name']}服務 (郵編: {city['postcode']})",
+                "pain_points": f"特別針對華人留學生和房東的痛點：專業清理重度廚房油煙、徹底除垢，包過中介 Check-out 檢查，100% 保證退回押金！",
+                "pricing": pricing,
+                "faqs": [
+                    {
+                        "question": f"在 {city['name']} 你們保證能退回押金嗎？",
+                        "answer": "是的，我們的退房清潔提供48小時無條件返工保障。如果中介或房東對清潔不滿意，我們會免費上門重新清理直到過關為止。"
+                    },
+                    {
+                        "question": "我需要自己準備清潔劑和工具嗎？",
+                        "answer": f"完全不需要，我們 {city['name']} 的專業團隊自帶商用級清潔設備和強力環保清潔劑（對中式重油煙特別有效）。"
+                    }
+                ],
+                "nearby_areas": city["nearby"]
             }
         }
         output_data.append(page_data)
 
-with open('data/seo_pages.json', 'w', encoding='utf-8') as f:
+with open('src/data/seo_pages.json', 'w', encoding='utf-8') as f:
     json.dump(output_data, f, indent=2, ensure_ascii=False)
 
-print(f"Successfully generated {len(output_data)} page combinations in data/seo_pages.json")
+print(f"Successfully generated {len(output_data)} page combinations in src/data/seo_pages.json")

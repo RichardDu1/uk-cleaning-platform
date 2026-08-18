@@ -1,0 +1,184 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+import dataset from '../../../data/seo_pages.json';
+
+export async function getStaticPaths() {
+  return dataset.map((item) => {
+    const [service_slug, city_slug] = item.slug.split('/');
+    return {
+      params: {
+        service: service_slug,
+        city: city_slug
+      },
+      props: { data: item }
+    };
+  });
+}
+
+const { data } = Astro.props;
+
+// For the select dropdown, get unique services
+const allServices = [...new Map(dataset.map(item => [item.service.id, { name: item.service.name, slug: item.service.id }])).values()];
+---
+
+<Layout title={data.content_zh_cn.h1 + " | 100% 退回押金保障"} description={`${data.city.name} 顶级华人 ${data.service.name.toLowerCase()} 团队。为留学生和房东提供100%退房押金保障。免费报价。`}>
+  <!-- Hero Section -->
+  <section class="bg-gradient-to-b from-slate-900 via-slate-800 to-slate-900 text-white pt-12 pb-16 px-4 relative">
+    <div class="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+      <div class="lg:col-span-7 space-y-5">
+        <div class="inline-flex items-center space-x-2 bg-sky-950/80 border border-sky-500/30 text-sky-300 text-xs font-semibold px-3 py-1.5 rounded-full">
+          <span>📍 覆盖 {data.city.name} ({data.city.postcode}) 及 {data.city.region} 地区的华人保洁团队</span>
+        </div>
+        <h1 class="text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight text-white leading-tight">
+          {data.content_zh_cn.h1}
+        </h1>
+        <p class="text-slate-300 text-base leading-relaxed">
+          针对中国留学生的定制级退房保洁服务，专门解决重油烟、顽固污渍，我们是 {data.city.name} 留学生和华人房东的首选团队。
+        </p>
+        
+        <!-- Local Pain Points Block -->
+        <div class="bg-slate-800/50 border-l-4 border-amber-500 p-4 rounded-r-lg mt-4">
+          <p class="text-sm text-slate-300 italic leading-relaxed">
+            "{data.content_zh_cn.pain_points}"
+          </p>
+        </div>
+
+        <!-- Trust Signals - Bullet Highlights -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-2.5 pt-2 text-xs text-slate-200">
+          <div class="flex items-center space-x-2">
+            <span class="text-emerald-400 flex-shrink-0 text-lg">✓</span>
+            <span>48小时内无条件免费返工保押金</span>
+          </div>
+          <div class="flex items-center space-x-2">
+            <span class="text-emerald-400 flex-shrink-0 text-lg">✓</span>
+            <span>200万英镑公共责任险，安心无忧</span>
+          </div>
+          <div class="flex items-center space-x-2">
+            <span class="text-emerald-400 flex-shrink-0 text-lg">✓</span>
+            <span>中文客服，全程无障碍沟通</span>
+          </div>
+          <div class="flex items-center space-x-2">
+            <span class="text-emerald-400 flex-shrink-0 text-lg">✓</span>
+            <span>一口价报价，绝无任何隐藏费用</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Quick Fast Quote Card -->
+      <div class="lg:col-span-5 bg-white text-slate-900 p-6 rounded-2xl shadow-2xl border border-slate-100 relative z-10">
+        <div class="border-b border-slate-100 pb-4 mb-4">
+          <span class="text-xs font-bold uppercase tracking-wider text-sky-700">快速本地响应</span>
+          <h3 class="text-xl font-extrabold text-slate-900 mt-1">预约 {data.city.name} 的保洁服务</h3>
+          <p class="text-xs text-slate-500 mt-1">退房旺季请提前预定档期，避免临近退房手忙脚乱。</p>
+        </div>
+
+        <!-- Lead Capture Form -->
+        <form action="/api/submit-lead" method="POST" class="space-y-4" id="leadForm">
+          <input type="hidden" name="city" value={data.city.name} />
+          <input type="hidden" name="service" value={data.service.name} />
+          
+          <div>
+            <label class="block text-xs font-semibold text-slate-700 mb-1">Name / 称呼</label>
+            <input type="text" name="name" required class="w-full bg-slate-50 border border-slate-300 rounded-lg p-2.5 text-sm font-medium focus:ring-2 focus:ring-sky-500" placeholder="例如: Li Lei" />
+          </div>
+          
+          <div class="grid grid-cols-2 gap-4">
+            <div>
+              <label class="block text-xs font-semibold text-slate-700 mb-1">Email / 邮箱</label>
+              <input type="email" name="email" required class="w-full bg-slate-50 border border-slate-300 rounded-lg p-2.5 text-sm font-medium focus:ring-2 focus:ring-sky-500" placeholder="your@email.com" />
+            </div>
+            <div>
+              <label class="block text-xs font-semibold text-slate-700 mb-1">Phone / 电话 或 微信</label>
+              <input type="tel" name="phone" required class="w-full bg-slate-50 border border-slate-300 rounded-lg p-2.5 text-sm font-medium focus:ring-2 focus:ring-sky-500" placeholder="07123 456789" />
+            </div>
+          </div>
+
+          <div>
+            <label class="block text-xs font-semibold text-slate-700 mb-1">Project Type / 服务类型</label>
+            <select name="service_slug" class="w-full bg-slate-50 border border-slate-300 rounded-lg p-2.5 text-sm focus:ring-2 focus:ring-sky-500">
+              {allServices.map((svc: any) => (
+                <option value={svc.slug} selected={data.service.id === svc.slug}>{svc.name}</option>
+              ))}
+            </select>
+          </div>
+          
+          <button type="submit" class="w-full bg-amber-500 hover:bg-amber-600 text-slate-900 font-bold py-3 rounded-lg shadow text-sm transition mt-2">
+            获取免费一口价报价 &rarr;
+          </button>
+          <p class="text-[10px] text-center text-slate-400 mt-2">中文客服通常会在 15 分钟内回复您。</p>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- Main Content Body -->
+  <section class="max-w-6xl mx-auto px-4 py-12 space-y-12">
+    
+    <!-- Local Pricing Table -->
+    <div class="bg-white rounded-xl shadow-sm border border-slate-200 overflow-hidden">
+      <div class="bg-slate-50 border-b border-slate-200 p-6">
+        <h2 class="text-2xl font-bold text-slate-900">{data.city.name} {data.service.name} 均价参考</h2>
+        <p class="text-sm text-slate-600 mt-2">{data.city.region} 地区的具体价格会根据房屋大小和脏乱程度有所变动，以下为基础指导价：</p>
+      </div>
+      <div class="p-6">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <div class="border border-slate-100 rounded-lg p-5 text-center shadow-sm">
+            <h4 class="text-sm font-bold text-slate-500 uppercase tracking-wide">Studio / 一居室</h4>
+            <p class="text-2xl font-extrabold text-sky-700 mt-2">£{data.content_zh_cn.pricing.small} 起</p>
+          </div>
+          <div class="border border-sky-100 bg-sky-50/50 rounded-lg p-5 text-center shadow-sm relative">
+            <span class="absolute -top-3 left-1/2 transform -translate-x-1/2 bg-sky-600 text-white text-[10px] font-bold px-2 py-1 rounded-full uppercase">留学生最常见</span>
+            <h4 class="text-sm font-bold text-sky-800 uppercase tracking-wide">两到三居室 (House/Flat)</h4>
+            <p class="text-2xl font-extrabold text-sky-900 mt-2">£{data.content_zh_cn.pricing.medium} 起</p>
+          </div>
+          <div class="border border-slate-100 rounded-lg p-5 text-center shadow-sm">
+            <h4 class="text-sm font-bold text-slate-500 uppercase tracking-wide">四居室以上 / 极度脏乱需深度</h4>
+            <p class="text-2xl font-extrabold text-sky-700 mt-2">£{data.content_zh_cn.pricing.large} 起</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Local FAQs -->
+    {data.content_zh_cn.faqs && (
+      <div class="py-6">
+        <h2 class="text-2xl font-bold text-slate-900 mb-6">{data.city.name} 常见问题解答</h2>
+        <div class="space-y-4">
+          {data.content_zh_cn.faqs.map((faq: any) => (
+            <div class="bg-white p-5 rounded-lg border border-slate-200">
+              <h4 class="font-bold text-slate-800 mb-2">{faq.question}</h4>
+              <p class="text-sm text-slate-600">{faq.answer}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    )}
+    
+    <!-- Cross-Service Internal Mesh (Other services in this city) -->
+    <div class="bg-white rounded-xl p-6 border border-slate-200 shadow-sm mt-8">
+      <h3 class="text-lg font-bold text-slate-900 mb-2">{data.city.name} 的其他清洁与清理服务</h3>
+      <p class="text-xs text-slate-600 mb-4">还需要别的帮忙？我们的本地团队同样提供以下服务：</p>
+      <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-3">
+        {allServices.filter(svc => svc.slug !== data.service.id).map((svc: any) => (
+          <a href={`/zh-cn/${svc.slug}/${data.city.name.toLowerCase().replace(/ /g, '-')}`} class="flex items-center space-x-2 text-sm text-slate-700 hover:text-sky-700 font-medium group transition">
+            <span class="text-sky-400 group-hover:text-sky-600">→</span>
+            <span>{svc.name}</span>
+          </a>
+        ))}
+      </div>
+    </div>
+
+    <!-- Nearby Areas Coverage Block (pSEO Internal Mesh) -->
+    <div class="bg-slate-100 rounded-xl p-6 border border-slate-200">
+      <h3 class="text-lg font-bold text-slate-900 mb-2">{data.city.name} 周边覆盖城镇</h3>
+      <p class="text-xs text-slate-600 mb-4">我们的流动清洁车队不仅服务市中心，还覆盖 {data.city.region} 及以下周边地区：</p>
+      <div class="flex flex-wrap gap-2">
+        {data.content_zh_cn.nearby_areas.map((area: string) => (
+          <a href={`/zh-cn/${data.service.id}/${area.toLowerCase().replace(/ /g, '-')}`} class="text-xs bg-white hover:bg-sky-50 text-slate-700 hover:text-sky-800 border border-slate-300 px-3 py-1.5 rounded-md font-medium transition">
+            {area}
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+</Layout>

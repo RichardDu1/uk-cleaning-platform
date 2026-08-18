@@ -54,10 +54,13 @@ const { title, description, schema } = Astro.props;
         </a>
 
         <div class="flex items-center space-x-6">
-          <nav class="hidden md:flex space-x-6 text-sm font-medium text-slate-600">
+          <nav class="hidden md:flex space-x-4 text-sm font-medium text-slate-600 items-center">
             <a href="/services" class="hover:text-sky-700 transition">Services</a>
             <a href="/areas" class="hover:text-sky-700 transition">Areas Covered</a>
-            <a href="/about" class="hover:text-sky-700 transition">About Us</a>
+            <div class="h-4 w-px bg-slate-300 mx-2"></div>
+            <a href="/" class="hover:text-sky-700 transition text-xs" title="English">EN</a>
+            <a href="/zh-cn/end-of-tenancy-cleaning/london" class="hover:text-sky-700 transition text-xs" title="Simplified Chinese">简</a>
+            <a href="/zh-tw/end-of-tenancy-cleaning/london" class="hover:text-sky-700 transition text-xs" title="Traditional Chinese">繁</a>
           </nav>
         </div>
       </div>
