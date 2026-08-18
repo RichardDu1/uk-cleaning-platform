@@ -1,0 +1,2300 @@
+[
+  {
+    "city": "Westminster",
+    "city_slug": "westminster",
+    "county": "Greater London",
+    "postcode": "W1",
+    "region": "London",
+    "house_type_context": "Georgian townhouses and luxury apartments",
+    "nearby_areas": [
+      {
+        "city": "Haringey",
+        "slug": "haringey",
+        "postcode": "N22",
+        "dist_miles": 5.3
+      },
+      {
+        "city": "Croydon",
+        "slug": "croydon",
+        "postcode": "CR0",
+        "dist_miles": 4.1
+      },
+      {
+        "city": "Brent",
+        "slug": "brent",
+        "postcode": "HA9",
+        "dist_miles": 13.8
+      }
+    ]
+  },
+  {
+    "city": "Kensington and Chelsea",
+    "city_slug": "kensington--chelsea",
+    "county": "Greater London",
+    "postcode": "SW3",
+    "region": "London",
+    "house_type_context": "High-end Victorian townhouses and period properties",
+    "nearby_areas": [
+      {
+        "city": "Richmond upon Thames",
+        "slug": "richmond-upon-thames",
+        "postcode": "TW9",
+        "dist_miles": 4.2
+      },
+      {
+        "city": "Barking and Dagenham",
+        "slug": "barking--dagenham",
+        "postcode": "IG11",
+        "dist_miles": 4.9
+      },
+      {
+        "city": "Wandsworth",
+        "slug": "w-sworth",
+        "postcode": "SW18",
+        "dist_miles": 3.8
+      }
+    ]
+  },
+  {
+    "city": "Hammersmith and Fulham",
+    "city_slug": "hammersmith--fulham",
+    "county": "Greater London",
+    "postcode": "W6",
+    "region": "London",
+    "house_type_context": "Victorian terraced houses and riverside apartments",
+    "nearby_areas": [
+      {
+        "city": "Southwark",
+        "slug": "southwark",
+        "postcode": "SE1",
+        "dist_miles": 9.9
+      },
+      {
+        "city": "Barnet",
+        "slug": "barnet",
+        "postcode": "EN5",
+        "dist_miles": 9.8
+      },
+      {
+        "city": "Havering",
+        "slug": "havering",
+        "postcode": "RM1",
+        "dist_miles": 10.4
+      }
+    ]
+  },
+  {
+    "city": "Wandsworth",
+    "city_slug": "w-sworth",
+    "county": "Greater London",
+    "postcode": "SW18",
+    "region": "London",
+    "house_type_context": "Victorian and Edwardian family homes",
+    "nearby_areas": [
+      {
+        "city": "Barking and Dagenham",
+        "slug": "barking--dagenham",
+        "postcode": "IG11",
+        "dist_miles": 13.4
+      },
+      {
+        "city": "Richmond upon Thames",
+        "slug": "richmond-upon-thames",
+        "postcode": "TW9",
+        "dist_miles": 3.7
+      },
+      {
+        "city": "Sutton",
+        "slug": "sutton",
+        "postcode": "SM1",
+        "dist_miles": 13.7
+      }
+    ]
+  },
+  {
+    "city": "Lambeth",
+    "city_slug": "lambeth",
+    "county": "Greater London",
+    "postcode": "SE11",
+    "region": "London",
+    "house_type_context": "Period conversion flats and modern developments",
+    "nearby_areas": [
+      {
+        "city": "Newham",
+        "slug": "newham",
+        "postcode": "E15",
+        "dist_miles": 8.8
+      },
+      {
+        "city": "Islington",
+        "slug": "islington",
+        "postcode": "N1",
+        "dist_miles": 10.4
+      },
+      {
+        "city": "Harrow",
+        "slug": "harrow",
+        "postcode": "HA1",
+        "dist_miles": 4.4
+      }
+    ]
+  },
+  {
+    "city": "Southwark",
+    "city_slug": "southwark",
+    "county": "Greater London",
+    "postcode": "SE1",
+    "region": "London",
+    "house_type_context": "Warehouse conversions and modern apartments",
+    "nearby_areas": [
+      {
+        "city": "Hammersmith and Fulham",
+        "slug": "hammersmith--fulham",
+        "postcode": "W6",
+        "dist_miles": 4.0
+      },
+      {
+        "city": "Harrow",
+        "slug": "harrow",
+        "postcode": "HA1",
+        "dist_miles": 11.8
+      },
+      {
+        "city": "Barnet",
+        "slug": "barnet",
+        "postcode": "EN5",
+        "dist_miles": 9.2
+      }
+    ]
+  },
+  {
+    "city": "Tower Hamlets",
+    "city_slug": "tower-hamlets",
+    "county": "Greater London",
+    "postcode": "E1",
+    "region": "London",
+    "house_type_context": "Modern high-rises and historic East End terraces",
+    "nearby_areas": [
+      {
+        "city": "Westminster",
+        "slug": "westminster",
+        "postcode": "W1",
+        "dist_miles": 12.7
+      },
+      {
+        "city": "Wandsworth",
+        "slug": "w-sworth",
+        "postcode": "SW18",
+        "dist_miles": 9.4
+      },
+      {
+        "city": "Ealing",
+        "slug": "ealing",
+        "postcode": "W5",
+        "dist_miles": 14.6
+      }
+    ]
+  },
+  {
+    "city": "Hackney",
+    "city_slug": "hackney",
+    "county": "Greater London",
+    "postcode": "E8",
+    "region": "London",
+    "house_type_context": "Victorian terraces and contemporary loft conversions",
+    "nearby_areas": [
+      {
+        "city": "Greenwich",
+        "slug": "greenwich",
+        "postcode": "SE10",
+        "dist_miles": 7.1
+      },
+      {
+        "city": "Enfield",
+        "slug": "enfield",
+        "postcode": "EN1",
+        "dist_miles": 8.2
+      },
+      {
+        "city": "Westminster",
+        "slug": "westminster",
+        "postcode": "W1",
+        "dist_miles": 4.1
+      }
+    ]
+  },
+  {
+    "city": "Islington",
+    "city_slug": "islington",
+    "county": "Greater London",
+    "postcode": "N1",
+    "region": "London",
+    "house_type_context": "Georgian terraces and modern luxury flats",
+    "nearby_areas": [
+      {
+        "city": "Barking and Dagenham",
+        "slug": "barking--dagenham",
+        "postcode": "IG11",
+        "dist_miles": 7.7
+      },
+      {
+        "city": "Camden",
+        "slug": "camden",
+        "postcode": "NW1",
+        "dist_miles": 14.0
+      },
+      {
+        "city": "Tower Hamlets",
+        "slug": "tower-hamlets",
+        "postcode": "E1",
+        "dist_miles": 9.8
+      }
+    ]
+  },
+  {
+    "city": "Camden",
+    "city_slug": "camden",
+    "county": "Greater London",
+    "postcode": "NW1",
+    "region": "London",
+    "house_type_context": "Victorian terraces and historic townhouses",
+    "nearby_areas": [
+      {
+        "city": "Tower Hamlets",
+        "slug": "tower-hamlets",
+        "postcode": "E1",
+        "dist_miles": 8.7
+      },
+      {
+        "city": "Hillingdon",
+        "slug": "hillingdon",
+        "postcode": "UB8",
+        "dist_miles": 13.0
+      },
+      {
+        "city": "Waltham Forest",
+        "slug": "waltham-forest",
+        "postcode": "E17",
+        "dist_miles": 8.3
+      }
+    ]
+  },
+  {
+    "city": "Brent",
+    "city_slug": "brent",
+    "county": "Greater London",
+    "postcode": "HA9",
+    "region": "London",
+    "house_type_context": "1930s semi-detached and modern developments",
+    "nearby_areas": [
+      {
+        "city": "Redbridge",
+        "slug": "redbridge",
+        "postcode": "IG1",
+        "dist_miles": 6.8
+      },
+      {
+        "city": "Kingston upon Thames",
+        "slug": "kingston-upon-thames",
+        "postcode": "KT1",
+        "dist_miles": 5.5
+      },
+      {
+        "city": "Enfield",
+        "slug": "enfield",
+        "postcode": "EN1",
+        "dist_miles": 12.7
+      }
+    ]
+  },
+  {
+    "city": "Ealing",
+    "city_slug": "ealing",
+    "county": "Greater London",
+    "postcode": "W5",
+    "region": "London",
+    "house_type_context": "Edwardian homes and large detached properties",
+    "nearby_areas": [
+      {
+        "city": "Haringey",
+        "slug": "haringey",
+        "postcode": "N22",
+        "dist_miles": 14.5
+      },
+      {
+        "city": "Kingston upon Thames",
+        "slug": "kingston-upon-thames",
+        "postcode": "KT1",
+        "dist_miles": 5.7
+      },
+      {
+        "city": "Richmond upon Thames",
+        "slug": "richmond-upon-thames",
+        "postcode": "TW9",
+        "dist_miles": 8.3
+      }
+    ]
+  },
+  {
+    "city": "Hounslow",
+    "city_slug": "hounslow",
+    "county": "Greater London",
+    "postcode": "TW3",
+    "region": "London",
+    "house_type_context": "1930s suburban homes and new builds",
+    "nearby_areas": [
+      {
+        "city": "Ealing",
+        "slug": "ealing",
+        "postcode": "W5",
+        "dist_miles": 10.0
+      },
+      {
+        "city": "Wandsworth",
+        "slug": "w-sworth",
+        "postcode": "SW18",
+        "dist_miles": 12.0
+      },
+      {
+        "city": "Richmond upon Thames",
+        "slug": "richmond-upon-thames",
+        "postcode": "TW9",
+        "dist_miles": 6.4
+      }
+    ]
+  },
+  {
+    "city": "Richmond upon Thames",
+    "city_slug": "richmond-upon-thames",
+    "county": "Greater London",
+    "postcode": "TW9",
+    "region": "London",
+    "house_type_context": "Large period properties and riverside homes",
+    "nearby_areas": [
+      {
+        "city": "Waltham Forest",
+        "slug": "waltham-forest",
+        "postcode": "E17",
+        "dist_miles": 4.9
+      },
+      {
+        "city": "Islington",
+        "slug": "islington",
+        "postcode": "N1",
+        "dist_miles": 9.5
+      },
+      {
+        "city": "Southwark",
+        "slug": "southwark",
+        "postcode": "SE1",
+        "dist_miles": 14.5
+      }
+    ]
+  },
+  {
+    "city": "Kingston upon Thames",
+    "city_slug": "kingston-upon-thames",
+    "county": "Greater London",
+    "postcode": "KT1",
+    "region": "London",
+    "house_type_context": "Victorian detached houses and modern flats",
+    "nearby_areas": [
+      {
+        "city": "Westminster",
+        "slug": "westminster",
+        "postcode": "W1",
+        "dist_miles": 4.6
+      },
+      {
+        "city": "Haringey",
+        "slug": "haringey",
+        "postcode": "N22",
+        "dist_miles": 11.6
+      },
+      {
+        "city": "Hackney",
+        "slug": "hackney",
+        "postcode": "E8",
+        "dist_miles": 3.6
+      }
+    ]
+  },
+  {
+    "city": "Merton",
+    "city_slug": "merton",
+    "county": "Greater London",
+    "postcode": "SM4",
+    "region": "London",
+    "house_type_context": "Edwardian terraces and suburban detached homes",
+    "nearby_areas": [
+      {
+        "city": "Sutton",
+        "slug": "sutton",
+        "postcode": "SM1",
+        "dist_miles": 5.1
+      },
+      {
+        "city": "Bromley",
+        "slug": "bromley",
+        "postcode": "BR1",
+        "dist_miles": 5.9
+      },
+      {
+        "city": "Newham",
+        "slug": "newham",
+        "postcode": "E15",
+        "dist_miles": 9.1
+      }
+    ]
+  },
+  {
+    "city": "Sutton",
+    "city_slug": "sutton",
+    "county": "Greater London",
+    "postcode": "SM1",
+    "region": "London",
+    "house_type_context": "Suburban semi-detached and detached homes",
+    "nearby_areas": [
+      {
+        "city": "Harrow",
+        "slug": "harrow",
+        "postcode": "HA1",
+        "dist_miles": 13.8
+      },
+      {
+        "city": "Merton",
+        "slug": "merton",
+        "postcode": "SM4",
+        "dist_miles": 9.2
+      },
+      {
+        "city": "Lewisham",
+        "slug": "lewisham",
+        "postcode": "SE13",
+        "dist_miles": 12.9
+      }
+    ]
+  },
+  {
+    "city": "Croydon",
+    "city_slug": "croydon",
+    "county": "Greater London",
+    "postcode": "CR0",
+    "region": "London",
+    "house_type_context": "Modern apartments and 1930s family homes",
+    "nearby_areas": [
+      {
+        "city": "Greenwich",
+        "slug": "greenwich",
+        "postcode": "SE10",
+        "dist_miles": 8.6
+      },
+      {
+        "city": "Bexley",
+        "slug": "bexley",
+        "postcode": "DA5",
+        "dist_miles": 8.5
+      },
+      {
+        "city": "Westminster",
+        "slug": "westminster",
+        "postcode": "W1",
+        "dist_miles": 6.8
+      }
+    ]
+  },
+  {
+    "city": "Bromley",
+    "city_slug": "bromley",
+    "county": "Greater London",
+    "postcode": "BR1",
+    "region": "London",
+    "house_type_context": "Large detached suburban homes and period properties",
+    "nearby_areas": [
+      {
+        "city": "Kingston upon Thames",
+        "slug": "kingston-upon-thames",
+        "postcode": "KT1",
+        "dist_miles": 14.8
+      },
+      {
+        "city": "Lambeth",
+        "slug": "lambeth",
+        "postcode": "SE11",
+        "dist_miles": 3.7
+      },
+      {
+        "city": "Croydon",
+        "slug": "croydon",
+        "postcode": "CR0",
+        "dist_miles": 8.5
+      }
+    ]
+  },
+  {
+    "city": "Lewisham",
+    "city_slug": "lewisham",
+    "county": "Greater London",
+    "postcode": "SE13",
+    "region": "London",
+    "house_type_context": "Victorian terraces and modern flats",
+    "nearby_areas": [
+      {
+        "city": "Richmond upon Thames",
+        "slug": "richmond-upon-thames",
+        "postcode": "TW9",
+        "dist_miles": 11.4
+      },
+      {
+        "city": "Haringey",
+        "slug": "haringey",
+        "postcode": "N22",
+        "dist_miles": 7.0
+      },
+      {
+        "city": "Newham",
+        "slug": "newham",
+        "postcode": "E15",
+        "dist_miles": 3.9
+      }
+    ]
+  },
+  {
+    "city": "Greenwich",
+    "city_slug": "greenwich",
+    "county": "Greater London",
+    "postcode": "SE10",
+    "region": "London",
+    "house_type_context": "Georgian townhouses and modern riverside developments",
+    "nearby_areas": [
+      {
+        "city": "Newham",
+        "slug": "newham",
+        "postcode": "E15",
+        "dist_miles": 13.3
+      },
+      {
+        "city": "Croydon",
+        "slug": "croydon",
+        "postcode": "CR0",
+        "dist_miles": 12.4
+      },
+      {
+        "city": "Camden",
+        "slug": "camden",
+        "postcode": "NW1",
+        "dist_miles": 5.7
+      }
+    ]
+  },
+  {
+    "city": "Bexley",
+    "city_slug": "bexley",
+    "county": "Greater London",
+    "postcode": "DA5",
+    "region": "London",
+    "house_type_context": "1930s semi-detached suburban homes",
+    "nearby_areas": [
+      {
+        "city": "Enfield",
+        "slug": "enfield",
+        "postcode": "EN1",
+        "dist_miles": 11.9
+      },
+      {
+        "city": "Kensington and Chelsea",
+        "slug": "kensington--chelsea",
+        "postcode": "SW3",
+        "dist_miles": 6.3
+      },
+      {
+        "city": "Hackney",
+        "slug": "hackney",
+        "postcode": "E8",
+        "dist_miles": 12.8
+      }
+    ]
+  },
+  {
+    "city": "Havering",
+    "city_slug": "havering",
+    "county": "Greater London",
+    "postcode": "RM1",
+    "region": "London",
+    "house_type_context": "Suburban semi-detached and detached houses",
+    "nearby_areas": [
+      {
+        "city": "Kingston upon Thames",
+        "slug": "kingston-upon-thames",
+        "postcode": "KT1",
+        "dist_miles": 6.8
+      },
+      {
+        "city": "Bromley",
+        "slug": "bromley",
+        "postcode": "BR1",
+        "dist_miles": 10.4
+      },
+      {
+        "city": "Sutton",
+        "slug": "sutton",
+        "postcode": "SM1",
+        "dist_miles": 10.2
+      }
+    ]
+  },
+  {
+    "city": "Barking and Dagenham",
+    "city_slug": "barking--dagenham",
+    "county": "Greater London",
+    "postcode": "IG11",
+    "region": "London",
+    "house_type_context": "Inter-war terraced housing and new developments",
+    "nearby_areas": [
+      {
+        "city": "Westminster",
+        "slug": "westminster",
+        "postcode": "W1",
+        "dist_miles": 8.7
+      },
+      {
+        "city": "Merton",
+        "slug": "merton",
+        "postcode": "SM4",
+        "dist_miles": 10.9
+      },
+      {
+        "city": "Redbridge",
+        "slug": "redbridge",
+        "postcode": "IG1",
+        "dist_miles": 5.8
+      }
+    ]
+  },
+  {
+    "city": "Redbridge",
+    "city_slug": "redbridge",
+    "county": "Greater London",
+    "postcode": "IG1",
+    "region": "London",
+    "house_type_context": "Edwardian and 1920s semi-detached homes",
+    "nearby_areas": [
+      {
+        "city": "Merton",
+        "slug": "merton",
+        "postcode": "SM4",
+        "dist_miles": 8.9
+      },
+      {
+        "city": "Croydon",
+        "slug": "croydon",
+        "postcode": "CR0",
+        "dist_miles": 10.4
+      },
+      {
+        "city": "Sutton",
+        "slug": "sutton",
+        "postcode": "SM1",
+        "dist_miles": 14.0
+      }
+    ]
+  },
+  {
+    "city": "Newham",
+    "city_slug": "newham",
+    "county": "Greater London",
+    "postcode": "E15",
+    "region": "London",
+    "house_type_context": "Victorian terraces and extensive modern developments",
+    "nearby_areas": [
+      {
+        "city": "Lewisham",
+        "slug": "lewisham",
+        "postcode": "SE13",
+        "dist_miles": 13.0
+      },
+      {
+        "city": "Bexley",
+        "slug": "bexley",
+        "postcode": "DA5",
+        "dist_miles": 6.0
+      },
+      {
+        "city": "Camden",
+        "slug": "camden",
+        "postcode": "NW1",
+        "dist_miles": 5.6
+      }
+    ]
+  },
+  {
+    "city": "Waltham Forest",
+    "city_slug": "waltham-forest",
+    "county": "Greater London",
+    "postcode": "E17",
+    "region": "London",
+    "house_type_context": "Victorian Warner flats and terraced homes",
+    "nearby_areas": [
+      {
+        "city": "Bromley",
+        "slug": "bromley",
+        "postcode": "BR1",
+        "dist_miles": 5.7
+      },
+      {
+        "city": "Merton",
+        "slug": "merton",
+        "postcode": "SM4",
+        "dist_miles": 14.3
+      },
+      {
+        "city": "Lewisham",
+        "slug": "lewisham",
+        "postcode": "SE13",
+        "dist_miles": 4.2
+      }
+    ]
+  },
+  {
+    "city": "Haringey",
+    "city_slug": "haringey",
+    "county": "Greater London",
+    "postcode": "N22",
+    "region": "London",
+    "house_type_context": "Victorian and Edwardian terraced houses",
+    "nearby_areas": [
+      {
+        "city": "Camden",
+        "slug": "camden",
+        "postcode": "NW1",
+        "dist_miles": 14.9
+      },
+      {
+        "city": "Bromley",
+        "slug": "bromley",
+        "postcode": "BR1",
+        "dist_miles": 5.4
+      },
+      {
+        "city": "Kensington and Chelsea",
+        "slug": "kensington--chelsea",
+        "postcode": "SW3",
+        "dist_miles": 6.6
+      }
+    ]
+  },
+  {
+    "city": "Enfield",
+    "city_slug": "enfield",
+    "county": "Greater London",
+    "postcode": "EN1",
+    "region": "London",
+    "house_type_context": "1930s suburban semi-detached homes",
+    "nearby_areas": [
+      {
+        "city": "Richmond upon Thames",
+        "slug": "richmond-upon-thames",
+        "postcode": "TW9",
+        "dist_miles": 3.8
+      },
+      {
+        "city": "Islington",
+        "slug": "islington",
+        "postcode": "N1",
+        "dist_miles": 5.3
+      },
+      {
+        "city": "Haringey",
+        "slug": "haringey",
+        "postcode": "N22",
+        "dist_miles": 6.9
+      }
+    ]
+  },
+  {
+    "city": "Barnet",
+    "city_slug": "barnet",
+    "county": "Greater London",
+    "postcode": "EN5",
+    "region": "London",
+    "house_type_context": "Large suburban detached and semi-detached homes",
+    "nearby_areas": [
+      {
+        "city": "Redbridge",
+        "slug": "redbridge",
+        "postcode": "IG1",
+        "dist_miles": 14.3
+      },
+      {
+        "city": "Lambeth",
+        "slug": "lambeth",
+        "postcode": "SE11",
+        "dist_miles": 10.7
+      },
+      {
+        "city": "Brent",
+        "slug": "brent",
+        "postcode": "HA9",
+        "dist_miles": 14.5
+      }
+    ]
+  },
+  {
+    "city": "Harrow",
+    "city_slug": "harrow",
+    "county": "Greater London",
+    "postcode": "HA1",
+    "region": "London",
+    "house_type_context": "1930s detached and semi-detached properties",
+    "nearby_areas": [
+      {
+        "city": "Lewisham",
+        "slug": "lewisham",
+        "postcode": "SE13",
+        "dist_miles": 11.9
+      },
+      {
+        "city": "Barking and Dagenham",
+        "slug": "barking--dagenham",
+        "postcode": "IG11",
+        "dist_miles": 14.4
+      },
+      {
+        "city": "Bromley",
+        "slug": "bromley",
+        "postcode": "BR1",
+        "dist_miles": 3.9
+      }
+    ]
+  },
+  {
+    "city": "Hillingdon",
+    "city_slug": "hillingdon",
+    "county": "Greater London",
+    "postcode": "UB8",
+    "region": "London",
+    "house_type_context": "Suburban housing and modern apartments",
+    "nearby_areas": [
+      {
+        "city": "Lewisham",
+        "slug": "lewisham",
+        "postcode": "SE13",
+        "dist_miles": 10.8
+      },
+      {
+        "city": "Westminster",
+        "slug": "westminster",
+        "postcode": "W1",
+        "dist_miles": 9.7
+      },
+      {
+        "city": "Hounslow",
+        "slug": "hounslow",
+        "postcode": "TW3",
+        "dist_miles": 8.5
+      }
+    ]
+  },
+  {
+    "city": "Manchester",
+    "city_slug": "manchester",
+    "county": "Greater Manchester",
+    "postcode": "M1",
+    "region": "North West",
+    "house_type_context": "Industrial loft conversions, Victorian terraces, and modern high-rises",
+    "nearby_areas": [
+      {
+        "city": "Stockport",
+        "slug": "stockport",
+        "postcode": "SK1",
+        "dist_miles": 3.5
+      },
+      {
+        "city": "Chester",
+        "slug": "chester",
+        "postcode": "CH1",
+        "dist_miles": 12.9
+      },
+      {
+        "city": "Liverpool",
+        "slug": "liverpool",
+        "postcode": "L1",
+        "dist_miles": 13.9
+      }
+    ]
+  },
+  {
+    "city": "Liverpool",
+    "city_slug": "liverpool",
+    "county": "Merseyside",
+    "postcode": "L1",
+    "region": "North West",
+    "house_type_context": "Georgian townhouses and modern waterfront apartments",
+    "nearby_areas": [
+      {
+        "city": "Preston",
+        "slug": "preston",
+        "postcode": "PR1",
+        "dist_miles": 13.1
+      },
+      {
+        "city": "Blackpool",
+        "slug": "blackpool",
+        "postcode": "FY1",
+        "dist_miles": 12.2
+      },
+      {
+        "city": "Manchester",
+        "slug": "manchester",
+        "postcode": "M1",
+        "dist_miles": 5.6
+      }
+    ]
+  },
+  {
+    "city": "Bolton",
+    "city_slug": "bolton",
+    "county": "Greater Manchester",
+    "postcode": "BL1",
+    "region": "North West",
+    "house_type_context": "Victorian terraced houses and suburban detached homes",
+    "nearby_areas": [
+      {
+        "city": "Chester",
+        "slug": "chester",
+        "postcode": "CH1",
+        "dist_miles": 12.0
+      },
+      {
+        "city": "Stockport",
+        "slug": "stockport",
+        "postcode": "SK1",
+        "dist_miles": 7.6
+      },
+      {
+        "city": "Manchester",
+        "slug": "manchester",
+        "postcode": "M1",
+        "dist_miles": 3.5
+      }
+    ]
+  },
+  {
+    "city": "Stockport",
+    "city_slug": "stockport",
+    "county": "Greater Manchester",
+    "postcode": "SK1",
+    "region": "North West",
+    "house_type_context": "Victorian properties and modern suburban homes",
+    "nearby_areas": [
+      {
+        "city": "Blackpool",
+        "slug": "blackpool",
+        "postcode": "FY1",
+        "dist_miles": 11.5
+      },
+      {
+        "city": "Manchester",
+        "slug": "manchester",
+        "postcode": "M1",
+        "dist_miles": 11.7
+      },
+      {
+        "city": "Preston",
+        "slug": "preston",
+        "postcode": "PR1",
+        "dist_miles": 13.3
+      }
+    ]
+  },
+  {
+    "city": "Preston",
+    "city_slug": "preston",
+    "county": "Lancashire",
+    "postcode": "PR1",
+    "region": "North West",
+    "house_type_context": "Traditional terraced housing and new build estates",
+    "nearby_areas": [
+      {
+        "city": "Liverpool",
+        "slug": "liverpool",
+        "postcode": "L1",
+        "dist_miles": 7.9
+      },
+      {
+        "city": "Manchester",
+        "slug": "manchester",
+        "postcode": "M1",
+        "dist_miles": 8.2
+      },
+      {
+        "city": "Blackpool",
+        "slug": "blackpool",
+        "postcode": "FY1",
+        "dist_miles": 9.5
+      }
+    ]
+  },
+  {
+    "city": "Blackburn",
+    "city_slug": "blackburn",
+    "county": "Lancashire",
+    "postcode": "BB1",
+    "region": "North West",
+    "house_type_context": "Stone-built terraced houses and suburban homes",
+    "nearby_areas": [
+      {
+        "city": "Liverpool",
+        "slug": "liverpool",
+        "postcode": "L1",
+        "dist_miles": 14.0
+      },
+      {
+        "city": "Blackpool",
+        "slug": "blackpool",
+        "postcode": "FY1",
+        "dist_miles": 13.5
+      },
+      {
+        "city": "Chester",
+        "slug": "chester",
+        "postcode": "CH1",
+        "dist_miles": 12.1
+      }
+    ]
+  },
+  {
+    "city": "Blackpool",
+    "city_slug": "blackpool",
+    "county": "Lancashire",
+    "postcode": "FY1",
+    "region": "North West",
+    "house_type_context": "Victorian guesthouses and residential terraces",
+    "nearby_areas": [
+      {
+        "city": "Manchester",
+        "slug": "manchester",
+        "postcode": "M1",
+        "dist_miles": 6.1
+      },
+      {
+        "city": "Blackburn",
+        "slug": "blackburn",
+        "postcode": "BB1",
+        "dist_miles": 5.5
+      },
+      {
+        "city": "Liverpool",
+        "slug": "liverpool",
+        "postcode": "L1",
+        "dist_miles": 5.2
+      }
+    ]
+  },
+  {
+    "city": "Chester",
+    "city_slug": "chester",
+    "county": "Cheshire",
+    "postcode": "CH1",
+    "region": "North West",
+    "house_type_context": "Tudor-style historic homes and modern suburbs",
+    "nearby_areas": [
+      {
+        "city": "Preston",
+        "slug": "preston",
+        "postcode": "PR1",
+        "dist_miles": 14.0
+      },
+      {
+        "city": "Bolton",
+        "slug": "bolton",
+        "postcode": "BL1",
+        "dist_miles": 14.3
+      },
+      {
+        "city": "Stockport",
+        "slug": "stockport",
+        "postcode": "SK1",
+        "dist_miles": 6.3
+      }
+    ]
+  },
+  {
+    "city": "Leeds",
+    "city_slug": "leeds",
+    "county": "West Yorkshire",
+    "postcode": "LS1",
+    "region": "Yorkshire",
+    "house_type_context": "Back-to-back terraces and modern city apartments",
+    "nearby_areas": [
+      {
+        "city": "Kingston upon Hull",
+        "slug": "kingston--hull",
+        "postcode": "HU1",
+        "dist_miles": 7.2
+      },
+      {
+        "city": "Sheffield",
+        "slug": "sheffield",
+        "postcode": "S1",
+        "dist_miles": 5.8
+      },
+      {
+        "city": "Bradford",
+        "slug": "bradford",
+        "postcode": "BD1",
+        "dist_miles": 10.4
+      }
+    ]
+  },
+  {
+    "city": "Sheffield",
+    "city_slug": "sheffield",
+    "county": "South Yorkshire",
+    "postcode": "S1",
+    "region": "Yorkshire",
+    "house_type_context": "Victorian terraces and modern eco-homes",
+    "nearby_areas": [
+      {
+        "city": "Leeds",
+        "slug": "leeds",
+        "postcode": "LS1",
+        "dist_miles": 12.6
+      },
+      {
+        "city": "Kingston upon Hull",
+        "slug": "kingston--hull",
+        "postcode": "HU1",
+        "dist_miles": 7.6
+      },
+      {
+        "city": "Bradford",
+        "slug": "bradford",
+        "postcode": "BD1",
+        "dist_miles": 11.6
+      }
+    ]
+  },
+  {
+    "city": "Newcastle upon Tyne",
+    "city_slug": "newcastle",
+    "county": "Tyne and Wear",
+    "postcode": "NE1",
+    "region": "North East",
+    "house_type_context": "Tyneside flats and Georgian terraces",
+    "nearby_areas": [
+      {
+        "city": "Sunderland",
+        "slug": "sunderland",
+        "postcode": "SR1",
+        "dist_miles": 3.7
+      },
+      {
+        "city": "Middlesbrough",
+        "slug": "middlesbrough",
+        "postcode": "TS1",
+        "dist_miles": 4.8
+      }
+    ]
+  },
+  {
+    "city": "Sunderland",
+    "city_slug": "sunderland",
+    "county": "Tyne and Wear",
+    "postcode": "SR1",
+    "region": "North East",
+    "house_type_context": "Victorian terraces and post-war suburban homes",
+    "nearby_areas": [
+      {
+        "city": "Middlesbrough",
+        "slug": "middlesbrough",
+        "postcode": "TS1",
+        "dist_miles": 10.5
+      },
+      {
+        "city": "Newcastle upon Tyne",
+        "slug": "newcastle",
+        "postcode": "NE1",
+        "dist_miles": 12.2
+      }
+    ]
+  },
+  {
+    "city": "Bradford",
+    "city_slug": "bradford",
+    "county": "West Yorkshire",
+    "postcode": "BD1",
+    "region": "Yorkshire",
+    "house_type_context": "Traditional Yorkshire stone-built terraces",
+    "nearby_areas": [
+      {
+        "city": "York",
+        "slug": "york",
+        "postcode": "YO1",
+        "dist_miles": 7.6
+      },
+      {
+        "city": "Kingston upon Hull",
+        "slug": "kingston--hull",
+        "postcode": "HU1",
+        "dist_miles": 3.5
+      },
+      {
+        "city": "Leeds",
+        "slug": "leeds",
+        "postcode": "LS1",
+        "dist_miles": 12.6
+      }
+    ]
+  },
+  {
+    "city": "Kingston upon Hull",
+    "city_slug": "kingston--hull",
+    "county": "East Riding of Yorkshire",
+    "postcode": "HU1",
+    "region": "Yorkshire",
+    "house_type_context": "Victorian terraced housing and modern estates",
+    "nearby_areas": [
+      {
+        "city": "Leeds",
+        "slug": "leeds",
+        "postcode": "LS1",
+        "dist_miles": 14.2
+      },
+      {
+        "city": "Bradford",
+        "slug": "bradford",
+        "postcode": "BD1",
+        "dist_miles": 10.9
+      },
+      {
+        "city": "York",
+        "slug": "york",
+        "postcode": "YO1",
+        "dist_miles": 3.9
+      }
+    ]
+  },
+  {
+    "city": "York",
+    "city_slug": "york",
+    "county": "North Yorkshire",
+    "postcode": "YO1",
+    "region": "Yorkshire",
+    "house_type_context": "Historic period properties and modern suburban homes",
+    "nearby_areas": [
+      {
+        "city": "Bradford",
+        "slug": "bradford",
+        "postcode": "BD1",
+        "dist_miles": 11.0
+      },
+      {
+        "city": "Sheffield",
+        "slug": "sheffield",
+        "postcode": "S1",
+        "dist_miles": 13.3
+      },
+      {
+        "city": "Kingston upon Hull",
+        "slug": "kingston--hull",
+        "postcode": "HU1",
+        "dist_miles": 11.4
+      }
+    ]
+  },
+  {
+    "city": "Middlesbrough",
+    "city_slug": "middlesbrough",
+    "county": "North Yorkshire",
+    "postcode": "TS1",
+    "region": "North East",
+    "house_type_context": "Victorian terraces and modern developments",
+    "nearby_areas": [
+      {
+        "city": "Newcastle upon Tyne",
+        "slug": "newcastle",
+        "postcode": "NE1",
+        "dist_miles": 9.4
+      },
+      {
+        "city": "Sunderland",
+        "slug": "sunderland",
+        "postcode": "SR1",
+        "dist_miles": 13.3
+      }
+    ]
+  },
+  {
+    "city": "Birmingham",
+    "city_slug": "birmingham",
+    "county": "West Midlands",
+    "postcode": "B1",
+    "region": "West Midlands",
+    "house_type_context": "Victorian terraces, 1930s semi-detached, and modern apartments",
+    "nearby_areas": [
+      {
+        "city": "Wolverhampton",
+        "slug": "wolverhampton",
+        "postcode": "WV1",
+        "dist_miles": 4.3
+      },
+      {
+        "city": "Coventry",
+        "slug": "coventry",
+        "postcode": "CV1",
+        "dist_miles": 12.3
+      },
+      {
+        "city": "Stoke-on-Trent",
+        "slug": "stoke-on-trent",
+        "postcode": "ST1",
+        "dist_miles": 11.0
+      }
+    ]
+  },
+  {
+    "city": "Nottingham",
+    "city_slug": "nottingham",
+    "county": "Nottinghamshire",
+    "postcode": "NG1",
+    "region": "East Midlands",
+    "house_type_context": "Victorian family homes and modern student developments",
+    "nearby_areas": [
+      {
+        "city": "Leicester",
+        "slug": "leicester",
+        "postcode": "LE1",
+        "dist_miles": 12.1
+      },
+      {
+        "city": "Derby",
+        "slug": "derby",
+        "postcode": "DE1",
+        "dist_miles": 14.4
+      }
+    ]
+  },
+  {
+    "city": "Leicester",
+    "city_slug": "leicester",
+    "county": "Leicestershire",
+    "postcode": "LE1",
+    "region": "East Midlands",
+    "house_type_context": "Victorian terraces and modern suburban detached homes",
+    "nearby_areas": [
+      {
+        "city": "Nottingham",
+        "slug": "nottingham",
+        "postcode": "NG1",
+        "dist_miles": 13.7
+      },
+      {
+        "city": "Derby",
+        "slug": "derby",
+        "postcode": "DE1",
+        "dist_miles": 11.7
+      }
+    ]
+  },
+  {
+    "city": "Coventry",
+    "city_slug": "coventry",
+    "county": "West Midlands",
+    "postcode": "CV1",
+    "region": "West Midlands",
+    "house_type_context": "Post-war housing and modern new builds",
+    "nearby_areas": [
+      {
+        "city": "Birmingham",
+        "slug": "birmingham",
+        "postcode": "B1",
+        "dist_miles": 6.6
+      },
+      {
+        "city": "Wolverhampton",
+        "slug": "wolverhampton",
+        "postcode": "WV1",
+        "dist_miles": 5.8
+      },
+      {
+        "city": "Stoke-on-Trent",
+        "slug": "stoke-on-trent",
+        "postcode": "ST1",
+        "dist_miles": 10.7
+      }
+    ]
+  },
+  {
+    "city": "Stoke-on-Trent",
+    "city_slug": "stoke-on-trent",
+    "county": "Staffordshire",
+    "postcode": "ST1",
+    "region": "West Midlands",
+    "house_type_context": "Traditional terraced workers' housing",
+    "nearby_areas": [
+      {
+        "city": "Birmingham",
+        "slug": "birmingham",
+        "postcode": "B1",
+        "dist_miles": 10.3
+      },
+      {
+        "city": "Coventry",
+        "slug": "coventry",
+        "postcode": "CV1",
+        "dist_miles": 6.0
+      },
+      {
+        "city": "Wolverhampton",
+        "slug": "wolverhampton",
+        "postcode": "WV1",
+        "dist_miles": 9.1
+      }
+    ]
+  },
+  {
+    "city": "Derby",
+    "city_slug": "derby",
+    "county": "Derbyshire",
+    "postcode": "DE1",
+    "region": "East Midlands",
+    "house_type_context": "Victorian properties and modern suburban estates",
+    "nearby_areas": [
+      {
+        "city": "Nottingham",
+        "slug": "nottingham",
+        "postcode": "NG1",
+        "dist_miles": 4.3
+      },
+      {
+        "city": "Leicester",
+        "slug": "leicester",
+        "postcode": "LE1",
+        "dist_miles": 6.3
+      }
+    ]
+  },
+  {
+    "city": "Wolverhampton",
+    "city_slug": "wolverhampton",
+    "county": "West Midlands",
+    "postcode": "WV1",
+    "region": "West Midlands",
+    "house_type_context": "1930s suburban housing and Victorian terraces",
+    "nearby_areas": [
+      {
+        "city": "Stoke-on-Trent",
+        "slug": "stoke-on-trent",
+        "postcode": "ST1",
+        "dist_miles": 15.0
+      },
+      {
+        "city": "Coventry",
+        "slug": "coventry",
+        "postcode": "CV1",
+        "dist_miles": 10.3
+      },
+      {
+        "city": "Birmingham",
+        "slug": "birmingham",
+        "postcode": "B1",
+        "dist_miles": 8.4
+      }
+    ]
+  },
+  {
+    "city": "Norwich",
+    "city_slug": "norwich",
+    "county": "Norfolk",
+    "postcode": "NR1",
+    "region": "East of England",
+    "house_type_context": "Historic flint-faced properties and Victorian terraces",
+    "nearby_areas": [
+      {
+        "city": "Ipswich",
+        "slug": "ipswich",
+        "postcode": "IP1",
+        "dist_miles": 12.0
+      },
+      {
+        "city": "Cambridge",
+        "slug": "cambridge",
+        "postcode": "CB1",
+        "dist_miles": 10.6
+      },
+      {
+        "city": "Luton",
+        "slug": "luton",
+        "postcode": "LU1",
+        "dist_miles": 5.4
+      }
+    ]
+  },
+  {
+    "city": "Peterborough",
+    "city_slug": "peterborough",
+    "county": "Cambridgeshire",
+    "postcode": "PE1",
+    "region": "East of England",
+    "house_type_context": "Modern new-build estates and 1930s suburban homes",
+    "nearby_areas": [
+      {
+        "city": "Luton",
+        "slug": "luton",
+        "postcode": "LU1",
+        "dist_miles": 5.8
+      },
+      {
+        "city": "Norwich",
+        "slug": "norwich",
+        "postcode": "NR1",
+        "dist_miles": 9.0
+      },
+      {
+        "city": "Ipswich",
+        "slug": "ipswich",
+        "postcode": "IP1",
+        "dist_miles": 6.7
+      }
+    ]
+  },
+  {
+    "city": "Ipswich",
+    "city_slug": "ipswich",
+    "county": "Suffolk",
+    "postcode": "IP1",
+    "region": "East of England",
+    "house_type_context": "Victorian townhouses and modern waterfront flats",
+    "nearby_areas": [
+      {
+        "city": "Luton",
+        "slug": "luton",
+        "postcode": "LU1",
+        "dist_miles": 5.5
+      },
+      {
+        "city": "Cambridge",
+        "slug": "cambridge",
+        "postcode": "CB1",
+        "dist_miles": 14.7
+      },
+      {
+        "city": "Peterborough",
+        "slug": "peterborough",
+        "postcode": "PE1",
+        "dist_miles": 8.8
+      }
+    ]
+  },
+  {
+    "city": "Cambridge",
+    "city_slug": "cambridge",
+    "county": "Cambridgeshire",
+    "postcode": "CB1",
+    "region": "East of England",
+    "house_type_context": "Victorian terraces, Edwardian homes, and modern eco-flats",
+    "nearby_areas": [
+      {
+        "city": "Peterborough",
+        "slug": "peterborough",
+        "postcode": "PE1",
+        "dist_miles": 12.2
+      },
+      {
+        "city": "Ipswich",
+        "slug": "ipswich",
+        "postcode": "IP1",
+        "dist_miles": 10.5
+      },
+      {
+        "city": "Luton",
+        "slug": "luton",
+        "postcode": "LU1",
+        "dist_miles": 10.3
+      }
+    ]
+  },
+  {
+    "city": "Luton",
+    "city_slug": "luton",
+    "county": "Bedfordshire",
+    "postcode": "LU1",
+    "region": "East of England",
+    "house_type_context": "Post-war housing and modern developments",
+    "nearby_areas": [
+      {
+        "city": "Cambridge",
+        "slug": "cambridge",
+        "postcode": "CB1",
+        "dist_miles": 8.2
+      },
+      {
+        "city": "Ipswich",
+        "slug": "ipswich",
+        "postcode": "IP1",
+        "dist_miles": 7.2
+      },
+      {
+        "city": "Peterborough",
+        "slug": "peterborough",
+        "postcode": "PE1",
+        "dist_miles": 13.5
+      }
+    ]
+  },
+  {
+    "city": "Bristol",
+    "city_slug": "bristol",
+    "county": "Bristol",
+    "postcode": "BS1",
+    "region": "South West",
+    "house_type_context": "Georgian townhouses, Victorian terraces, and modern eco-homes",
+    "nearby_areas": [
+      {
+        "city": "Gloucester",
+        "slug": "gloucester",
+        "postcode": "GL1",
+        "dist_miles": 11.4
+      },
+      {
+        "city": "Plymouth",
+        "slug": "plymouth",
+        "postcode": "PL1",
+        "dist_miles": 9.1
+      },
+      {
+        "city": "Cheltenham",
+        "slug": "cheltenham",
+        "postcode": "GL50",
+        "dist_miles": 8.9
+      }
+    ]
+  },
+  {
+    "city": "Southampton",
+    "city_slug": "southampton",
+    "county": "Hampshire",
+    "postcode": "SO14",
+    "region": "South East",
+    "house_type_context": "Victorian terraces and modern waterfront developments",
+    "nearby_areas": [
+      {
+        "city": "Oxford",
+        "slug": "oxford",
+        "postcode": "OX1",
+        "dist_miles": 9.0
+      },
+      {
+        "city": "Brighton",
+        "slug": "brighton",
+        "postcode": "BN1",
+        "dist_miles": 7.4
+      },
+      {
+        "city": "Portsmouth",
+        "slug": "portsmouth",
+        "postcode": "PO1",
+        "dist_miles": 14.8
+      }
+    ]
+  },
+  {
+    "city": "Portsmouth",
+    "city_slug": "portsmouth",
+    "county": "Hampshire",
+    "postcode": "PO1",
+    "region": "South East",
+    "house_type_context": "Terraced housing and historic naval properties",
+    "nearby_areas": [
+      {
+        "city": "Oxford",
+        "slug": "oxford",
+        "postcode": "OX1",
+        "dist_miles": 4.5
+      },
+      {
+        "city": "Milton Keynes",
+        "slug": "milton-keynes",
+        "postcode": "MK1",
+        "dist_miles": 11.6
+      },
+      {
+        "city": "Southampton",
+        "slug": "southampton",
+        "postcode": "SO14",
+        "dist_miles": 13.7
+      }
+    ]
+  },
+  {
+    "city": "Brighton",
+    "city_slug": "brighton",
+    "county": "East Sussex",
+    "postcode": "BN1",
+    "region": "South East",
+    "house_type_context": "Regency townhouses and Victorian terraces",
+    "nearby_areas": [
+      {
+        "city": "Oxford",
+        "slug": "oxford",
+        "postcode": "OX1",
+        "dist_miles": 9.0
+      },
+      {
+        "city": "Southampton",
+        "slug": "southampton",
+        "postcode": "SO14",
+        "dist_miles": 5.9
+      },
+      {
+        "city": "Reading",
+        "slug": "reading",
+        "postcode": "RG1",
+        "dist_miles": 8.5
+      }
+    ]
+  },
+  {
+    "city": "Plymouth",
+    "city_slug": "plymouth",
+    "county": "Devon",
+    "postcode": "PL1",
+    "region": "South West",
+    "house_type_context": "Post-war homes and Victorian waterfront properties",
+    "nearby_areas": [
+      {
+        "city": "Swindon",
+        "slug": "swindon",
+        "postcode": "SN1",
+        "dist_miles": 14.8
+      },
+      {
+        "city": "Cheltenham",
+        "slug": "cheltenham",
+        "postcode": "GL50",
+        "dist_miles": 3.8
+      },
+      {
+        "city": "Gloucester",
+        "slug": "gloucester",
+        "postcode": "GL1",
+        "dist_miles": 11.5
+      }
+    ]
+  },
+  {
+    "city": "Bournemouth",
+    "city_slug": "bournemouth",
+    "county": "Dorset",
+    "postcode": "BH1",
+    "region": "South West",
+    "house_type_context": "Victorian villas and modern coastal apartments",
+    "nearby_areas": [
+      {
+        "city": "Bristol",
+        "slug": "bristol",
+        "postcode": "BS1",
+        "dist_miles": 14.3
+      },
+      {
+        "city": "Plymouth",
+        "slug": "plymouth",
+        "postcode": "PL1",
+        "dist_miles": 11.3
+      },
+      {
+        "city": "Swindon",
+        "slug": "swindon",
+        "postcode": "SN1",
+        "dist_miles": 8.3
+      }
+    ]
+  },
+  {
+    "city": "Swindon",
+    "city_slug": "swindon",
+    "county": "Wiltshire",
+    "postcode": "SN1",
+    "region": "South West",
+    "house_type_context": "Victorian railway cottages and modern suburban estates",
+    "nearby_areas": [
+      {
+        "city": "Bristol",
+        "slug": "bristol",
+        "postcode": "BS1",
+        "dist_miles": 3.8
+      },
+      {
+        "city": "Plymouth",
+        "slug": "plymouth",
+        "postcode": "PL1",
+        "dist_miles": 12.3
+      },
+      {
+        "city": "Cheltenham",
+        "slug": "cheltenham",
+        "postcode": "GL50",
+        "dist_miles": 14.9
+      }
+    ]
+  },
+  {
+    "city": "Reading",
+    "city_slug": "reading",
+    "county": "Berkshire",
+    "postcode": "RG1",
+    "region": "South East",
+    "house_type_context": "Victorian terraces and modern riverside apartments",
+    "nearby_areas": [
+      {
+        "city": "Milton Keynes",
+        "slug": "milton-keynes",
+        "postcode": "MK1",
+        "dist_miles": 4.3
+      },
+      {
+        "city": "Southampton",
+        "slug": "southampton",
+        "postcode": "SO14",
+        "dist_miles": 11.5
+      },
+      {
+        "city": "Oxford",
+        "slug": "oxford",
+        "postcode": "OX1",
+        "dist_miles": 5.6
+      }
+    ]
+  },
+  {
+    "city": "Oxford",
+    "city_slug": "oxford",
+    "county": "Oxfordshire",
+    "postcode": "OX1",
+    "region": "South East",
+    "house_type_context": "Historic stone properties and Victorian terraces",
+    "nearby_areas": [
+      {
+        "city": "Milton Keynes",
+        "slug": "milton-keynes",
+        "postcode": "MK1",
+        "dist_miles": 8.6
+      },
+      {
+        "city": "Southampton",
+        "slug": "southampton",
+        "postcode": "SO14",
+        "dist_miles": 14.6
+      },
+      {
+        "city": "Portsmouth",
+        "slug": "portsmouth",
+        "postcode": "PO1",
+        "dist_miles": 12.2
+      }
+    ]
+  },
+  {
+    "city": "Gloucester",
+    "city_slug": "gloucester",
+    "county": "Gloucestershire",
+    "postcode": "GL1",
+    "region": "South West",
+    "house_type_context": "Historic properties and modern suburban developments",
+    "nearby_areas": [
+      {
+        "city": "Swindon",
+        "slug": "swindon",
+        "postcode": "SN1",
+        "dist_miles": 7.5
+      },
+      {
+        "city": "Plymouth",
+        "slug": "plymouth",
+        "postcode": "PL1",
+        "dist_miles": 4.4
+      },
+      {
+        "city": "Cheltenham",
+        "slug": "cheltenham",
+        "postcode": "GL50",
+        "dist_miles": 11.3
+      }
+    ]
+  },
+  {
+    "city": "Cheltenham",
+    "city_slug": "cheltenham",
+    "county": "Gloucestershire",
+    "postcode": "GL50",
+    "region": "South West",
+    "house_type_context": "Regency townhouses and Victorian villas",
+    "nearby_areas": [
+      {
+        "city": "Plymouth",
+        "slug": "plymouth",
+        "postcode": "PL1",
+        "dist_miles": 6.1
+      },
+      {
+        "city": "Swindon",
+        "slug": "swindon",
+        "postcode": "SN1",
+        "dist_miles": 4.6
+      },
+      {
+        "city": "Gloucester",
+        "slug": "gloucester",
+        "postcode": "GL1",
+        "dist_miles": 14.9
+      }
+    ]
+  },
+  {
+    "city": "Milton Keynes",
+    "city_slug": "milton-keynes",
+    "county": "Buckinghamshire",
+    "postcode": "MK1",
+    "region": "South East",
+    "house_type_context": "Modern detached homes and contemporary estates",
+    "nearby_areas": [
+      {
+        "city": "Oxford",
+        "slug": "oxford",
+        "postcode": "OX1",
+        "dist_miles": 9.6
+      },
+      {
+        "city": "Brighton",
+        "slug": "brighton",
+        "postcode": "BN1",
+        "dist_miles": 9.5
+      },
+      {
+        "city": "Portsmouth",
+        "slug": "portsmouth",
+        "postcode": "PO1",
+        "dist_miles": 9.1
+      }
+    ]
+  },
+  {
+    "city": "Glasgow",
+    "city_slug": "glasgow",
+    "county": "Glasgow City",
+    "postcode": "G1",
+    "region": "Scotland",
+    "house_type_context": "Traditional sandstone tenements and modern apartments",
+    "nearby_areas": [
+      {
+        "city": "Edinburgh",
+        "slug": "edinburgh",
+        "postcode": "EH1",
+        "dist_miles": 4.4
+      },
+      {
+        "city": "Aberdeen",
+        "slug": "aberdeen",
+        "postcode": "AB10",
+        "dist_miles": 8.0
+      },
+      {
+        "city": "Inverness",
+        "slug": "inverness",
+        "postcode": "IV1",
+        "dist_miles": 6.8
+      }
+    ]
+  },
+  {
+    "city": "Edinburgh",
+    "city_slug": "edinburgh",
+    "county": "City of Edinburgh",
+    "postcode": "EH1",
+    "region": "Scotland",
+    "house_type_context": "Georgian townhouses and historic stone tenements",
+    "nearby_areas": [
+      {
+        "city": "Glasgow",
+        "slug": "glasgow",
+        "postcode": "G1",
+        "dist_miles": 12.0
+      },
+      {
+        "city": "Aberdeen",
+        "slug": "aberdeen",
+        "postcode": "AB10",
+        "dist_miles": 10.0
+      },
+      {
+        "city": "Inverness",
+        "slug": "inverness",
+        "postcode": "IV1",
+        "dist_miles": 7.9
+      }
+    ]
+  },
+  {
+    "city": "Aberdeen",
+    "city_slug": "aberdeen",
+    "county": "Aberdeen City",
+    "postcode": "AB10",
+    "region": "Scotland",
+    "house_type_context": "Traditional granite-built homes and modern estates",
+    "nearby_areas": [
+      {
+        "city": "Dundee",
+        "slug": "dundee",
+        "postcode": "DD1",
+        "dist_miles": 9.8
+      },
+      {
+        "city": "Edinburgh",
+        "slug": "edinburgh",
+        "postcode": "EH1",
+        "dist_miles": 4.0
+      },
+      {
+        "city": "Glasgow",
+        "slug": "glasgow",
+        "postcode": "G1",
+        "dist_miles": 5.1
+      }
+    ]
+  },
+  {
+    "city": "Dundee",
+    "city_slug": "dundee",
+    "county": "Dundee City",
+    "postcode": "DD1",
+    "region": "Scotland",
+    "house_type_context": "Victorian tenements and modern waterfront flats",
+    "nearby_areas": [
+      {
+        "city": "Edinburgh",
+        "slug": "edinburgh",
+        "postcode": "EH1",
+        "dist_miles": 11.4
+      },
+      {
+        "city": "Glasgow",
+        "slug": "glasgow",
+        "postcode": "G1",
+        "dist_miles": 8.1
+      },
+      {
+        "city": "Inverness",
+        "slug": "inverness",
+        "postcode": "IV1",
+        "dist_miles": 4.6
+      }
+    ]
+  },
+  {
+    "city": "Inverness",
+    "city_slug": "inverness",
+    "county": "Highland",
+    "postcode": "IV1",
+    "region": "Scotland",
+    "house_type_context": "Traditional stone-built homes and modern suburban estates",
+    "nearby_areas": [
+      {
+        "city": "Edinburgh",
+        "slug": "edinburgh",
+        "postcode": "EH1",
+        "dist_miles": 13.5
+      },
+      {
+        "city": "Glasgow",
+        "slug": "glasgow",
+        "postcode": "G1",
+        "dist_miles": 5.6
+      },
+      {
+        "city": "Dundee",
+        "slug": "dundee",
+        "postcode": "DD1",
+        "dist_miles": 7.6
+      }
+    ]
+  },
+  {
+    "city": "Cardiff",
+    "city_slug": "cardiff",
+    "county": "Cardiff",
+    "postcode": "CF10",
+    "region": "Wales",
+    "house_type_context": "Victorian terraces and modern bay-side apartments",
+    "nearby_areas": [
+      {
+        "city": "Newport",
+        "slug": "newport",
+        "postcode": "NP20",
+        "dist_miles": 6.4
+      },
+      {
+        "city": "Swansea",
+        "slug": "swansea",
+        "postcode": "SA1",
+        "dist_miles": 9.7
+      },
+      {
+        "city": "Wrexham",
+        "slug": "wrexham",
+        "postcode": "LL11",
+        "dist_miles": 13.0
+      }
+    ]
+  },
+  {
+    "city": "Swansea",
+    "city_slug": "swansea",
+    "county": "Swansea",
+    "postcode": "SA1",
+    "region": "Wales",
+    "house_type_context": "Victorian terraced houses and modern coastal developments",
+    "nearby_areas": [
+      {
+        "city": "Newport",
+        "slug": "newport",
+        "postcode": "NP20",
+        "dist_miles": 6.5
+      },
+      {
+        "city": "Wrexham",
+        "slug": "wrexham",
+        "postcode": "LL11",
+        "dist_miles": 9.3
+      },
+      {
+        "city": "Cardiff",
+        "slug": "cardiff",
+        "postcode": "CF10",
+        "dist_miles": 12.1
+      }
+    ]
+  },
+  {
+    "city": "Newport",
+    "city_slug": "newport",
+    "county": "Newport",
+    "postcode": "NP20",
+    "region": "Wales",
+    "house_type_context": "Victorian terraces and modern suburban homes",
+    "nearby_areas": [
+      {
+        "city": "Swansea",
+        "slug": "swansea",
+        "postcode": "SA1",
+        "dist_miles": 14.8
+      },
+      {
+        "city": "Cardiff",
+        "slug": "cardiff",
+        "postcode": "CF10",
+        "dist_miles": 3.8
+      },
+      {
+        "city": "Wrexham",
+        "slug": "wrexham",
+        "postcode": "LL11",
+        "dist_miles": 12.4
+      }
+    ]
+  },
+  {
+    "city": "Wrexham",
+    "city_slug": "wrexham",
+    "county": "Wrexham",
+    "postcode": "LL11",
+    "region": "Wales",
+    "house_type_context": "Traditional terraced housing and modern estates",
+    "nearby_areas": [
+      {
+        "city": "Cardiff",
+        "slug": "cardiff",
+        "postcode": "CF10",
+        "dist_miles": 14.7
+      },
+      {
+        "city": "Newport",
+        "slug": "newport",
+        "postcode": "NP20",
+        "dist_miles": 13.6
+      },
+      {
+        "city": "Swansea",
+        "slug": "swansea",
+        "postcode": "SA1",
+        "dist_miles": 5.6
+      }
+    ]
+  },
+  {
+    "city": "Belfast",
+    "city_slug": "belfast",
+    "county": "County Antrim",
+    "postcode": "BT1",
+    "region": "Northern Ireland",
+    "house_type_context": "Victorian red-brick terraces and modern apartments",
+    "nearby_areas": [
+      {
+        "city": "Derry",
+        "slug": "derry",
+        "postcode": "BT48",
+        "dist_miles": 4.5
+      },
+      {
+        "city": "Lisburn",
+        "slug": "lisburn",
+        "postcode": "BT27",
+        "dist_miles": 13.7
+      }
+    ]
+  },
+  {
+    "city": "Derry",
+    "city_slug": "derry",
+    "county": "County Londonderry",
+    "postcode": "BT48",
+    "region": "Northern Ireland",
+    "house_type_context": "Traditional terraced houses and modern suburban homes",
+    "nearby_areas": [
+      {
+        "city": "Lisburn",
+        "slug": "lisburn",
+        "postcode": "BT27",
+        "dist_miles": 5.1
+      },
+      {
+        "city": "Belfast",
+        "slug": "belfast",
+        "postcode": "BT1",
+        "dist_miles": 7.7
+      }
+    ]
+  },
+  {
+    "city": "Lisburn",
+    "city_slug": "lisburn",
+    "county": "County Antrim",
+    "postcode": "BT27",
+    "region": "Northern Ireland",
+    "house_type_context": "Suburban semi-detached and modern family homes",
+    "nearby_areas": [
+      {
+        "city": "Derry",
+        "slug": "derry",
+        "postcode": "BT48",
+        "dist_miles": 7.9
+      },
+      {
+        "city": "Belfast",
+        "slug": "belfast",
+        "postcode": "BT1",
+        "dist_miles": 8.6
+      }
+    ]
+  }
+]

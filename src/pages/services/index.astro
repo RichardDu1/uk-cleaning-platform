@@ -1,0 +1,23 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import dataset from '../../data/seo_pages.json';
+
+// Extract unique services
+const uniqueServices = [...new Map(dataset.map(item => [item.service.id, { name: item.service.name, slug: item.service.id, summary: item.service.description }])).values()];
+---
+<Layout title="Our Cleaning Services | End of Tenancy Cleaning & Clearance" description="Explore our comprehensive range of professional cleaning and clearance services across the UK.">
+  <div class="max-w-5xl mx-auto px-4 py-16">
+    <h1 class="text-4xl font-extrabold text-slate-900 mb-4">Professional Cleaning & Clearance</h1>
+    <p class="text-lg text-slate-600 mb-12">From end of tenancy cleaning with a 100% deposit return guarantee to heavy-duty waste clearance, our local teams have you covered.</p>
+    
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      {uniqueServices.map((svc: any) => (
+        <a href={`/${svc.slug}/london`} class="block bg-white p-6 rounded-xl border border-slate-200 shadow-sm hover:shadow-md hover:border-sky-300 transition group">
+          <h3 class="text-lg font-bold text-slate-800 mb-2 group-hover:text-sky-700 transition">{svc.name}</h3>
+          <p class="text-sm text-slate-600">{svc.summary}</p>
+          <span class="inline-block mt-4 text-sky-600 font-semibold text-sm">View details &rarr;</span>
+        </a>
+      ))}
+    </div>
+  </div>
+</Layout>

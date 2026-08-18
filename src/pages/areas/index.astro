@@ -1,0 +1,29 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import dataset from '../../data/seo_pages.json';
+
+// Extract unique cities and group by region
+const allCities = [...new Map(dataset.map(item => [item.city.name, { city: item.city.name, slug: item.city.name.toLowerCase().replace(/ /g, '-'), region: item.city.region }])).values()];
+const regions = [...new Set(allCities.map(c => c.region))].sort();
+---
+<Layout title="Areas We Cover | End of Tenancy Cleaning" description="Find local professional cleaners in your area. We cover all major UK cities and London boroughs.">
+  <div class="max-w-6xl mx-auto px-4 py-16">
+    <h1 class="text-4xl font-extrabold text-slate-900 mb-4">Areas We Cover</h1>
+    <p class="text-lg text-slate-600 mb-12">Our network of vetted cleaners and clearance teams operates across the United Kingdom. Select your region below to find local specialists.</p>
+    
+    <div class="space-y-12">
+      {regions.map((region) => (
+        <div>
+          <h2 class="text-2xl font-bold text-slate-800 mb-6 border-b pb-2">{region}</h2>
+          <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-4">
+            {allCities.filter(c => c.region === region).sort((a: any,b: any) => a.city.localeCompare(b.city)).map((city: any) => (
+              <a href={`/end-of-tenancy-cleaning/${city.slug}`} class="text-sm text-slate-600 hover:text-sky-700 font-medium transition">
+                Cleaners in {city.city}
+              </a>
+            ))}
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</Layout>

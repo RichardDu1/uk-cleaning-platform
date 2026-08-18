@@ -1,0 +1,90 @@
+[
+  {
+    "id": "bathroom-tiling",
+    "name": "Bathroom Tiling & Renovation",
+    "slug": "bathroom-tiling",
+    "h1_template": "Expert Bathroom Tiling & Renovation in {city}",
+    "meta_desc_template": "Professional bathroom tiling and renovation in {city} ({postcode}). 5-star rated local master tilers. £2M insured with a 12-month workmanship guarantee. Get a free fixed quote.",
+    "avg_cost_base": 650,
+    "duration": "2 - 4 Days",
+    "summary": "Full bathroom wall and floor tiling, waterproofing (tanking), walk-in wet room transformations, and precision grouting.",
+    "popular_tiles": [
+      "Large Format Porcelain",
+      "Metro/Subway Tiles",
+      "Marble & Natural Stone",
+      "Mosaic Accents"
+    ],
+    "checklist": [
+      "Full surface preparation and waterproof tanking system installation",
+      "Laser-level tile alignment and minimal-grout precision spacing",
+      "Anti-mould silicone sealing and anti-stain grouting",
+      "100% clean-up with all rubble and packaging safely disposed"
+    ]
+  },
+  {
+    "id": "kitchen-tiling",
+    "name": "Kitchen Tiling & Splashbacks",
+    "slug": "kitchen-tiling",
+    "h1_template": "Specialist Kitchen Tiling & Splashbacks in {city}",
+    "meta_desc_template": "Top-rated kitchen splashback and floor tilers in {city}. High quality porcelain, herringbone & metro tiling. Free fixed quotes & 12-month guarantee.",
+    "avg_cost_base": 420,
+    "duration": "1 - 2 Days",
+    "summary": "Transform your kitchen with stunning splashbacks, herringbone brick patterns, heat-resistant cooktop backings, and durable porcelain floors.",
+    "popular_tiles": [
+      "Herringbone Ceramic",
+      "Bevelled Metro Tiles",
+      "Quartz Floor Tiles",
+      "Hexagonal Feature Tiles"
+    ],
+    "checklist": [
+      "Precision cut-outs around plug sockets, switches and cooker hoods",
+      "High-heat and moisture-resistant tile adhesives and sealants",
+      "Seamless colour-matched silicone perimeter sealing",
+      "Smooth, easy-to-clean wipeable grout finish"
+    ]
+  },
+  {
+    "id": "floor-tiling",
+    "name": "Floor Tiling & Underfloor Heating",
+    "slug": "floor-tiling",
+    "h1_template": "Precision Floor Tiling & Underfloor Heating in {city}",
+    "meta_desc_template": "Experienced floor tilers in {city}. Porcelain, stone, and wood-effect floor tiling with electric underfloor heating prep. Get your free quote.",
+    "avg_cost_base": 850,
+    "duration": "2 - 5 Days",
+    "summary": "Heavy-duty living room, hallway, kitchen and conservatory floor tiling. Sub-floor levelling, uncoupling membrane installation, and electric underfloor heating.",
+    "popular_tiles": [
+      "Wood-Effect Porcelain Planks",
+      "600x600 Porcelain",
+      "Polished Marble",
+      "Victorian Geometric Tiles"
+    ],
+    "checklist": [
+      "Laser floor levelling compound (SLC) application for 100% flat subfloor",
+      "Anti-crack uncoupling matting (Ditra Mat) installation",
+      "Electric underfloor heating wire embedding and continuity testing",
+      "Heavy-traffic high-flexibility adhesive and stain-proof grout"
+    ]
+  },
+  {
+    "id": "wet-room-installation",
+    "name": "Wet Room Tiling & Tanking",
+    "slug": "wet-room-installation",
+    "h1_template": "Luxury Wet Room Tiling & Waterproofing in {city}",
+    "meta_desc_template": "Certified wet room waterproofing and luxury tiling in {city}. 100% leak-proof membrane guarantee. Free home survey and transparent pricing.",
+    "avg_cost_base": 1200,
+    "duration": "3 - 6 Days",
+    "summary": "100% watertight barrier systems, level-access walk-in shower trays, linear drain installations, and non-slip textured porcelain floors.",
+    "popular_tiles": [
+      "Anti-Slip R11 Textured Porcelain",
+      "Continuous Slab Rock",
+      "Dark Slate",
+      "Seamless Micro-cement Look"
+    ],
+    "checklist": [
+      "Complete multi-layer tanking and liquid waterproofing membrane",
+      "Pre-formed gradient shower tray integration with linear waste traps",
+      "Precision envelope-cut tiling around floor drains for perfect water runoff",
+      "Lifetime leak-free assurance with commercial-grade polymer sealants"
+    ]
+  }
+]

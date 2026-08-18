@@ -1,0 +1,1215 @@
+[
+  {
+    "city": "Reading",
+    "slug": "reading",
+    "county": "Berkshire",
+    "postcode": "RG1",
+    "lat": 51.4543,
+    "lng": -0.9781,
+    "region": "South East",
+    "affluence": 1.15,
+    "house_type": "Victorian terraces and modern riverside apartments",
+    "nearby_towns": [
+      {
+        "city": "Wokingham",
+        "slug": "wokingham",
+        "postcode": "RG40",
+        "dist_miles": 6.9
+      },
+      {
+        "city": "Maidenhead",
+        "slug": "maidenhead",
+        "postcode": "SL6",
+        "dist_miles": 12.1
+      },
+      {
+        "city": "Newbury",
+        "slug": "newbury",
+        "postcode": "RG14",
+        "dist_miles": 15.3
+      },
+      {
+        "city": "High Wycombe",
+        "slug": "high-wycombe",
+        "postcode": "HP11",
+        "dist_miles": 15.6
+      },
+      {
+        "city": "Slough",
+        "slug": "slough",
+        "postcode": "SL1",
+        "dist_miles": 16.9
+      }
+    ]
+  },
+  {
+    "city": "Slough",
+    "slug": "slough",
+    "county": "Berkshire",
+    "postcode": "SL1",
+    "lat": 51.5105,
+    "lng": -0.595,
+    "region": "South East",
+    "affluence": 1.05,
+    "house_type": "Semi-detached suburban homes and new developments",
+    "nearby_towns": [
+      {
+        "city": "Maidenhead",
+        "slug": "maidenhead",
+        "postcode": "SL6",
+        "dist_miles": 5.3
+      },
+      {
+        "city": "High Wycombe",
+        "slug": "high-wycombe",
+        "postcode": "HP11",
+        "dist_miles": 10.5
+      },
+      {
+        "city": "Ealing",
+        "slug": "ealing",
+        "postcode": "W5",
+        "dist_miles": 12.3
+      },
+      {
+        "city": "Wokingham",
+        "slug": "wokingham",
+        "postcode": "RG40",
+        "dist_miles": 12.4
+      },
+      {
+        "city": "Richmond",
+        "slug": "richmond",
+        "postcode": "TW9",
+        "dist_miles": 13.0
+      }
+    ]
+  },
+  {
+    "city": "Maidenhead",
+    "slug": "maidenhead",
+    "county": "Berkshire",
+    "postcode": "SL6",
+    "lat": 51.5217,
+    "lng": -0.718,
+    "region": "South East",
+    "affluence": 1.25,
+    "house_type": "Detached family properties and period villas",
+    "nearby_towns": [
+      {
+        "city": "Slough",
+        "slug": "slough",
+        "postcode": "SL1",
+        "dist_miles": 5.3
+      },
+      {
+        "city": "High Wycombe",
+        "slug": "high-wycombe",
+        "postcode": "HP11",
+        "dist_miles": 7.5
+      },
+      {
+        "city": "Wokingham",
+        "slug": "wokingham",
+        "postcode": "RG40",
+        "dist_miles": 9.2
+      },
+      {
+        "city": "Reading",
+        "slug": "reading",
+        "postcode": "RG1",
+        "dist_miles": 12.1
+      },
+      {
+        "city": "Woking",
+        "slug": "woking",
+        "postcode": "GU21",
+        "dist_miles": 15.6
+      }
+    ]
+  },
+  {
+    "city": "Wokingham",
+    "slug": "wokingham",
+    "county": "Berkshire",
+    "postcode": "RG40",
+    "lat": 51.4101,
+    "lng": -0.835,
+    "region": "South East",
+    "affluence": 1.2,
+    "house_type": "Executive detached houses and cottages",
+    "nearby_towns": [
+      {
+        "city": "Reading",
+        "slug": "reading",
+        "postcode": "RG1",
+        "dist_miles": 6.9
+      },
+      {
+        "city": "Maidenhead",
+        "slug": "maidenhead",
+        "postcode": "SL6",
+        "dist_miles": 9.2
+      },
+      {
+        "city": "Slough",
+        "slug": "slough",
+        "postcode": "SL1",
+        "dist_miles": 12.4
+      },
+      {
+        "city": "Woking",
+        "slug": "woking",
+        "postcode": "GU21",
+        "dist_miles": 13.5
+      },
+      {
+        "city": "High Wycombe",
+        "slug": "high-wycombe",
+        "postcode": "HP11",
+        "dist_miles": 15.6
+      }
+    ]
+  },
+  {
+    "city": "Newbury",
+    "slug": "newbury",
+    "county": "Berkshire",
+    "postcode": "RG14",
+    "lat": 51.4014,
+    "lng": -1.3231,
+    "region": "South East",
+    "affluence": 1.1,
+    "house_type": "Character properties and country cottages",
+    "nearby_towns": [
+      {
+        "city": "Reading",
+        "slug": "reading",
+        "postcode": "RG1",
+        "dist_miles": 15.3
+      },
+      {
+        "city": "Wokingham",
+        "slug": "wokingham",
+        "postcode": "RG40",
+        "dist_miles": 21.0
+      },
+      {
+        "city": "Oxford",
+        "slug": "oxford",
+        "postcode": "OX1",
+        "dist_miles": 24.4
+      },
+      {
+        "city": "Maidenhead",
+        "slug": "maidenhead",
+        "postcode": "SL6",
+        "dist_miles": 27.3
+      },
+      {
+        "city": "High Wycombe",
+        "slug": "high-wycombe",
+        "postcode": "HP11",
+        "dist_miles": 29.3
+      }
+    ]
+  },
+  {
+    "city": "Oxford",
+    "slug": "oxford",
+    "county": "Oxfordshire",
+    "postcode": "OX1",
+    "lat": 51.752,
+    "lng": -1.2577,
+    "region": "South East",
+    "affluence": 1.25,
+    "house_type": "Victorian & Edwardian townhouses",
+    "nearby_towns": [
+      {
+        "city": "Aylesbury",
+        "slug": "aylesbury",
+        "postcode": "HP20",
+        "dist_miles": 19.5
+      },
+      {
+        "city": "High Wycombe",
+        "slug": "high-wycombe",
+        "postcode": "HP11",
+        "dist_miles": 23.4
+      },
+      {
+        "city": "Reading",
+        "slug": "reading",
+        "postcode": "RG1",
+        "dist_miles": 23.8
+      },
+      {
+        "city": "Newbury",
+        "slug": "newbury",
+        "postcode": "RG14",
+        "dist_miles": 24.4
+      },
+      {
+        "city": "Maidenhead",
+        "slug": "maidenhead",
+        "postcode": "SL6",
+        "dist_miles": 28.1
+      }
+    ]
+  },
+  {
+    "city": "Guildford",
+    "slug": "guildford",
+    "county": "Surrey",
+    "postcode": "GU1",
+    "lat": 51.2362,
+    "lng": -0.5704,
+    "region": "South East",
+    "affluence": 1.3,
+    "house_type": "High-end Surrey detached properties",
+    "nearby_towns": [
+      {
+        "city": "Woking",
+        "slug": "woking",
+        "postcode": "GU21",
+        "dist_miles": 5.7
+      },
+      {
+        "city": "Wokingham",
+        "slug": "wokingham",
+        "postcode": "RG40",
+        "dist_miles": 16.6
+      },
+      {
+        "city": "Kingston upon Thames",
+        "slug": "kingston-upon-thames",
+        "postcode": "KT1",
+        "dist_miles": 16.8
+      },
+      {
+        "city": "Crawley",
+        "slug": "crawley",
+        "postcode": "RH10",
+        "dist_miles": 18.8
+      },
+      {
+        "city": "Slough",
+        "slug": "slough",
+        "postcode": "SL1",
+        "dist_miles": 19.0
+      }
+    ]
+  },
+  {
+    "city": "Woking",
+    "slug": "woking",
+    "county": "Surrey",
+    "postcode": "GU21",
+    "lat": 51.319,
+    "lng": -0.5589,
+    "region": "South East",
+    "affluence": 1.2,
+    "house_type": "Commuter belt detached and modern apartments",
+    "nearby_towns": [
+      {
+        "city": "Guildford",
+        "slug": "guildford",
+        "postcode": "GU1",
+        "dist_miles": 5.7
+      },
+      {
+        "city": "Kingston upon Thames",
+        "slug": "kingston-upon-thames",
+        "postcode": "KT1",
+        "dist_miles": 12.9
+      },
+      {
+        "city": "Slough",
+        "slug": "slough",
+        "postcode": "SL1",
+        "dist_miles": 13.3
+      },
+      {
+        "city": "Wokingham",
+        "slug": "wokingham",
+        "postcode": "RG40",
+        "dist_miles": 13.5
+      },
+      {
+        "city": "Richmond",
+        "slug": "richmond",
+        "postcode": "TW9",
+        "dist_miles": 14.8
+      }
+    ]
+  },
+  {
+    "city": "Kingston upon Thames",
+    "slug": "kingston-upon-thames",
+    "county": "Greater London",
+    "postcode": "KT1",
+    "lat": 51.4123,
+    "lng": -0.3007,
+    "region": "London",
+    "affluence": 1.35,
+    "house_type": "Victorian family houses and riverside flats",
+    "nearby_towns": [
+      {
+        "city": "Richmond",
+        "slug": "richmond",
+        "postcode": "TW9",
+        "dist_miles": 3.4
+      },
+      {
+        "city": "Ealing",
+        "slug": "ealing",
+        "postcode": "W5",
+        "dist_miles": 7.0
+      },
+      {
+        "city": "Croydon",
+        "slug": "croydon",
+        "postcode": "CR0",
+        "dist_miles": 9.1
+      },
+      {
+        "city": "Woking",
+        "slug": "woking",
+        "postcode": "GU21",
+        "dist_miles": 12.9
+      },
+      {
+        "city": "Bromley",
+        "slug": "bromley",
+        "postcode": "BR1",
+        "dist_miles": 13.8
+      }
+    ]
+  },
+  {
+    "city": "Richmond",
+    "slug": "richmond",
+    "county": "Greater London",
+    "postcode": "TW9",
+    "lat": 51.4613,
+    "lng": -0.3037,
+    "region": "London",
+    "affluence": 1.4,
+    "house_type": "Georgian and Victorian prestige townhouses",
+    "nearby_towns": [
+      {
+        "city": "Kingston upon Thames",
+        "slug": "kingston-upon-thames",
+        "postcode": "KT1",
+        "dist_miles": 3.4
+      },
+      {
+        "city": "Ealing",
+        "slug": "ealing",
+        "postcode": "W5",
+        "dist_miles": 3.6
+      },
+      {
+        "city": "Croydon",
+        "slug": "croydon",
+        "postcode": "CR0",
+        "dist_miles": 10.6
+      },
+      {
+        "city": "Slough",
+        "slug": "slough",
+        "postcode": "SL1",
+        "dist_miles": 13.0
+      },
+      {
+        "city": "Barnet",
+        "slug": "barnet",
+        "postcode": "EN5",
+        "dist_miles": 13.8
+      }
+    ]
+  },
+  {
+    "city": "Croydon",
+    "slug": "croydon",
+    "county": "Greater London",
+    "postcode": "CR0",
+    "lat": 51.3762,
+    "lng": -0.0982,
+    "region": "London",
+    "affluence": 1.1,
+    "house_type": "Victorian conversions and modern developments",
+    "nearby_towns": [
+      {
+        "city": "Bromley",
+        "slug": "bromley",
+        "postcode": "BR1",
+        "dist_miles": 5.4
+      },
+      {
+        "city": "Kingston upon Thames",
+        "slug": "kingston-upon-thames",
+        "postcode": "KT1",
+        "dist_miles": 9.1
+      },
+      {
+        "city": "Richmond",
+        "slug": "richmond",
+        "postcode": "TW9",
+        "dist_miles": 10.6
+      },
+      {
+        "city": "Ealing",
+        "slug": "ealing",
+        "postcode": "W5",
+        "dist_miles": 13.1
+      },
+      {
+        "city": "Crawley",
+        "slug": "crawley",
+        "postcode": "RH10",
+        "dist_miles": 18.6
+      }
+    ]
+  },
+  {
+    "city": "Bromley",
+    "slug": "bromley",
+    "county": "Greater London",
+    "postcode": "BR1",
+    "lat": 51.4039,
+    "lng": 0.0198,
+    "region": "London",
+    "affluence": 1.2,
+    "house_type": "1930s semi-detached and detached homes",
+    "nearby_towns": [
+      {
+        "city": "Croydon",
+        "slug": "croydon",
+        "postcode": "CR0",
+        "dist_miles": 5.4
+      },
+      {
+        "city": "Kingston upon Thames",
+        "slug": "kingston-upon-thames",
+        "postcode": "KT1",
+        "dist_miles": 13.8
+      },
+      {
+        "city": "Richmond",
+        "slug": "richmond",
+        "postcode": "TW9",
+        "dist_miles": 14.5
+      },
+      {
+        "city": "Ealing",
+        "slug": "ealing",
+        "postcode": "W5",
+        "dist_miles": 16.0
+      },
+      {
+        "city": "Barnet",
+        "slug": "barnet",
+        "postcode": "EN5",
+        "dist_miles": 19.5
+      }
+    ]
+  },
+  {
+    "city": "Ealing",
+    "slug": "ealing",
+    "county": "Greater London",
+    "postcode": "W5",
+    "lat": 51.513,
+    "lng": -0.3089,
+    "region": "London",
+    "affluence": 1.3,
+    "house_type": "Edwardian and Victorian houses",
+    "nearby_towns": [
+      {
+        "city": "Richmond",
+        "slug": "richmond",
+        "postcode": "TW9",
+        "dist_miles": 3.6
+      },
+      {
+        "city": "Kingston upon Thames",
+        "slug": "kingston-upon-thames",
+        "postcode": "KT1",
+        "dist_miles": 7.0
+      },
+      {
+        "city": "Watford",
+        "slug": "watford",
+        "postcode": "WD17",
+        "dist_miles": 10.5
+      },
+      {
+        "city": "Barnet",
+        "slug": "barnet",
+        "postcode": "EN5",
+        "dist_miles": 10.6
+      },
+      {
+        "city": "Slough",
+        "slug": "slough",
+        "postcode": "SL1",
+        "dist_miles": 12.3
+      }
+    ]
+  },
+  {
+    "city": "Barnet",
+    "slug": "barnet",
+    "county": "Greater London",
+    "postcode": "EN5",
+    "lat": 51.65,
+    "lng": -0.2,
+    "region": "London",
+    "affluence": 1.25,
+    "house_type": "Suburban family detached houses",
+    "nearby_towns": [
+      {
+        "city": "Watford",
+        "slug": "watford",
+        "postcode": "WD17",
+        "dist_miles": 8.2
+      },
+      {
+        "city": "St Albans",
+        "slug": "st-albans",
+        "postcode": "AL1",
+        "dist_miles": 9.3
+      },
+      {
+        "city": "Ealing",
+        "slug": "ealing",
+        "postcode": "W5",
+        "dist_miles": 10.6
+      },
+      {
+        "city": "Richmond",
+        "slug": "richmond",
+        "postcode": "TW9",
+        "dist_miles": 13.8
+      },
+      {
+        "city": "Kingston upon Thames",
+        "slug": "kingston-upon-thames",
+        "postcode": "KT1",
+        "dist_miles": 17.0
+      }
+    ]
+  },
+  {
+    "city": "Milton Keynes",
+    "slug": "milton-keynes",
+    "county": "Buckinghamshire",
+    "postcode": "MK9",
+    "lat": 52.0406,
+    "lng": -0.7594,
+    "region": "South East",
+    "affluence": 1.05,
+    "house_type": "Modern purpose-built estates and eco homes",
+    "nearby_towns": [
+      {
+        "city": "Aylesbury",
+        "slug": "aylesbury",
+        "postcode": "HP20",
+        "dist_miles": 15.7
+      },
+      {
+        "city": "St Albans",
+        "slug": "st-albans",
+        "postcode": "AL1",
+        "dist_miles": 26.8
+      },
+      {
+        "city": "High Wycombe",
+        "slug": "high-wycombe",
+        "postcode": "HP11",
+        "dist_miles": 28.5
+      },
+      {
+        "city": "Oxford",
+        "slug": "oxford",
+        "postcode": "OX1",
+        "dist_miles": 29.1
+      },
+      {
+        "city": "Watford",
+        "slug": "watford",
+        "postcode": "WD17",
+        "dist_miles": 30.9
+      }
+    ]
+  },
+  {
+    "city": "High Wycombe",
+    "slug": "high-wycombe",
+    "county": "Buckinghamshire",
+    "postcode": "HP11",
+    "lat": 51.6287,
+    "lng": -0.7482,
+    "region": "South East",
+    "affluence": 1.15,
+    "house_type": "Brick terraces and hillside detached houses",
+    "nearby_towns": [
+      {
+        "city": "Maidenhead",
+        "slug": "maidenhead",
+        "postcode": "SL6",
+        "dist_miles": 7.5
+      },
+      {
+        "city": "Slough",
+        "slug": "slough",
+        "postcode": "SL1",
+        "dist_miles": 10.5
+      },
+      {
+        "city": "Aylesbury",
+        "slug": "aylesbury",
+        "postcode": "HP20",
+        "dist_miles": 13.2
+      },
+      {
+        "city": "Watford",
+        "slug": "watford",
+        "postcode": "WD17",
+        "dist_miles": 15.5
+      },
+      {
+        "city": "Reading",
+        "slug": "reading",
+        "postcode": "RG1",
+        "dist_miles": 15.6
+      }
+    ]
+  },
+  {
+    "city": "Aylesbury",
+    "slug": "aylesbury",
+    "county": "Buckinghamshire",
+    "postcode": "HP20",
+    "lat": 51.8156,
+    "lng": -0.8123,
+    "region": "South East",
+    "affluence": 1.05,
+    "house_type": "Period market town houses and new builds",
+    "nearby_towns": [
+      {
+        "city": "High Wycombe",
+        "slug": "high-wycombe",
+        "postcode": "HP11",
+        "dist_miles": 13.2
+      },
+      {
+        "city": "Milton Keynes",
+        "slug": "milton-keynes",
+        "postcode": "MK9",
+        "dist_miles": 15.7
+      },
+      {
+        "city": "Oxford",
+        "slug": "oxford",
+        "postcode": "OX1",
+        "dist_miles": 19.5
+      },
+      {
+        "city": "Maidenhead",
+        "slug": "maidenhead",
+        "postcode": "SL6",
+        "dist_miles": 20.7
+      },
+      {
+        "city": "St Albans",
+        "slug": "st-albans",
+        "postcode": "AL1",
+        "dist_miles": 20.7
+      }
+    ]
+  },
+  {
+    "city": "Southampton",
+    "slug": "southampton",
+    "county": "Hampshire",
+    "postcode": "SO14",
+    "lat": 50.9097,
+    "lng": -1.4044,
+    "region": "South East",
+    "affluence": 1.0,
+    "house_type": "Coastal Victorian properties and town centre apartments",
+    "nearby_towns": [
+      {
+        "city": "Portsmouth",
+        "slug": "portsmouth",
+        "postcode": "PO1",
+        "dist_miles": 15.1
+      },
+      {
+        "city": "Newbury",
+        "slug": "newbury",
+        "postcode": "RG14",
+        "dist_miles": 34.2
+      }
+    ]
+  },
+  {
+    "city": "Portsmouth",
+    "slug": "portsmouth",
+    "county": "Hampshire",
+    "postcode": "PO1",
+    "lat": 50.8198,
+    "lng": -1.088,
+    "region": "South East",
+    "affluence": 0.95,
+    "house_type": "Dense Victorian bay-fronted terraces",
+    "nearby_towns": [
+      {
+        "city": "Southampton",
+        "slug": "southampton",
+        "postcode": "SO14",
+        "dist_miles": 15.1
+      }
+    ]
+  },
+  {
+    "city": "Brighton",
+    "slug": "brighton",
+    "county": "East Sussex",
+    "postcode": "BN1",
+    "lat": 50.8225,
+    "lng": -0.1372,
+    "region": "South East",
+    "affluence": 1.2,
+    "house_type": "Regency terraces and Victorian seaside flats",
+    "nearby_towns": [
+      {
+        "city": "Crawley",
+        "slug": "crawley",
+        "postcode": "RH10",
+        "dist_miles": 20.2
+      },
+      {
+        "city": "Guildford",
+        "slug": "guildford",
+        "postcode": "GU1",
+        "dist_miles": 34.2
+      }
+    ]
+  },
+  {
+    "city": "Crawley",
+    "slug": "crawley",
+    "county": "West Sussex",
+    "postcode": "RH10",
+    "lat": 51.113,
+    "lng": -0.1831,
+    "region": "South East",
+    "affluence": 1.0,
+    "house_type": "Post-war residential neighbourhoods",
+    "nearby_towns": [
+      {
+        "city": "Croydon",
+        "slug": "croydon",
+        "postcode": "CR0",
+        "dist_miles": 18.6
+      },
+      {
+        "city": "Guildford",
+        "slug": "guildford",
+        "postcode": "GU1",
+        "dist_miles": 18.8
+      },
+      {
+        "city": "Brighton",
+        "slug": "brighton",
+        "postcode": "BN1",
+        "dist_miles": 20.2
+      },
+      {
+        "city": "Kingston upon Thames",
+        "slug": "kingston-upon-thames",
+        "postcode": "KT1",
+        "dist_miles": 21.3
+      },
+      {
+        "city": "Woking",
+        "slug": "woking",
+        "postcode": "GU21",
+        "dist_miles": 21.6
+      }
+    ]
+  },
+  {
+    "city": "St Albans",
+    "slug": "st-albans",
+    "county": "Hertfordshire",
+    "postcode": "AL1",
+    "lat": 51.7527,
+    "lng": -0.3394,
+    "region": "East of England",
+    "affluence": 1.35,
+    "house_type": "Historic character cottages and luxury family homes",
+    "nearby_towns": [
+      {
+        "city": "Watford",
+        "slug": "watford",
+        "postcode": "WD17",
+        "dist_miles": 7.0
+      },
+      {
+        "city": "Barnet",
+        "slug": "barnet",
+        "postcode": "EN5",
+        "dist_miles": 9.3
+      },
+      {
+        "city": "Ealing",
+        "slug": "ealing",
+        "postcode": "W5",
+        "dist_miles": 16.6
+      },
+      {
+        "city": "High Wycombe",
+        "slug": "high-wycombe",
+        "postcode": "HP11",
+        "dist_miles": 19.5
+      },
+      {
+        "city": "Slough",
+        "slug": "slough",
+        "postcode": "SL1",
+        "dist_miles": 20.0
+      }
+    ]
+  },
+  {
+    "city": "Watford",
+    "slug": "watford",
+    "county": "Hertfordshire",
+    "postcode": "WD17",
+    "lat": 51.6565,
+    "lng": -0.3903,
+    "region": "East of England",
+    "affluence": 1.15,
+    "house_type": "Edwardian terraces and modern townhouses",
+    "nearby_towns": [
+      {
+        "city": "St Albans",
+        "slug": "st-albans",
+        "postcode": "AL1",
+        "dist_miles": 7.0
+      },
+      {
+        "city": "Barnet",
+        "slug": "barnet",
+        "postcode": "EN5",
+        "dist_miles": 8.2
+      },
+      {
+        "city": "Ealing",
+        "slug": "ealing",
+        "postcode": "W5",
+        "dist_miles": 10.5
+      },
+      {
+        "city": "Slough",
+        "slug": "slough",
+        "postcode": "SL1",
+        "dist_miles": 13.4
+      },
+      {
+        "city": "Richmond",
+        "slug": "richmond",
+        "postcode": "TW9",
+        "dist_miles": 14.0
+      }
+    ]
+  },
+  {
+    "city": "Cambridge",
+    "slug": "cambridge",
+    "county": "Cambridgeshire",
+    "postcode": "CB1",
+    "lat": 52.2053,
+    "lng": 0.1218,
+    "region": "East of England",
+    "affluence": 1.3,
+    "house_type": "Victorian brick terraces and contemporary eco villas",
+    "nearby_towns": []
+  },
+  {
+    "city": "Birmingham",
+    "slug": "birmingham",
+    "county": "West Midlands",
+    "postcode": "B1",
+    "lat": 52.4862,
+    "lng": -1.8904,
+    "region": "West Midlands",
+    "affluence": 1.0,
+    "house_type": "Victorian villas, modern city lofts and suburban semis",
+    "nearby_towns": [
+      {
+        "city": "Solihull",
+        "slug": "solihull",
+        "postcode": "B91",
+        "dist_miles": 6.9
+      },
+      {
+        "city": "Coventry",
+        "slug": "coventry",
+        "postcode": "CV1",
+        "dist_miles": 16.5
+      },
+      {
+        "city": "Royal Leamington Spa",
+        "slug": "royal-leamington-spa",
+        "postcode": "CV32",
+        "dist_miles": 19.9
+      }
+    ]
+  },
+  {
+    "city": "Solihull",
+    "slug": "solihull",
+    "county": "West Midlands",
+    "postcode": "B91",
+    "lat": 52.4128,
+    "lng": -1.7782,
+    "region": "West Midlands",
+    "affluence": 1.25,
+    "house_type": "Affluent leafy detached residences",
+    "nearby_towns": [
+      {
+        "city": "Birmingham",
+        "slug": "birmingham",
+        "postcode": "B1",
+        "dist_miles": 6.9
+      },
+      {
+        "city": "Coventry",
+        "slug": "coventry",
+        "postcode": "CV1",
+        "dist_miles": 10.9
+      },
+      {
+        "city": "Royal Leamington Spa",
+        "slug": "royal-leamington-spa",
+        "postcode": "CV32",
+        "dist_miles": 13.0
+      }
+    ]
+  },
+  {
+    "city": "Coventry",
+    "slug": "coventry",
+    "county": "West Midlands",
+    "postcode": "CV1",
+    "lat": 52.4068,
+    "lng": -1.5197,
+    "region": "West Midlands",
+    "affluence": 0.95,
+    "house_type": "Mid-century houses and modern student conversions",
+    "nearby_towns": [
+      {
+        "city": "Royal Leamington Spa",
+        "slug": "royal-leamington-spa",
+        "postcode": "CV32",
+        "dist_miles": 7.6
+      },
+      {
+        "city": "Solihull",
+        "slug": "solihull",
+        "postcode": "B91",
+        "dist_miles": 10.9
+      },
+      {
+        "city": "Birmingham",
+        "slug": "birmingham",
+        "postcode": "B1",
+        "dist_miles": 16.5
+      }
+    ]
+  },
+  {
+    "city": "Royal Leamington Spa",
+    "slug": "royal-leamington-spa",
+    "county": "Warwickshire",
+    "postcode": "CV32",
+    "lat": 52.2968,
+    "lng": -1.536,
+    "region": "West Midlands",
+    "affluence": 1.2,
+    "house_type": "Regency townhouses and Georgian terraces",
+    "nearby_towns": [
+      {
+        "city": "Coventry",
+        "slug": "coventry",
+        "postcode": "CV1",
+        "dist_miles": 7.6
+      },
+      {
+        "city": "Solihull",
+        "slug": "solihull",
+        "postcode": "B91",
+        "dist_miles": 13.0
+      },
+      {
+        "city": "Birmingham",
+        "slug": "birmingham",
+        "postcode": "B1",
+        "dist_miles": 19.9
+      }
+    ]
+  },
+  {
+    "city": "Manchester",
+    "slug": "manchester",
+    "county": "Greater Manchester",
+    "postcode": "M1",
+    "lat": 53.4808,
+    "lng": -2.2426,
+    "region": "North West",
+    "affluence": 1.05,
+    "house_type": "Red-brick Victorian terraces and converted industrial mills",
+    "nearby_towns": [
+      {
+        "city": "Stockport",
+        "slug": "stockport",
+        "postcode": "SK1",
+        "dist_miles": 6.0
+      },
+      {
+        "city": "Altrincham",
+        "slug": "altrincham",
+        "postcode": "WA14",
+        "dist_miles": 8.1
+      },
+      {
+        "city": "Liverpool",
+        "slug": "liverpool",
+        "postcode": "L1",
+        "dist_miles": 31.2
+      }
+    ]
+  },
+  {
+    "city": "Stockport",
+    "slug": "stockport",
+    "county": "Greater Manchester",
+    "postcode": "SK1",
+    "lat": 53.4106,
+    "lng": -2.1575,
+    "region": "North West",
+    "affluence": 1.05,
+    "house_type": "Period terraces and suburban family homes",
+    "nearby_towns": [
+      {
+        "city": "Manchester",
+        "slug": "manchester",
+        "postcode": "M1",
+        "dist_miles": 6.0
+      },
+      {
+        "city": "Altrincham",
+        "slug": "altrincham",
+        "postcode": "WA14",
+        "dist_miles": 8.3
+      },
+      {
+        "city": "Liverpool",
+        "slug": "liverpool",
+        "postcode": "L1",
+        "dist_miles": 34.4
+      }
+    ]
+  },
+  {
+    "city": "Altrincham",
+    "slug": "altrincham",
+    "county": "Greater Manchester",
+    "postcode": "WA14",
+    "lat": 53.3838,
+    "lng": -2.3547,
+    "region": "North West",
+    "affluence": 1.3,
+    "house_type": "Luxury Victorian and Edwardian villas",
+    "nearby_towns": [
+      {
+        "city": "Manchester",
+        "slug": "manchester",
+        "postcode": "M1",
+        "dist_miles": 8.1
+      },
+      {
+        "city": "Stockport",
+        "slug": "stockport",
+        "postcode": "SK1",
+        "dist_miles": 8.3
+      },
+      {
+        "city": "Liverpool",
+        "slug": "liverpool",
+        "postcode": "L1",
+        "dist_miles": 26.3
+      }
+    ]
+  },
+  {
+    "city": "Liverpool",
+    "slug": "liverpool",
+    "county": "Merseyside",
+    "postcode": "L1",
+    "lat": 53.4084,
+    "lng": -2.9916,
+    "region": "North West",
+    "affluence": 0.9,
+    "house_type": "Georgian quarter terraces and suburban semis",
+    "nearby_towns": [
+      {
+        "city": "Altrincham",
+        "slug": "altrincham",
+        "postcode": "WA14",
+        "dist_miles": 26.3
+      },
+      {
+        "city": "Manchester",
+        "slug": "manchester",
+        "postcode": "M1",
+        "dist_miles": 31.2
+      },
+      {
+        "city": "Stockport",
+        "slug": "stockport",
+        "postcode": "SK1",
+        "dist_miles": 34.4
+      }
+    ]
+  },
+  {
+    "city": "Leeds",
+    "slug": "leeds",
+    "county": "West Yorkshire",
+    "postcode": "LS1",
+    "lat": 53.8008,
+    "lng": -1.5491,
+    "region": "Yorkshire",
+    "affluence": 1.0,
+    "house_type": "Stone back-to-back terraces and modern waterfront apartments",
+    "nearby_towns": []
+  },
+  {
+    "city": "Bristol",
+    "slug": "bristol",
+    "county": "Bristol",
+    "postcode": "BS1",
+    "lat": 51.4545,
+    "lng": -2.5879,
+    "region": "South West",
+    "affluence": 1.15,
+    "house_type": "Clifton Georgian townhouses and Victorian colourful terraces",
+    "nearby_towns": []
+  }
+]

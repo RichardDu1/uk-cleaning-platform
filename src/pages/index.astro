@@ -1,0 +1,84 @@
+---
+import Layout from '../layouts/Layout.astro';
+import TrustBadges from '../components/TrustBadges.astro';
+import towns from '../data/uk_towns.json';
+import services from '../data/services_config.json';
+---
+
+<Layout title="ApprovedTilers.co.uk | Verified Master Wall & Floor Tilers in the UK" description="Find top-rated, vetted master tilers in your local UK town. Fixed price quotes, £2M insured, 12-month guarantee. Bathroom, kitchen, floor & wet room tiling.">
+  <!-- Hero Banner -->
+  <section class="bg-slate-900 text-white pt-16 pb-20 px-4">
+    <div class="max-w-5xl mx-auto text-center space-y-6">
+      <div class="inline-flex items-center space-x-2 bg-emerald-950 text-emerald-400 border border-emerald-800 text-xs font-semibold px-4 py-1.5 rounded-full">
+        <span>🛡️ UK's Approved Master Tiling Network • £2M Insured • Zero Rogue Trader Guarantee</span>
+      </div>
+      <h1 class="text-4xl sm:text-5xl md:text-6xl font-extrabold tracking-tight text-white max-w-4xl mx-auto">
+        Expert Wall & Floor Tiling Across the UK
+      </h1>
+      <p class="text-slate-300 text-base md:text-lg max-w-2xl mx-auto">
+        Connect with vetted, master craftsmen who deliver laser-precision tiling, full waterproofing tanking, and transparent fixed-price quotes.
+      </p>
+
+      <!-- Postcode Search Bar -->
+      <div class="max-w-xl mx-auto bg-white p-2 rounded-xl shadow-2xl flex flex-col sm:flex-row gap-2 mt-8">
+        <input type="text" id="home-postcode" placeholder="Enter your Postcode or Town (e.g. Reading, RG1)..." class="flex-grow text-slate-900 px-4 py-3 text-sm rounded-lg focus:outline-none" />
+        <button id="home-search-btn" class="bg-sky-700 hover:bg-sky-800 text-white font-bold px-6 py-3 rounded-lg text-sm transition">
+          Find Local Tiler
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <TrustBadges />
+
+  <!-- Services Grid -->
+  <section id="services" class="max-w-6xl mx-auto px-4 py-16">
+    <div class="text-center max-w-2xl mx-auto mb-12">
+      <h2 class="text-3xl font-extrabold text-slate-900">Specialist Tiling Services</h2>
+      <p class="text-sm text-slate-600 mt-2">All work completed to BS 5385 British standards with full £2M public liability insurance.</p>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+      {services.map((srv: any) => (
+        <div class="bg-white rounded-xl shadow-sm border border-slate-200 p-6 hover:shadow-md transition">
+          <div class="w-10 h-10 bg-sky-100 text-sky-800 rounded-lg flex items-center justify-center font-bold text-lg mb-4">
+            ✓
+          </div>
+          <h3 class="text-lg font-bold text-slate-900 mb-2">{srv.name}</h3>
+          <p class="text-xs text-slate-600 leading-relaxed mb-4">{srv.summary}</p>
+          <a href={`/${srv.slug}/reading`} class="text-xs font-bold text-sky-700 hover:text-sky-900 flex items-center">
+            View Pricing & Details →
+          </a>
+        </div>
+      ))}
+    </div>
+  </section>
+
+  <!-- Popular Towns Coverage Matrix -->
+  <section id="areas" class="bg-slate-100 py-16 border-t border-slate-200">
+    <div class="max-w-6xl mx-auto px-4">
+      <div class="text-center max-w-2xl mx-auto mb-10">
+        <h2 class="text-3xl font-extrabold text-slate-900">UK Coverage Towns</h2>
+        <p class="text-sm text-slate-600 mt-2">Select your local town to find vetted master tilers in your area.</p>
+      </div>
+
+      <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-3">
+        {towns.map((town: any) => (
+          <a href={`/bathroom-tiling/${town.slug}`} class="bg-white hover:bg-sky-50 border border-slate-200 p-3 rounded-lg text-center text-xs font-medium text-slate-800 hover:text-sky-800 shadow-sm transition">
+            <span class="block font-bold">{town.city}</span>
+            <span class="text-[10px] text-slate-400">{town.postcode} • {town.county}</span>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+</Layout>
+
+<script>
+  document.getElementById('home-search-btn')?.addEventListener('click', () => {
+    const val = (document.getElementById('home-postcode') as HTMLInputElement)?.value.toLowerCase().trim();
+    if (val) {
+      window.location.href = `/bathroom-tiling/reading`;
+    }
+  });
+</script>

@@ -1,0 +1,95 @@
+---
+interface Props {
+  city: string;
+  postcode: string;
+}
+
+const { city, postcode } = Astro.props;
+---
+
+<div class="bg-white rounded-xl shadow-md border border-slate-200 p-6 md:p-8">
+  <div class="flex items-center space-x-3 mb-4">
+    <span class="bg-sky-100 text-sky-800 text-xs font-bold px-2.5 py-1 rounded">INSTANT ESTIMATOR</span>
+    <h3 class="text-xl font-bold text-slate-900">Estimated Tiling Costs in {city} ({postcode})</h3>
+  </div>
+  <p class="text-xs text-slate-500 mb-6">Select your project dimensions and tile specifications to calculate accurate regional labour costs.</p>
+
+  <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-6">
+    <div>
+      <label class="block text-xs font-semibold text-slate-700 mb-2">1. Room / Area Type</label>
+      <select id="calc-room" class="w-full bg-slate-50 border border-slate-300 rounded-lg p-2.5 text-sm focus:ring-2 focus:ring-sky-500">
+        <option value="bathroom">Full Bathroom Walls & Floor</option>
+        <option value="kitchen-splash">Kitchen Splashback</option>
+        <option value="floor">Living / Kitchen Floor</option>
+        <option value="wetroom">Walk-in Wet Room (Tanked)</option>
+      </select>
+    </div>
+
+    <div>
+      <label class="block text-xs font-semibold text-slate-700 mb-2">2. Estimated Area Size</label>
+      <select id="calc-size" class="w-full bg-slate-50 border border-slate-300 rounded-lg p-2.5 text-sm focus:ring-2 focus:ring-sky-500">
+        <option value="small">Small (Up to 8 sqm)</option>
+        <option value="medium" selected>Medium (9 - 18 sqm)</option>
+        <option value="large">Large (19 - 30 sqm)</option>
+        <option value="xlarge">Extra Large (30+ sqm)</option>
+      </select>
+    </div>
+
+    <div>
+      <label class="block text-xs font-semibold text-slate-700 mb-2">3. Tile Specification</label>
+      <select id="calc-tile" class="w-full bg-slate-50 border border-slate-300 rounded-lg p-2.5 text-sm focus:ring-2 focus:ring-sky-500">
+        <option value="standard">Standard Ceramic / Metro</option>
+        <option value="porcelain" selected>Large Format Porcelain</option>
+        <option value="herringbone">Herringbone / Mosaic Pattern (+25%)</option>
+        <option value="stone">Marble / Natural Stone</option>
+      </select>
+    </div>
+  </div>
+
+  <div class="bg-sky-50 border border-sky-200 rounded-xl p-5 flex flex-col sm:flex-row justify-between items-center gap-4">
+    <div>
+      <span class="text-xs text-sky-700 font-semibold block">Estimated Labour & Installation in {city}:</span>
+      <div class="text-3xl font-extrabold text-sky-900" id="calc-result">£550 - £750</div>
+      <span class="text-[11px] text-slate-500">Includes subfloor prep, laser alignment & anti-mould grouting</span>
+    </div>
+    <a href={`/quote?city=${encodeURIComponent(city)}&postcode=${encodeURIComponent(postcode)}`} class="bg-sky-700 hover:bg-sky-800 text-white font-bold px-6 py-3 rounded-lg shadow text-sm whitespace-nowrap transition">
+      Lock In This Fixed Quote →
+    </a>
+  </div>
+</div>
+
+<script>
+  function updateCalc() {
+    const room = (document.getElementById('calc-room') as HTMLSelectElement).value;
+    const size = (document.getElementById('calc-size') as HTMLSelectElement).value;
+    const tile = (document.getElementById('calc-tile') as HTMLSelectElement).value;
+    const resultEl = document.getElementById('calc-result');
+
+    let base = 500;
+    if (room === 'kitchen-splash') base = 320;
+    if (room === 'floor') base = 650;
+    if (room === 'wetroom') base = 950;
+
+    let sizeMult = 1.0;
+    if (size === 'small') sizeMult = 0.7;
+    if (size === 'large') sizeMult = 1.5;
+    if (size === 'xlarge') sizeMult = 2.1;
+
+    let tileMult = 1.0;
+    if (tile === 'porcelain') tileMult = 1.15;
+    if (tile === 'herringbone') tileMult = 1.35;
+    if (tile === 'stone') tileMult = 1.45;
+
+    const total = base * sizeMult * tileMult;
+    const minP = Math.round(total * 0.9 / 10) * 10;
+    const maxP = Math.round(total * 1.25 / 10) * 10;
+
+    if (resultEl) {
+      resultEl.innerText = `£${minP} - £${maxP}`;
+    }
+  }
+
+  document.getElementById('calc-room')?.addEventListener('change', updateCalc);
+  document.getElementById('calc-size')?.addEventListener('change', updateCalc);
+  document.getElementById('calc-tile')?.addEventListener('change', updateCalc);
+</script>
