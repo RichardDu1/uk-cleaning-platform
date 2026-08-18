@@ -1,0 +1,86 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import dataset from '../../data/seo_pages.json';
+
+// Get unique services
+const uniqueServices = [...new Map(dataset.map(item => [item.service.id, { name: item.service.name, slug: item.service.id, summary: item.service.description }])).values()];
+
+// Get unique cities
+const uniqueCities = [...new Map(dataset.map(item => [item.city.name, { city: item.city.name, slug: item.city.name.toLowerCase().replace(/ /g, '-'), region: item.city.region }])).values()];
+---
+
+<Layout title="UK Cleaning Platform | 留学生退房保洁首选平台" description="全英华人房东与留学生首选的退房保洁平台。直连经过严格审核的专业保洁团队，提供深度清洁、地毯清洗及垃圾清理服务，100%退房押金保障。">
+  <!-- Hero Banner -->
+  <section class="bg-slate-900 text-white pt-16 pb-20 px-4">
+    <div class="max-w-5xl mx-auto text-center space-y-6">
+      <div class="inline-flex items-center space-x-2 bg-emerald-950 text-emerald-400 border border-emerald-800 text-xs font-semibold px-4 py-1.5 rounded-full">
+        <span>🛡️ 华人留学生退房首选 • 200万镑保险 • 100% 退房押金保障</span>
+      </div>
+      <h1 class="text-4xl sm:text-5xl md:text-6xl font-extrabold tracking-tight text-white max-w-4xl mx-auto">
+        全英专业退房清洁与垃圾清理
+      </h1>
+      <p class="text-slate-300 text-base md:text-lg max-w-2xl mx-auto">
+        直连经过严格审核的专业保洁团队，专门对付中式重油烟、顽固污渍与地毯清洗，一口价透明报价，无任何隐形消费。
+      </p>
+
+      <!-- Postcode Search Bar -->
+      <div class="max-w-xl mx-auto bg-white p-2 rounded-xl shadow-2xl flex flex-col sm:flex-row gap-2 mt-8">
+        <input type="text" id="home-postcode" placeholder="输入您所在的城市 (如: London, Birmingham)..." class="flex-grow text-slate-900 px-4 py-3 text-sm rounded-lg focus:outline-none" />
+        <button id="home-search-btn" class="bg-sky-700 hover:bg-sky-800 text-white font-bold px-6 py-3 rounded-lg text-sm transition">
+          查找本地保洁团队
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Services Grid -->
+  <section id="services" class="max-w-6xl mx-auto px-4 py-16">
+    <div class="text-center max-w-2xl mx-auto mb-12">
+      <h2 class="text-3xl font-extrabold text-slate-900">专项保洁与清理服务</h2>
+      <p class="text-sm text-slate-600 mt-2">所有服务均严格按照中介退房检查标准执行，提供免费返工保障。</p>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+      {uniqueServices.map((srv: any) => (
+        <div class="bg-white rounded-xl shadow-sm border border-slate-200 p-6 hover:shadow-md transition">
+          <div class="w-10 h-10 bg-sky-100 text-sky-800 rounded-lg flex items-center justify-center font-bold text-lg mb-4">
+            ✨
+          </div>
+          <h3 class="text-lg font-bold text-slate-900 mb-2">{srv.name}</h3>
+          <p class="text-xs text-slate-600 leading-relaxed mb-4">{srv.summary}</p>
+          <a href={`/zh-cn/${srv.slug}/london`} class="text-xs font-bold text-sky-700 hover:text-sky-900 flex items-center">
+            查看价格与详情 →
+          </a>
+        </div>
+      ))}
+    </div>
+  </section>
+
+  <!-- Popular Towns Coverage Matrix -->
+  <section id="areas" class="bg-slate-100 py-16 border-t border-slate-200">
+    <div class="max-w-6xl mx-auto px-4">
+      <div class="text-center max-w-2xl mx-auto mb-10">
+        <h2 class="text-3xl font-extrabold text-slate-900">英国服务覆盖网络</h2>
+        <p class="text-sm text-slate-600 mt-2">选择您所在的城市或行政区，获取本地团队报价。</p>
+      </div>
+
+      <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-3">
+        {uniqueCities.slice(0, 48).map((city: any) => (
+          <a href={`/zh-cn/end-of-tenancy-cleaning/${city.slug}`} class="bg-white hover:bg-sky-50 border border-slate-200 p-3 rounded-lg text-center text-xs font-medium text-slate-800 hover:text-sky-800 shadow-sm transition">
+            <span class="block font-bold">{city.city}</span>
+            <span class="text-[10px] text-slate-400">{city.region}</span>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+</Layout>
+
+<script>
+  document.getElementById('home-search-btn')?.addEventListener('click', () => {
+    const val = (document.getElementById('home-postcode') as HTMLInputElement)?.value.toLowerCase().trim().replace(/ /g, '-');
+    if (val) {
+      window.location.href = `/zh-cn/end-of-tenancy-cleaning/${val}`;
+    }
+  });
+</script>

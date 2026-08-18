@@ -6,10 +6,46 @@ interface Props {
 }
 
 const { title, description, schema } = Astro.props;
+const { pathname } = Astro.url;
+
+// Detect language from URL
+let lang = 'en';
+if (pathname.startsWith('/zh-cn')) lang = 'zh-cn';
+else if (pathname.startsWith('/zh-tw')) lang = 'zh-tw';
+
+// Strip language prefix to get base path for the switcher
+let basePath = pathname;
+if (lang !== 'en') {
+  basePath = pathname.replace(`/${lang}`, '') || '/';
+}
+const enUrl = basePath === '' ? '/' : basePath;
+const cnUrl = `/zh-cn${basePath === '/' ? '' : basePath}`;
+const twUrl = `/zh-tw${basePath === '/' ? '' : basePath}`;
+
+const isCn = lang === 'zh-cn';
+const isTw = lang === 'zh-tw';
+const isZh = isCn || isTw;
+
+const t = {
+  trust1: isCn ? "全英房东与留学生评分 4.96/5" : isTw ? "全英房東與留學生評分 4.96/5" : "Rated 4.96/5 by UK Landlords & Students",
+  trust2: isCn ? "200万英镑公共责任险" : isTw ? "200萬英鎊公共責任險" : "£2,000,000 Public Liability Insured",
+  trust3: isCn ? "48小时无条件返工保押金" : isTw ? "48小時無條件返工保押金" : "48-Hour Deposit Return Guarantee",
+  trust4: isCn ? "100% 透明一口价" : isTw ? "100% 透明一口價" : "100% Fixed Price Quotes",
+  menu_services: isZh ? "服务项目" : "Services",
+  menu_areas: isZh ? "覆盖区域" : "Areas Covered",
+  menu_about: isZh ? "关于我们" : "About Us",
+  platform_sub: isCn ? "全英华人退房保洁首选" : isTw ? "全英華人退房保潔首選" : "UK's Verified Cleaning Network",
+  footer_desc: isCn ? "连接英国留学生、租客与华人房东的严选保洁专家。专注退房清洁、深度保洁及垃圾清理。" : isTw ? "連接英國留學生、租客與華人房東的嚴選保潔專家。專注退房清潔、深度保潔及垃圾清理。" : "Connecting UK tenants and landlords with verified cleaning specialists. End of tenancy, deep cleaning, and waste clearance.",
+  verified_badge: isCn ? "✓ 实名认证保洁团队" : isTw ? "✓ 實名認證保潔團隊" : "✓ Verified Vetted Cleaners",
+  pop_services: isCn ? "热门服务" : isTw ? "熱門服務" : "Popular Services",
+  company: isCn ? "公司信息" : isTw ? "公司資訊" : "Company",
+  legal: isCn ? "法律与安全" : isTw ? "法律與安全" : "Legal & Security",
+  footer_sec: isCn ? "所有平台保洁团队均提供200万镑责任险及退房押金保障。" : isTw ? "所有平台保潔團隊均提供200萬鎊責任險及退房押金保障。" : "All member cleaners are verified with £2M+ Public Liability Insurance and backed by our Deposit Return Guarantee."
+};
 ---
 
 <!DOCTYPE html>
-<html lang="en" class="scroll-smooth">
+<html lang={lang} class="scroll-smooth">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -30,14 +66,14 @@ const { title, description, schema } = Astro.props;
         <div class="flex items-center space-x-4">
           <span class="flex items-center text-emerald-400 font-medium">
             <svg class="w-4 h-4 mr-1 fill-current" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
-            Rated 4.96/5 by UK Landlords & Students
+            {t.trust1}
           </span>
           <span class="hidden sm:inline text-slate-400">|</span>
-          <span class="hidden sm:inline">🛡️ £2,000,000 Public Liability Insured</span>
+          <span class="hidden sm:inline">🛡️ {t.trust2}</span>
         </div>
         <div class="flex items-center space-x-3 text-slate-300">
-          <span>✓ 48-Hour Deposit Return Guarantee</span>
-          <span>✓ 100% Fixed Price Quotes</span>
+          <span>✓ {t.trust3}</span>
+          <span>✓ {t.trust4}</span>
         </div>
       </div>
     </div>
@@ -45,22 +81,23 @@ const { title, description, schema } = Astro.props;
     <!-- Navigation Header -->
     <header class="bg-white shadow-sm sticky top-0 z-40">
       <div class="max-w-6xl mx-auto px-4 py-3.5 flex justify-between items-center">
-        <a href="/" class="flex items-center space-x-2">
+        <a href={lang === 'en' ? '/' : `/${lang}`} class="flex items-center space-x-2">
           <div class="bg-sky-700 text-white p-2 rounded-lg font-bold text-xl leading-none">CP</div>
           <div>
             <span class="font-extrabold text-xl text-slate-900 tracking-tight">UKCleaning<span class="text-sky-700">Platform</span></span>
-            <span class="block text-[10px] uppercase tracking-wider font-semibold text-slate-500">UK's Verified Cleaning Network</span>
+            <span class="block text-[10px] uppercase tracking-wider font-semibold text-slate-500">{t.platform_sub}</span>
           </div>
         </a>
 
         <div class="flex items-center space-x-6">
           <nav class="hidden md:flex space-x-4 text-sm font-medium text-slate-600 items-center">
-            <a href="/services" class="hover:text-sky-700 transition">Services</a>
-            <a href="/areas" class="hover:text-sky-700 transition">Areas Covered</a>
+            <a href={lang === 'en' ? '/services' : `/${lang}/services`} class="hover:text-sky-700 transition">{t.menu_services}</a>
+            <a href={lang === 'en' ? '/areas' : `/${lang}/areas`} class="hover:text-sky-700 transition">{t.menu_areas}</a>
             <div class="h-4 w-px bg-slate-300 mx-2"></div>
-            <a href="/" class="hover:text-sky-700 transition text-xs" title="English">EN</a>
-            <a href="/zh-cn/end-of-tenancy-cleaning/london" class="hover:text-sky-700 transition text-xs" title="Simplified Chinese">简</a>
-            <a href="/zh-tw/end-of-tenancy-cleaning/london" class="hover:text-sky-700 transition text-xs" title="Traditional Chinese">繁</a>
+            <!-- Dynamic Language Switchers -->
+            <a href={enUrl} class={`transition text-xs font-bold ${lang==='en' ? 'text-sky-700' : 'hover:text-sky-700'}`} title="English">EN</a>
+            <a href={cnUrl} class={`transition text-xs font-bold ${lang==='zh-cn' ? 'text-sky-700' : 'hover:text-sky-700'}`} title="Simplified Chinese">简</a>
+            <a href={twUrl} class={`transition text-xs font-bold ${lang==='zh-tw' ? 'text-sky-700' : 'hover:text-sky-700'}`} title="Traditional Chinese">繁</a>
           </nav>
         </div>
       </div>
@@ -76,34 +113,33 @@ const { title, description, schema } = Astro.props;
       <div class="max-w-6xl mx-auto px-4 grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
         <div>
           <span class="font-extrabold text-xl text-white tracking-tight">UKCleaning<span class="text-sky-500">Platform</span></span>
-          <p class="text-xs text-slate-400 mt-2">Connecting UK tenants and landlords with verified cleaning specialists. End of tenancy, deep cleaning, and waste clearance.</p>
+          <p class="text-xs text-slate-400 mt-2">{t.footer_desc}</p>
           <div class="mt-4 flex items-center space-x-2 text-xs text-slate-300">
-            <span class="bg-emerald-950 text-emerald-400 border border-emerald-800 px-2 py-1 rounded">✓ Verified Vetted Cleaners</span>
+            <span class="bg-emerald-950 text-emerald-400 border border-emerald-800 px-2 py-1 rounded">{t.verified_badge}</span>
           </div>
         </div>
         <div>
-          <h4 class="text-sm font-semibold text-white uppercase tracking-wider mb-3">Popular Services</h4>
+          <h4 class="text-sm font-semibold text-white uppercase tracking-wider mb-3">{t.pop_services}</h4>
           <ul class="space-y-2 text-xs">
-            <li><a href="/services" class="hover:text-white transition">All Cleaning Services</a></li>
-            <li><a href="/end-of-tenancy-cleaning/london" class="hover:text-white transition">End of Tenancy Cleaning</a></li>
-            <li><a href="/professional-carpet-cleaning/london" class="hover:text-white transition">Carpet Cleaning</a></li>
-            <li><a href="/rubbish-waste-clearance/london" class="hover:text-white transition">Rubbish Clearance</a></li>
+            <li><a href={lang === 'en' ? '/end-of-tenancy-cleaning/london' : `/${lang}/end-of-tenancy-cleaning/london`} class="hover:text-white transition">End of Tenancy Cleaning</a></li>
+            <li><a href={lang === 'en' ? '/professional-carpet-cleaning/london' : `/${lang}/professional-carpet-cleaning/london`} class="hover:text-white transition">Carpet Cleaning</a></li>
+            <li><a href={lang === 'en' ? '/rubbish-waste-clearance/london' : `/${lang}/rubbish-waste-clearance/london`} class="hover:text-white transition">Rubbish Clearance</a></li>
           </ul>
         </div>
         <div>
-          <h4 class="text-sm font-semibold text-white uppercase tracking-wider mb-3">Company</h4>
+          <h4 class="text-sm font-semibold text-white uppercase tracking-wider mb-3">{t.company}</h4>
           <ul class="space-y-2 text-xs">
-            <li><a href="/about" class="hover:text-white transition">About Us</a></li>
-            <li><a href="/areas" class="hover:text-white transition">Areas Covered</a></li>
+            <li><a href={lang === 'en' ? '/about' : `/${lang}/about`} class="hover:text-white transition">{t.menu_about}</a></li>
+            <li><a href={lang === 'en' ? '/areas' : `/${lang}/areas`} class="hover:text-white transition">{t.menu_areas}</a></li>
           </ul>
         </div>
         <div>
-          <h4 class="text-sm font-semibold text-white uppercase tracking-wider mb-3">Legal & Security</h4>
+          <h4 class="text-sm font-semibold text-white uppercase tracking-wider mb-3">{t.legal}</h4>
           <ul class="space-y-2 text-xs mb-4">
-            <li><a href="/privacy" class="hover:text-white transition">Privacy & Cookie Policy</a></li>
+            <li><a href="/privacy" class="hover:text-white transition">Privacy Policy</a></li>
             <li><a href="/terms" class="hover:text-white transition">Terms & Conditions</a></li>
           </ul>
-          <p class="text-xs text-slate-400">All member cleaners are verified with £2M+ Public Liability Insurance and backed by our Deposit Return Guarantee.</p>
+          <p class="text-xs text-slate-400">{t.footer_sec}</p>
           <div class="mt-4 text-xs text-slate-500">
             © 2026 UK Cleaning Platform. All rights reserved.
           </div>
