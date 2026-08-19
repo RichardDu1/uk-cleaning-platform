@@ -1,0 +1,80 @@
+---
+/**
+ * 微信联系卡片组件
+ * Props:
+ *   wechatId - 微信号 (用于复制)
+ *   city     - 城市名 (用于显示)
+ *   size     - 'sm' | 'lg' (默认 lg)
+ */
+interface Props {
+  wechatId?: string;
+  city?: string;
+  size?: 'sm' | 'lg';
+}
+
+const { wechatId = 'ukclean_london', city = '', size = 'lg' } = Astro.props;
+const isLg = size === 'lg';
+---
+
+<div class={`bg-gradient-to-br from-green-50 to-emerald-50 border-2 border-green-200 rounded-2xl ${isLg ? 'p-6' : 'p-4'} text-center`}>
+  {isLg && (
+    <div class="text-5xl mb-3">💬</div>
+  )}
+  <h3 class={`font-extrabold text-slate-900 ${isLg ? 'text-xl' : 'text-base'}`}>
+    {city ? `加微信找${city}客服` : '加微信 · 秒回报价'}
+  </h3>
+  <p class={`text-slate-500 mt-1 ${isLg ? 'text-sm' : 'text-xs'}`}>发几张房屋照片，5 分钟内出一口价</p>
+  
+  <!-- WeChat ID Display + Copy -->
+  <div class={`mt-4 bg-white rounded-xl border border-green-200 ${isLg ? 'p-4' : 'p-3'} inline-flex flex-col items-center gap-2`}>
+    <span class="text-xs text-slate-400">客服微信号</span>
+    <span class={`font-mono font-bold text-green-700 ${isLg ? 'text-2xl' : 'text-lg'} tracking-wider`} id="wechat-display">{wechatId}</span>
+    <button 
+      class="copy-wechat-btn bg-green-500 hover:bg-green-600 active:bg-green-700 text-white font-bold px-6 py-2 rounded-full text-sm transition-all duration-200 flex items-center gap-2"
+      data-wechat={wechatId}
+    >
+      <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 5H6a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2v-1M8 5a2 2 0 002 2h2a2 2 0 002-2M8 5a2 2 0 012-2h2a2 2 0 012 2m0 0h2a2 2 0 012 2v3m2 4H10m0 0l3-3m-3 3l3 3"/></svg>
+      <span class="btn-text">一键复制微信号</span>
+    </button>
+  </div>
+
+  <div class={`${isLg ? 'mt-4' : 'mt-3'} flex flex-wrap items-center justify-center gap-2 text-xs text-slate-500`}>
+    <span class="flex items-center gap-1"><span class="text-green-500">●</span> 在线时间 9:00-22:00 (英国)</span>
+    <span>·</span>
+    <span>中文客服秒回</span>
+  </div>
+</div>
+
+<script>
+  document.querySelectorAll('.copy-wechat-btn').forEach(btn => {
+    btn.addEventListener('click', async () => {
+      const wechat = btn.getAttribute('data-wechat') || '';
+      const textEl = btn.querySelector('.btn-text');
+      try {
+        await navigator.clipboard.writeText(wechat);
+        if (textEl) {
+          textEl.textContent = '✅ 已复制！去微信添加';
+          btn.classList.remove('bg-green-500', 'hover:bg-green-600');
+          btn.classList.add('bg-emerald-600');
+          setTimeout(() => {
+            textEl.textContent = '一键复制微信号';
+            btn.classList.add('bg-green-500', 'hover:bg-green-600');
+            btn.classList.remove('bg-emerald-600');
+          }, 3000);
+        }
+      } catch {
+        // Fallback for older browsers
+        const ta = document.createElement('textarea');
+        ta.value = wechat;
+        ta.style.position = 'fixed';
+        ta.style.left = '-9999px';
+        document.body.appendChild(ta);
+        ta.select();
+        document.execCommand('copy');
+        document.body.removeChild(ta);
+        if (textEl) textEl.textContent = '✅ 已复制！去微信添加';
+        setTimeout(() => { if (textEl) textEl.textContent = '一键复制微信号'; }, 3000);
+      }
+    });
+  });
+</script>

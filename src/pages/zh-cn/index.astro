@@ -1,12 +1,15 @@
 ---
 import Layout from '../../layouts/Layout.astro';
 import dataset from '../../data/seo_pages.json';
+import universities from '../../data/universities.json';
 
 // Get unique services
 const uniqueServices = [...new Map(dataset.map(item => [item.service.id, { name: item.service.name, slug: item.service.id, summary: item.service.description }])).values()];
 
 // Get unique cities
 const uniqueCities = [...new Map(dataset.map(item => [item.city.name, { city: item.city.name, slug: item.city.name.toLowerCase().replace(/ /g, '-'), region: item.city.region }])).values()];
+
+const hotUnis = universities.filter(u => ['ucl','kcl','imperial','lse','manchester','birmingham','edinburgh','glasgow','leeds','sheffield','bristol','nottingham','warwick','cardiff','southampton','liverpool'].includes(u.slug));
 ---
 
 <Layout title="UK Cleaning Platform | 留学生退房保洁首选平台" description="全英华人房东与留学生首选的退房保洁平台。直连经过严格审核的专业保洁团队，提供深度清洁、地毯清洗及垃圾清理服务，100%退房押金保障。">
@@ -53,6 +56,27 @@ const uniqueCities = [...new Map(dataset.map(item => [item.city.name, { city: it
           </a>
         </div>
       ))}
+    </div>
+  </section>
+
+  <!-- University Quick Select -->
+  <section class="py-16 border-t border-slate-200">
+    <div class="max-w-6xl mx-auto px-4">
+      <div class="text-center max-w-2xl mx-auto mb-10">
+        <h2 class="text-3xl font-extrabold text-slate-900">🏫 按大学找保洁</h2>
+        <p class="text-sm text-slate-600 mt-2">点击你的学校，查看所在城市的报价和本地团队</p>
+      </div>
+      <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-3">
+        {hotUnis.map(uni => (
+          <a href={`/zh-cn/university/${uni.slug}`} class="bg-white hover:bg-rose-50 border border-slate-200 hover:border-rose-300 p-3 rounded-lg text-center text-xs font-medium text-slate-800 hover:text-rose-700 shadow-sm transition">
+            <span class="block font-bold">{uni.name.split('(')[0].split(' ')[0]}</span>
+            <span class="text-[10px] text-slate-400">{uni.city_zh}</span>
+          </a>
+        ))}
+      </div>
+      <div class="text-center mt-4">
+        <a href="/xhs" class="text-xs text-sky-600 font-bold hover:underline">查看全部 35 所大学 →</a>
+      </div>
     </div>
   </section>
 

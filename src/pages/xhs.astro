@@ -1,0 +1,249 @@
+---
+import Layout from '../layouts/Layout.astro';
+import WeChatCard from '../components/WeChatCard.astro';
+import universities from '../data/universities.json';
+import dataset from '../data/seo_pages.json';
+
+// Group universities by region
+const londonUnis = universities.filter(u => u.wechat === 'ukclean_london');
+const otherUnis = universities.filter(u => u.wechat !== 'ukclean_london');
+
+// Get unique services for quick links
+const uniqueServices = [...new Map(dataset.map(item => [item.service.id, { name: item.service.name_zh_cn, slug: item.service.id }])).values()];
+---
+
+<Layout title="全英留学生退房保洁 | 小红书同款推荐 · 48h 退押金保障" description="小红书爆款推荐！全英 116 城覆盖，专业退房清洁团队。加微信秒报一口价，48 小时不合格免费返工，100% 退房押金保障。">
+  
+  <!-- Hero: Mobile-First, Impact-First -->
+  <section class="bg-gradient-to-b from-rose-600 via-rose-500 to-pink-500 text-white pt-10 pb-14 px-4 relative overflow-hidden">
+    <!-- Decorative dots -->
+    <div class="absolute inset-0 opacity-10" style="background-image: radial-gradient(circle, white 1px, transparent 1px); background-size: 20px 20px;"></div>
+    
+    <div class="max-w-lg mx-auto text-center relative z-10 space-y-5">
+      <div class="inline-flex items-center bg-white/20 backdrop-blur text-white text-xs font-bold px-4 py-1.5 rounded-full border border-white/30">
+        📕 你在小红书上看到我们了？
+      </div>
+      
+      <h1 class="text-3xl sm:text-4xl font-black tracking-tight leading-tight">
+        全英留学生<br/>退房保洁首选平台
+      </h1>
+      
+      <p class="text-rose-100 text-sm leading-relaxed max-w-sm mx-auto">
+        已帮助 3000+ 留学生顺利退房拿回全部押金<br/>
+        覆盖全英 116 个城市 · 中文客服秒回
+      </p>
+
+      <!-- Trust Badges -->
+      <div class="flex flex-wrap justify-center gap-2 text-xs">
+        <span class="bg-white/20 backdrop-blur px-3 py-1.5 rounded-full border border-white/30">✅ 48h 免费返工</span>
+        <span class="bg-white/20 backdrop-blur px-3 py-1.5 rounded-full border border-white/30">✅ 200万镑保险</span>
+        <span class="bg-white/20 backdrop-blur px-3 py-1.5 rounded-full border border-white/30">✅ 一口价无隐费</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- WeChat Card: THE Core CTA -->
+  <section class="max-w-lg mx-auto px-4 -mt-8 relative z-20">
+    <WeChatCard wechatId="ukclean_london" size="lg" />
+  </section>
+
+  <!-- Before/After Showcase -->
+  <section class="max-w-lg mx-auto px-4 py-10">
+    <h2 class="text-xl font-extrabold text-slate-900 text-center mb-2">📸 实拍 Before & After</h2>
+    <p class="text-xs text-slate-500 text-center mb-6">都是我们真实客户的退房清洁效果，未经任何修图</p>
+    
+    <div class="space-y-4">
+      <!-- Example 1: Kitchen -->
+      <div class="bg-white rounded-xl border border-slate-200 overflow-hidden shadow-sm">
+        <div class="grid grid-cols-2">
+          <div class="aspect-[4/3] bg-slate-200 flex items-center justify-center text-slate-400 text-xs border-r border-slate-200">
+            <div class="text-center">
+              <div class="text-3xl mb-1">🍳</div>
+              <span class="font-bold text-rose-500">BEFORE</span><br/>
+              <span>重油烟厨房</span>
+            </div>
+          </div>
+          <div class="aspect-[4/3] bg-emerald-50 flex items-center justify-center text-slate-400 text-xs">
+            <div class="text-center">
+              <div class="text-3xl mb-1">✨</div>
+              <span class="font-bold text-emerald-600">AFTER</span><br/>
+              <span>焕然一新</span>
+            </div>
+          </div>
+        </div>
+        <div class="p-3 text-xs text-slate-600">
+          <span class="font-bold text-slate-800">伦敦 Camden · 2 Bed Flat</span> · 中式重油烟厨房深度去污，3 小时完工，中介一次通过 ✅
+        </div>
+      </div>
+
+      <!-- Example 2: Bathroom -->
+      <div class="bg-white rounded-xl border border-slate-200 overflow-hidden shadow-sm">
+        <div class="grid grid-cols-2">
+          <div class="aspect-[4/3] bg-slate-200 flex items-center justify-center text-slate-400 text-xs border-r border-slate-200">
+            <div class="text-center">
+              <div class="text-3xl mb-1">🚿</div>
+              <span class="font-bold text-rose-500">BEFORE</span><br/>
+              <span>硅胶发霉浴室</span>
+            </div>
+          </div>
+          <div class="aspect-[4/3] bg-emerald-50 flex items-center justify-center text-slate-400 text-xs">
+            <div class="text-center">
+              <div class="text-3xl mb-1">✨</div>
+              <span class="font-bold text-emerald-600">AFTER</span><br/>
+              <span>洁净如新</span>
+            </div>
+          </div>
+        </div>
+        <div class="p-3 text-xs text-slate-600">
+          <span class="font-bold text-slate-800">曼城 · 3 Bed House</span> · 浴室硅胶除霉 + 水垢深度清理，中介验收满分通过 ✅
+        </div>
+      </div>
+
+      <!-- Example 3: Carpet -->
+      <div class="bg-white rounded-xl border border-slate-200 overflow-hidden shadow-sm">
+        <div class="grid grid-cols-2">
+          <div class="aspect-[4/3] bg-slate-200 flex items-center justify-center text-slate-400 text-xs border-r border-slate-200">
+            <div class="text-center">
+              <div class="text-3xl mb-1">🫗</div>
+              <span class="font-bold text-rose-500">BEFORE</span><br/>
+              <span>火锅渍地毯</span>
+            </div>
+          </div>
+          <div class="aspect-[4/3] bg-emerald-50 flex items-center justify-center text-slate-400 text-xs">
+            <div class="text-center">
+              <div class="text-3xl mb-1">✨</div>
+              <span class="font-bold text-emerald-600">AFTER</span><br/>
+              <span>完美去渍</span>
+            </div>
+          </div>
+        </div>
+        <div class="p-3 text-xs text-slate-600">
+          <span class="font-bold text-slate-800">利兹 · Studio</span> · 火锅汤底泼到地毯上，商用蒸汽机深洗，完全去除污渍和异味 ✅
+        </div>
+      </div>
+    </div>
+
+    <p class="text-center text-xs text-slate-400 mt-4">
+      📷 图片位置预留，上传实拍后自动展示
+    </p>
+  </section>
+
+  <!-- Price Quick Reference -->
+  <section class="bg-rose-50 border-y border-rose-100 py-10 px-4">
+    <div class="max-w-lg mx-auto">
+      <h2 class="text-xl font-extrabold text-slate-900 text-center mb-2">💰 秒懂价格表</h2>
+      <p class="text-xs text-slate-500 text-center mb-6">一口价，绝无隐藏费用，不满意 48 小时内免费返工</p>
+      
+      <div class="space-y-3">
+        <div class="bg-white rounded-xl p-4 border border-slate-200 flex justify-between items-center">
+          <div>
+            <span class="font-bold text-slate-800">Studio / 一居室</span>
+            <span class="block text-xs text-slate-400">适合单人公寓</span>
+          </div>
+          <span class="text-xl font-black text-rose-600">£120 起</span>
+        </div>
+        <div class="bg-white rounded-xl p-4 border-2 border-rose-300 flex justify-between items-center relative">
+          <span class="absolute -top-2.5 left-4 bg-rose-500 text-white text-[10px] font-bold px-2 py-0.5 rounded-full">留学生最多</span>
+          <div>
+            <span class="font-bold text-slate-800">两居到三居</span>
+            <span class="block text-xs text-slate-400">合租 House / Flat</span>
+          </div>
+          <span class="text-xl font-black text-rose-600">£180 起</span>
+        </div>
+        <div class="bg-white rounded-xl p-4 border border-slate-200 flex justify-between items-center">
+          <div>
+            <span class="font-bold text-slate-800">四居室以上</span>
+            <span class="block text-xs text-slate-400">大 House / 极度脏乱</span>
+          </div>
+          <span class="text-xl font-black text-rose-600">£350 起</span>
+        </div>
+      </div>
+
+      <div class="mt-4 text-center">
+        <p class="text-xs text-slate-500">以上为基础参考价，伦敦地区上浮约 20-30%</p>
+        <p class="text-xs text-slate-500">发照片到微信，5 分钟出精准报价 👇</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- University Quick Select -->
+  <section class="max-w-lg mx-auto px-4 py-10">
+    <h2 class="text-xl font-extrabold text-slate-900 text-center mb-2">🏫 找到你的大学</h2>
+    <p class="text-xs text-slate-500 text-center mb-6">点击你的学校，查看所在城市的详细报价和本地团队</p>
+
+    <!-- London Universities -->
+    <h3 class="text-sm font-bold text-slate-700 mb-3 flex items-center gap-2">
+      <span class="w-2 h-2 bg-rose-500 rounded-full"></span> 伦敦地区
+    </h3>
+    <div class="grid grid-cols-2 gap-2 mb-6">
+      {londonUnis.map(uni => (
+        <a href={`/zh-cn/university/${uni.slug}?utm_source=xiaohongshu`} class="bg-white hover:bg-rose-50 border border-slate-200 hover:border-rose-300 p-3 rounded-xl text-center text-xs font-medium text-slate-700 hover:text-rose-700 shadow-sm transition">
+          <span class="block font-bold text-sm">{uni.name.split('(')[0].split(' ')[0]}</span>
+          {uni.name.includes('(') && <span class="text-[10px] text-slate-400">{uni.name.match(/\(([^)]+)\)/)?.[1]}</span>}
+        </a>
+      ))}
+    </div>
+
+    <!-- Other Cities -->
+    <h3 class="text-sm font-bold text-slate-700 mb-3 flex items-center gap-2">
+      <span class="w-2 h-2 bg-sky-500 rounded-full"></span> 其他城市
+    </h3>
+    <div class="grid grid-cols-2 gap-2">
+      {otherUnis.map(uni => (
+        <a href={`/zh-cn/university/${uni.slug}?utm_source=xiaohongshu`} class="bg-white hover:bg-sky-50 border border-slate-200 hover:border-sky-300 p-3 rounded-xl text-center text-xs font-medium text-slate-700 hover:text-sky-700 shadow-sm transition">
+          <span class="block font-bold text-sm">{uni.name.split('(')[0].split(' ')[0]}</span>
+          <span class="text-[10px] text-slate-400">{uni.city_zh}</span>
+        </a>
+      ))}
+    </div>
+  </section>
+
+  <!-- Services Quick Links -->
+  <section class="bg-slate-100 border-t border-slate-200 py-10 px-4">
+    <div class="max-w-lg mx-auto">
+      <h2 class="text-xl font-extrabold text-slate-900 text-center mb-6">🧹 我们提供的服务</h2>
+      <div class="grid grid-cols-2 gap-2">
+        {uniqueServices.map(svc => (
+          <a href={`/zh-cn/${svc.slug}?utm_source=xiaohongshu`} class="bg-white hover:bg-sky-50 border border-slate-200 p-3 rounded-xl text-center text-xs font-bold text-slate-700 hover:text-sky-700 shadow-sm transition">
+            {svc.name}
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ for Xiaohongshu users -->
+  <section class="max-w-lg mx-auto px-4 py-10">
+    <h2 class="text-xl font-extrabold text-slate-900 text-center mb-6">❓ 留学生最关心的 5 个问题</h2>
+    <div class="space-y-3">
+      <div class="bg-white p-4 rounded-xl border border-slate-200">
+        <h4 class="font-bold text-sm text-slate-800 mb-1">中介说不合格怎么办？</h4>
+        <p class="text-xs text-slate-600">我们提供 48 小时无条件免费返工保障。中介验收不通过，我们免费再来一次，直到通过为止。</p>
+      </div>
+      <div class="bg-white p-4 rounded-xl border border-slate-200">
+        <h4 class="font-bold text-sm text-slate-800 mb-1">需要我自己准备清洁工具吗？</h4>
+        <p class="text-xs text-slate-600">完全不需要！团队自带全套商用级清洁设备和环保清洁剂，对中式重油烟特别有效。</p>
+      </div>
+      <div class="bg-white p-4 rounded-xl border border-slate-200">
+        <h4 class="font-bold text-sm text-slate-800 mb-1">能开 Invoice 吗？</h4>
+        <p class="text-xs text-slate-600">可以。完工后我们会通过邮件发送正式 Invoice，可以用于跟房东/中介做费用核实。</p>
+      </div>
+      <div class="bg-white p-4 rounded-xl border border-slate-200">
+        <h4 class="font-bold text-sm text-slate-800 mb-1">需要提前多久预约？</h4>
+        <p class="text-xs text-slate-600">建议至少提前 3-5 天。6-9 月退房旺季档期非常紧张，越早越好。部分城市支持次日上门。</p>
+      </div>
+      <div class="bg-white p-4 rounded-xl border border-slate-200">
+        <h4 class="font-bold text-sm text-slate-800 mb-1">怎么付款？</h4>
+        <p class="text-xs text-slate-600">支持银行转账 (Bank Transfer)、微信支付、支付宝。服务完成满意后再付全款，先付 £20 定金锁定档期。</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Bottom CTA: WeChat Again -->
+  <section class="max-w-lg mx-auto px-4 pb-12">
+    <WeChatCard wechatId="ukclean_london" size="lg" />
+    <p class="text-center text-[10px] text-slate-400 mt-4">
+      © 2026 UK Cleaning Platform · 全英华人退房保洁首选
+    </p>
+  </section>
+</Layout>

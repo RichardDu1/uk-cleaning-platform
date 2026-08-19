@@ -1,0 +1,126 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+import WeChatCard from '../../../components/WeChatCard.astro';
+import universities from '../../../data/universities.json';
+import dataset from '../../../data/seo_pages.json';
+
+export async function getStaticPaths() {
+  return universities.map(uni => ({
+    params: { school: uni.slug },
+    props: { uni }
+  }));
+}
+
+const { uni } = Astro.props;
+
+// Find matching city data from the main dataset
+const cityPages = dataset.filter(item => 
+  item.city.name.toLowerCase().replace(/ /g, '-') === uni.city_slug
+);
+
+// Get services available in this city
+const services = cityPages.map(page => ({
+  name: page.service.name_zh_cn,
+  slug: page.service.id,
+  pricing: page.content_zh_cn.pricing
+}));
+
+// Get nearby universities in same city
+const sameCity = universities.filter(u => u.city_slug === uni.city_slug && u.slug !== uni.slug);
+---
+
+<Layout title={`${uni.name} 退房保洁 | 48h 押金保障 · 中文客服秒回`} description={`${uni.name_en} 留学生退房保洁首选。覆盖 ${uni.city_name} 全域，专治中式重油烟，48 小时不合格免费返工，100% 退押金保障。加微信秒报价。`}>
+
+  <!-- Hero -->
+  <section class="bg-gradient-to-b from-slate-900 via-slate-800 to-slate-900 text-white pt-10 pb-14 px-4">
+    <div class="max-w-2xl mx-auto space-y-5">
+      <div class="inline-flex items-center bg-rose-500/20 border border-rose-500/40 text-rose-300 text-xs font-semibold px-3 py-1.5 rounded-full">
+        🏫 {uni.name_en} 留学生专属
+      </div>
+      <h1 class="text-3xl sm:text-4xl md:text-5xl font-black tracking-tight leading-tight">
+        {uni.name}<br/>
+        <span class="text-sky-400">退房保洁团队</span>
+      </h1>
+      <p class="text-slate-300 text-sm leading-relaxed max-w-xl">
+        覆盖 {uni.city_zh} ({uni.city_name}) 全域，专为 {uni.name.split('(')[0].split(' ')[0]} 的中国留学生提供退房保洁服务。
+        专治中式重油烟、火锅渍地毯、硅胶发霉浴室，包过中介检查。
+      </p>
+
+      <div class="grid grid-cols-2 sm:grid-cols-4 gap-2 text-xs">
+        <span class="bg-white/10 border border-white/20 rounded-lg p-2 text-center">✅ 48h 免费返工</span>
+        <span class="bg-white/10 border border-white/20 rounded-lg p-2 text-center">✅ 200万镑保险</span>
+        <span class="bg-white/10 border border-white/20 rounded-lg p-2 text-center">✅ 中文客服秒回</span>
+        <span class="bg-white/10 border border-white/20 rounded-lg p-2 text-center">✅ 发图秒报价</span>
+      </div>
+    </div>
+  </section>
+
+  <div class="max-w-2xl mx-auto px-4">
+
+    <!-- WeChat CTA -->
+    <div class="-mt-6 relative z-10 mb-10">
+      <WeChatCard wechatId={uni.wechat} city={uni.city_zh} size="lg" />
+    </div>
+
+    <!-- Pricing for this city -->
+    {services.length > 0 && (
+      <section class="mb-10">
+        <h2 class="text-xl font-extrabold text-slate-900 mb-4">💰 {uni.city_zh} 留学生保洁报价</h2>
+        <div class="space-y-3">
+          {services.map(svc => (
+            <a href={`/zh-cn/${svc.slug}/${uni.city_slug}?utm_source=xiaohongshu&utm_campaign=university_${uni.slug}`} class="block bg-white hover:bg-sky-50 rounded-xl p-4 border border-slate-200 transition group">
+              <div class="flex justify-between items-center">
+                <div>
+                  <span class="font-bold text-slate-800 group-hover:text-sky-700 transition">{svc.name}</span>
+                  <span class="block text-xs text-slate-400 mt-0.5">点击查看详情与完整报价</span>
+                </div>
+                <div class="text-right">
+                  <span class="text-lg font-black text-rose-600">£{svc.pricing.small}</span>
+                  <span class="text-xs text-slate-400"> 起</span>
+                </div>
+              </div>
+            </a>
+          ))}
+        </div>
+      </section>
+    )}
+
+    <!-- Same-City Universities -->
+    {sameCity.length > 0 && (
+      <section class="mb-10">
+        <h2 class="text-lg font-bold text-slate-900 mb-3">🎓 {uni.city_zh} 的其他大学</h2>
+        <div class="grid grid-cols-2 gap-2">
+          {sameCity.map(u => (
+            <a href={`/zh-cn/university/${u.slug}`} class="bg-white hover:bg-sky-50 border border-slate-200 p-3 rounded-xl text-center text-xs font-medium text-slate-700 hover:text-sky-700 shadow-sm transition">
+              {u.name.split('(')[0].split(' ')[0]}
+            </a>
+          ))}
+        </div>
+      </section>
+    )}
+
+    <!-- FAQ -->
+    <section class="mb-10">
+      <h2 class="text-lg font-bold text-slate-900 mb-4">❓ {uni.name.split('(')[0].split(' ')[0]} 同学常问的问题</h2>
+      <div class="space-y-3">
+        <div class="bg-white p-4 rounded-xl border border-slate-200">
+          <h4 class="font-bold text-sm text-slate-800 mb-1">你们能上门到我 {uni.city_zh} 的住处吗？</h4>
+          <p class="text-xs text-slate-600">当然！我们的 {uni.city_zh} 本地团队覆盖全城，{uni.name_en} 校区附近的所有住宅区都在服务范围内。</p>
+        </div>
+        <div class="bg-white p-4 rounded-xl border border-slate-200">
+          <h4 class="font-bold text-sm text-slate-800 mb-1">室友可以拼单吗？</h4>
+          <p class="text-xs text-slate-600">完全可以！合租 House 的同学们一起下单，费用按房子整体算，AA 下来每人省很多。</p>
+        </div>
+        <div class="bg-white p-4 rounded-xl border border-slate-200">
+          <h4 class="font-bold text-sm text-slate-800 mb-1">我已经搬走了，钥匙可以寄给你们吗？</h4>
+          <p class="text-xs text-slate-600">可以安排。和客服沟通好取钥匙的方式（邮寄/放密码盒/找中介取），清完后拍照+视频发您确认。</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Bottom CTA -->
+    <section class="pb-12">
+      <WeChatCard wechatId={uni.wechat} city={uni.city_zh} size="lg" />
+    </section>
+  </div>
+</Layout>

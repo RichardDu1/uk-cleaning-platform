@@ -1,0 +1,129 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+import WeChatCard from '../../../components/WeChatCard.astro';
+import universities from '../../../data/universities.json';
+import dataset from '../../../data/seo_pages.json';
+
+// Traditional Chinese name mapping
+const uniNameTw: Record<string, string> = {
+  "ucl": "UCL (倫敦大學學院)", "kcl": "KCL (倫敦國王學院)", "imperial": "帝國理工學院",
+  "lse": "LSE (倫敦政治經濟學院)", "qmul": "倫敦瑪麗女王大學", "soas": "SOAS (倫敦大學亞非學院)",
+  "goldsmiths": "金史密斯學院", "ual": "UAL (倫敦藝術大學)", "city": "倫敦城市大學",
+  "greenwich": "格林威治大學", "kingston": "金斯頓大學", "brunel": "布魯內爾大學",
+  "westminster": "威斯敏斯特大學", "middlesex": "密德薩斯大學", "roehampton": "羅漢普頓大學",
+  "manchester": "曼徹斯特大學", "manchester-met": "曼徹斯特城市大學",
+  "birmingham": "伯明罕大學", "aston": "阿斯頓大學",
+  "edinburgh": "愛丁堡大學", "glasgow": "格拉斯哥大學",
+  "leeds": "里茲大學", "sheffield": "雪菲爾大學", "sheffield-hallam": "雪菲爾哈勒姆大學",
+  "newcastle": "紐卡斯爾大學", "liverpool": "利物浦大學",
+  "nottingham": "諾丁漢大學", "leicester": "萊斯特大學",
+  "bristol": "布里斯托大學", "cardiff": "卡地夫大學",
+  "southampton": "南安普敦大學", "reading": "雷丁大學",
+  "coventry": "考文垂大學", "warwick": "華威大學", "belfast": "貝爾法斯特女王大學"
+};
+
+const cityZhTw: Record<string, string> = {
+  "camden": "卡姆登", "lambeth": "蘭貝斯", "royal-borough-of-kensington-and-chelsea": "肯辛頓-切爾西",
+  "westminster": "威斯敏斯特", "tower-hamlets": "塔村", "lewisham": "劉易舍姆",
+  "islington": "伊斯靈頓", "greenwich": "格林威治", "kingston-upon-thames": "金斯頓",
+  "hillingdon": "希靈登", "barnet": "巴尼特", "wandsworth": "旺茲沃思",
+  "manchester": "曼徹斯特", "birmingham": "伯明罕", "edinburgh": "愛丁堡",
+  "glasgow": "格拉斯哥", "leeds": "里茲", "sheffield": "雪菲爾",
+  "newcastle": "紐卡斯爾", "liverpool": "利物浦", "nottingham": "諾丁漢",
+  "leicester": "萊斯特", "bristol": "布里斯托", "cardiff": "卡地夫",
+  "southampton": "南安普敦", "reading": "雷丁", "coventry": "考文垂", "belfast": "貝爾法斯特"
+};
+
+export async function getStaticPaths() {
+  return universities.map(uni => ({
+    params: { school: uni.slug },
+    props: { uni }
+  }));
+}
+
+const { uni } = Astro.props;
+const nameTw = uniNameTw[uni.slug] || uni.name;
+const cityTw = cityZhTw[uni.city_slug] || uni.city_zh;
+
+const cityPages = dataset.filter(item =>
+  item.city.name.toLowerCase().replace(/ /g, '-') === uni.city_slug
+);
+
+const services = cityPages.map(page => ({
+  name: page.service.name_zh_tw,
+  slug: page.service.id,
+  pricing: page.content_zh_tw.pricing
+}));
+
+const sameCity = universities.filter(u => u.city_slug === uni.city_slug && u.slug !== uni.slug);
+---
+
+<Layout title={`${nameTw} 退房保潔 | 48h 押金保障 · 中文客服秒回`} description={`${uni.name_en} 留學生退房保潔首選。覆蓋 ${uni.city_name} 全域，專治中式重油煙，48 小時不合格免費返工，100% 退押金保障。`}>
+
+  <section class="bg-gradient-to-b from-slate-900 via-slate-800 to-slate-900 text-white pt-10 pb-14 px-4">
+    <div class="max-w-2xl mx-auto space-y-5">
+      <div class="inline-flex items-center bg-rose-500/20 border border-rose-500/40 text-rose-300 text-xs font-semibold px-3 py-1.5 rounded-full">
+        🏫 {uni.name_en} 留學生專屬
+      </div>
+      <h1 class="text-3xl sm:text-4xl md:text-5xl font-black tracking-tight leading-tight">
+        {nameTw}<br/>
+        <span class="text-sky-400">退房保潔團隊</span>
+      </h1>
+      <p class="text-slate-300 text-sm leading-relaxed max-w-xl">
+        覆蓋 {cityTw} ({uni.city_name}) 全域，專為中國留學生提供退房保潔服務。
+        專治中式重油煙、火鍋漬地毯、矽膠發霉浴室，包過仲介檢查。
+      </p>
+      <div class="grid grid-cols-2 sm:grid-cols-4 gap-2 text-xs">
+        <span class="bg-white/10 border border-white/20 rounded-lg p-2 text-center">✅ 48h 免費返工</span>
+        <span class="bg-white/10 border border-white/20 rounded-lg p-2 text-center">✅ 200萬鎊保險</span>
+        <span class="bg-white/10 border border-white/20 rounded-lg p-2 text-center">✅ 中文客服秒回</span>
+        <span class="bg-white/10 border border-white/20 rounded-lg p-2 text-center">✅ 發圖秒報價</span>
+      </div>
+    </div>
+  </section>
+
+  <div class="max-w-2xl mx-auto px-4">
+    <div class="-mt-6 relative z-10 mb-10">
+      <WeChatCard wechatId={uni.wechat} city={cityTw} size="lg" />
+    </div>
+
+    {services.length > 0 && (
+      <section class="mb-10">
+        <h2 class="text-xl font-extrabold text-slate-900 mb-4">💰 {cityTw} 留學生保潔報價</h2>
+        <div class="space-y-3">
+          {services.map(svc => (
+            <a href={`/zh-tw/${svc.slug}/${uni.city_slug}`} class="block bg-white hover:bg-sky-50 rounded-xl p-4 border border-slate-200 transition group">
+              <div class="flex justify-between items-center">
+                <div>
+                  <span class="font-bold text-slate-800 group-hover:text-sky-700 transition">{svc.name}</span>
+                  <span class="block text-xs text-slate-400 mt-0.5">點擊查看詳情與完整報價</span>
+                </div>
+                <div class="text-right">
+                  <span class="text-lg font-black text-rose-600">£{svc.pricing.small}</span>
+                  <span class="text-xs text-slate-400"> 起</span>
+                </div>
+              </div>
+            </a>
+          ))}
+        </div>
+      </section>
+    )}
+
+    {sameCity.length > 0 && (
+      <section class="mb-10">
+        <h2 class="text-lg font-bold text-slate-900 mb-3">🎓 {cityTw} 的其他大學</h2>
+        <div class="grid grid-cols-2 gap-2">
+          {sameCity.map(u => (
+            <a href={`/zh-tw/university/${u.slug}`} class="bg-white hover:bg-sky-50 border border-slate-200 p-3 rounded-xl text-center text-xs font-medium text-slate-700 hover:text-sky-700 shadow-sm transition">
+              {(uniNameTw[u.slug] || u.name).split('(')[0].split(' ')[0]}
+            </a>
+          ))}
+        </div>
+      </section>
+    )}
+
+    <section class="pb-12">
+      <WeChatCard wechatId={uni.wechat} city={cityTw} size="lg" />
+    </section>
+  </div>
+</Layout>
