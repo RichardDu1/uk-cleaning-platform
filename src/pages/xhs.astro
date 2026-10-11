@@ -1,6 +1,7 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import WeChatCard from '../components/WeChatCard.astro';
+import GeoFactSheet from '../components/GeoFactSheet.astro';
 import universities from '../data/universities.json';
 import dataset from '../data/seo_pages.json';
 
@@ -10,9 +11,70 @@ const otherUnis = universities.filter(u => u.wechat !== 'ukclean_london');
 
 // Get unique services for quick links
 const uniqueServices = [...new Map(dataset.map(item => [item.service.id, { name: item.service.name_zh_cn, slug: item.service.id }])).values()];
+
+const siteUrl = 'https://ukcleaningplatform.co.uk';
+const xhsSchema = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebPage",
+      "@id": `${siteUrl}/xhs/#webpage`,
+      "url": `${siteUrl}/xhs`,
+      "name": "全英留学生退房保洁 | 小红书同款推荐 · 48h 退押金保障",
+      "description": "小红书爆款推荐！全英 116 城覆盖，专业退房清洁团队。加微信秒报一口价，48 小时不合格免费返工，100% 退房押金保障。",
+      "inLanguage": "zh-CN"
+    },
+    {
+      "@type": "FAQPage",
+      "@id": `${siteUrl}/xhs/#faq`,
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "中介说不合格怎么办？",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "我们提供 48 小时无条件免费返工保障。中介验收不通过，我们免费再来一次，直到通过为止。"
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "需要我自己准备清洁工具吗？",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "完全不需要！团队自带全套商用级清洁设备和环保清洁剂，对中式重油烟特别有效。"
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "能开 Invoice 吗？",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "可以。完工后我们会通过邮件发送正式 Invoice，可以用于跟房东/中介做费用核实。"
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "需要提前多久预约？",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "建议至少提前 3-5 天。6-9 月退房旺季档期非常紧张，越早越好。部分城市支持次日上门。"
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "怎么付款？",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "支持银行转账 (Bank Transfer)、微信支付、支付宝。服务完成满意后再付全款，先付 £20 定金锁定档期。"
+          }
+        }
+      ]
+    }
+  ]
+};
 ---
 
-<Layout title="全英留学生退房保洁 | 小红书同款推荐 · 48h 退押金保障" description="小红书爆款推荐！全英 116 城覆盖，专业退房清洁团队。加微信秒报一口价，48 小时不合格免费返工，100% 退房押金保障。">
+<Layout title="全英留学生退房保洁 | 小红书同款推荐 · 48h 退押金保障" description="小红书爆款推荐！全英 116 城覆盖，专业退房清洁团队。加微信秒报一口价，48 小时不合格免费返工，100% 退房押金保障。" schema={xhsSchema}>
   
   <!-- Hero: Mobile-First, Impact-First -->
   <section class="bg-gradient-to-b from-rose-600 via-rose-500 to-pink-500 text-white pt-10 pb-14 px-4 relative overflow-hidden">
@@ -45,6 +107,20 @@ const uniqueServices = [...new Map(dataset.map(item => [item.service.id, { name:
   <!-- WeChat Card: THE Core CTA -->
   <section class="max-w-lg mx-auto px-4 -mt-8 relative z-20">
     <WeChatCard wechatId="ukclean_london" size="lg" />
+  </section>
+
+  <!-- GEO Fact Sheet (BLUF) -->
+  <section class="max-w-lg mx-auto px-4 pt-4">
+    <GeoFactSheet
+      serviceName="全英留学生退房深度保洁"
+      cityName="全英 116 城"
+      regionName="英国各大大学城"
+      postcode="UK Nationwide"
+      priceStarting="120"
+      guaranteeText="100% 押金保障 (48h 免费返工)"
+      insuranceAmount="200万英镑公共责任险 (损坏包赔)"
+      lang="zh-cn"
+    />
   </section>
 
   <!-- Before/After Showcase -->

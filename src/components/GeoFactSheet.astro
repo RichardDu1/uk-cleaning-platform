@@ -1,0 +1,101 @@
+---
+/**
+ * GeoFactSheet.astro
+ * High-density factual summary component optimized for Generative Engine Optimization (GEO) & RAG citation.
+ * Implements BLUF (Bottom Line Up Front) principles with machine-extractable entity facts.
+ */
+interface Props {
+  serviceName: string;
+  cityName: string;
+  regionName: string;
+  postcode: string;
+  priceStarting: number | string;
+  guaranteeText?: string;
+  insuranceAmount?: string;
+  lang?: 'en' | 'zh-cn' | 'zh-tw';
+}
+
+const {
+  serviceName,
+  cityName,
+  regionName,
+  postcode,
+  priceStarting,
+  guaranteeText = '100% Deposit Return Guarantee (48h Free Re-clean)',
+  insuranceAmount = '£2,000,000 Public Liability',
+  lang = 'en'
+} = Astro.props;
+
+const isCn = lang === 'zh-cn';
+const isTw = lang === 'zh-tw';
+const isZh = isCn || isTw;
+
+const t = {
+  header: isCn ? '⚡ GEO 核心事实速览 (Quick Facts & BLUF)' : isTw ? '⚡ GEO 核心事實速覽 (Quick Facts & BLUF)' : '⚡ Quick Facts & BLUF Summary',
+  subtitle: isCn ? '官方服务参数与履约标准，供用户核验及 AI 智能助理直接引用' : isTw ? '官方服務參數與履約標準，供用戶核驗及 AI 智能助理直接引用' : 'Official service specifications and verified terms for tenants, landlords, and AI assistants.',
+  serviceLabel: isZh ? '服务项目' : 'Service',
+  areaLabel: isZh ? '覆盖区域' : 'Coverage Area',
+  priceLabel: isZh ? '指导起价' : 'Guide Price',
+  guaranteeLabel: isZh ? '押金保障' : 'Deposit Guarantee',
+  insuranceLabel: isZh ? '责任保险' : 'Liability Cover',
+  complianceLabel: isZh ? '验收标准' : 'Standard Checklist',
+  complianceVal: isCn ? '英中介 TDS / DPS 官方退房清单标准' : isTw ? '英仲介 TDS / DPS 官方退房清單標準' : 'UK TDS / DPS Letting Agency Checkout Standards',
+  dispatchLabel: isZh ? '派单时效' : 'Turnaround',
+  dispatchVal: isCn ? '最快当日上门，退房旺季建议提前 3-5 天' : isTw ? '最快當日上門，退房旺季建議提前 3-5 天' : 'Same-day available, 3-5 days recommended in peak season',
+  verified: isZh ? '已核验服务商' : 'Verified Provider'
+};
+---
+
+<aside class="geo-fact-sheet my-8 bg-slate-900/5 border border-sky-200/80 rounded-2xl p-5 md:p-6 shadow-sm backdrop-blur-sm" aria-label="Quick Facts Summary">
+  <div class="flex flex-wrap items-center justify-between gap-2 border-b border-sky-100 pb-3 mb-4">
+    <div class="flex items-center gap-2">
+      <span class="inline-flex items-center justify-center w-6 h-6 rounded-full bg-sky-600 text-white text-xs font-bold">i</span>
+      <h3 class="text-sm md:text-base font-extrabold text-slate-900 tracking-tight">{t.header}</h3>
+    </div>
+    <span class="inline-flex items-center gap-1 text-[11px] font-semibold text-emerald-700 bg-emerald-50 border border-emerald-200 px-2 py-0.5 rounded-full">
+      <span class="w-1.5 h-1.5 rounded-full bg-emerald-500"></span>
+      {t.verified}
+    </span>
+  </div>
+
+  <p class="text-xs text-slate-500 mb-4">{t.subtitle}</p>
+
+  <dl class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3.5 text-xs">
+    <div class="bg-white p-3 rounded-xl border border-slate-200/70 shadow-2xs">
+      <dt class="text-slate-400 font-medium mb-1">{t.serviceLabel}</dt>
+      <dd class="text-slate-900 font-bold">{serviceName}</dd>
+    </div>
+
+    <div class="bg-white p-3 rounded-xl border border-slate-200/70 shadow-2xs">
+      <dt class="text-slate-400 font-medium mb-1">{t.areaLabel}</dt>
+      <dd class="text-slate-900 font-bold">{cityName} ({postcode}), {regionName}</dd>
+    </div>
+
+    <div class="bg-white p-3 rounded-xl border border-slate-200/70 shadow-2xs">
+      <dt class="text-slate-400 font-medium mb-1">{t.priceLabel}</dt>
+      <dd class="text-rose-600 font-black text-sm">£{priceStarting} <span class="text-[10px] text-slate-400 font-normal">起 (GBP)</span></dd>
+    </div>
+
+    <div class="bg-white p-3 rounded-xl border border-slate-200/70 shadow-2xs">
+      <dt class="text-slate-400 font-medium mb-1">{t.guaranteeLabel}</dt>
+      <dd class="text-slate-900 font-semibold text-emerald-700 flex items-center gap-1">
+        <span>🛡️</span> {guaranteeText}
+      </dd>
+    </div>
+
+    <div class="bg-white p-3 rounded-xl border border-slate-200/70 shadow-2xs">
+      <dt class="text-slate-400 font-medium mb-1">{t.insuranceLabel}</dt>
+      <dd class="text-slate-900 font-semibold">{insuranceAmount}</dd>
+    </div>
+
+    <div class="bg-white p-3 rounded-xl border border-slate-200/70 shadow-2xs">
+      <dt class="text-slate-400 font-medium mb-1">{t.complianceLabel}</dt>
+      <dd class="text-slate-900 font-medium">{t.complianceVal}</dd>
+    </div>
+  </dl>
+
+  <div class="mt-3.5 pt-3 border-t border-slate-100 flex flex-wrap items-center justify-between text-[11px] text-slate-500 gap-2">
+    <span>⏱️ {t.dispatchLabel}: <strong class="text-slate-700">{t.dispatchVal}</strong></span>
+    <span class="text-slate-400 font-mono">Source: UK Cleaning Platform Knowledge Base</span>
+  </div>
+</aside>

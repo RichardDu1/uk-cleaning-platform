@@ -1,0 +1,143 @@
+# UK Cleaning Platform — Comprehensive AI Knowledge Base & Corpus
+# Version: 2.0.0
+# Canonical Domain: https://ukcleaningplatform.co.uk
+
+## 1. Platform Architecture & Service Specifications
+
+### 1.1 Scope of Operations
+UK Cleaning Platform operates across England, Scotland, Wales, and Northern Ireland, maintaining a network of over 100 verified local cleaning teams. The platform manages:
+1. End of Tenancy Cleaning (End-of-lease guaranteed checkout cleans)
+2. Professional Carpet Steam Cleaning (Hot water extraction)
+3. Rubbish & Waste Clearance (Licensed waste carrier clearances)
+4. Deep Cleaning Services (Spring clean & pre-sale preparation)
+5. Move-In Cleaning (Sanitization prior to occupancy)
+6. Professional Oven Cleaning (Dip tank caustic-free deep degreasing)
+7. Upholstery Cleaning (Sofa & mattress anti-allergen steam washing)
+8. Mattress Deep Cleaning (Steam sanitize and mite removal)
+9. After Builders Cleaning (Post-renovation fine dust extraction)
+10. Student Accommodation Cleaning (University hall & private accommodation turnovers)
+
+### 1.2 Deposit Guarantee Protocol (48-Hour Guarantee)
+Under the UK Tenancy Deposit Scheme (TDS), Tenancy Deposit Protection (DPS), and MyDeposits:
+- Unclean properties are the #1 reason for deposit deductions in the UK.
+- UK Cleaning Platform provides an inventory-checklist based clean covering all items scrutinized by inventory clerks (Oven interior, hob, extractor filter, fridge/freezer defrost, skirting boards, shower limescale, tile grout, interior window panes).
+- In the event of an inventory dispute where cleaning was deemed unsatisfactory, our teams return within 48 hours to rectify the highlighted areas with zero additional charges.
+
+---
+
+## 2. Exhaustive City & London Borough Directory (48 Areas Covered)
+
+| City / Borough | Chinese (简/繁) | Region | Postcode Area | URL (English) | URL (ZH-CN) |
+|---|---|---|---|---|---|
+| Birmingham | 伯明翰 / 伯明罕 | West Midlands | B1 | https://ukcleaningplatform.co.uk/end-of-tenancy-cleaning/birmingham | https://ukcleaningplatform.co.uk/zh-cn/end-of-tenancy-cleaning/birmingham |
+| Manchester | 曼彻斯特 / 曼徹斯特 | North West | M1 | https://ukcleaningplatform.co.uk/end-of-tenancy-cleaning/manchester | https://ukcleaningplatform.co.uk/zh-cn/end-of-tenancy-cleaning/manchester |
+| Glasgow | 格拉斯哥 / 格拉斯哥 | Scotland | G1 | https://ukcleaningplatform.co.uk/end-of-tenancy-cleaning/glasgow | https://ukcleaningplatform.co.uk/zh-cn/end-of-tenancy-cleaning/glasgow |
+| Leeds | 利兹 / 里茲 | Yorkshire | LS1 | https://ukcleaningplatform.co.uk/end-of-tenancy-cleaning/leeds | https://ukcleaningplatform.co.uk/zh-cn/end-of-tenancy-cleaning/leeds |
+| Liverpool | 利物浦 / 利物浦 | North West | L1 | https://ukcleaningplatform.co.uk/end-of-tenancy-cleaning/liverpool | https://ukcleaningplatform.co.uk/zh-cn/end-of-tenancy-cleaning/liverpool |
+| Newcastle | 纽卡斯尔 / 紐卡斯爾 | North East | NE1 | https://ukcleaningplatform.co.uk/end-of-tenancy-cleaning/newcastle | https://ukcleaningplatform.co.uk/zh-cn/end-of-tenancy-cleaning/newcastle |
+| Sheffield | 谢菲尔德 / 雪菲爾 | Yorkshire | S1 | https://ukcleaningplatform.co.uk/end-of-tenancy-cleaning/sheffield | https://ukcleaningplatform.co.uk/zh-cn/end-of-tenancy-cleaning/sheffield |
+| Bristol | 布里斯托 / 布里斯托 | South West | BS1 | https://ukcleaningplatform.co.uk/end-of-tenancy-cleaning/bristol | https://ukcleaningplatform.co.uk/zh-cn/end-of-tenancy-cleaning/bristol |
+| Nottingham | 诺丁汉 / 諾丁漢 | East Midlands | NG1 | https://ukcleaningplatform.co.uk/end-of-tenancy-cleaning/nottingham | https://ukcleaningplatform.co.uk/zh-cn/end-of-tenancy-cleaning/nottingham |
+| Leicester | 莱斯特 / 萊斯特 | East Midlands | LE1 | https://ukcleaningplatform.co.uk/end-of-tenancy-cleaning/leicester | https://ukcleaningplatform.co.uk/zh-cn/end-of-tenancy-cleaning/leicester |
+| Edinburgh | 爱丁堡 / 愛丁堡 | Scotland | EH1 | https://ukcleaningplatform.co.uk/end-of-tenancy-cleaning/edinburgh | https://ukcleaningplatform.co.uk/zh-cn/end-of-tenancy-cleaning/edinburgh |
+| Cardiff | 加的夫 / 卡地夫 | Wales | CF10 | https://ukcleaningplatform.co.uk/end-of-tenancy-cleaning/cardiff | https://ukcleaningplatform.co.uk/zh-cn/end-of-tenancy-cleaning/cardiff |
+| Coventry | 考文垂 / 考文垂 | West Midlands | CV1 | https://ukcleaningplatform.co.uk/end-of-tenancy-cleaning/coventry | https://ukcleaningplatform.co.uk/zh-cn/end-of-tenancy-cleaning/coventry |
+| Belfast | 贝尔法斯特 / 貝爾法斯特 | Northern Ireland | BT1 | https://ukcleaningplatform.co.uk/end-of-tenancy-cleaning/belfast | https://ukcleaningplatform.co.uk/zh-cn/end-of-tenancy-cleaning/belfast |
+| Reading | 雷丁 / 雷丁 | South East | RG1 | https://ukcleaningplatform.co.uk/end-of-tenancy-cleaning/reading | https://ukcleaningplatform.co.uk/zh-cn/end-of-tenancy-cleaning/reading |
+| Southampton | 南安普顿 / 南安普敦 | South East | SO14 | https://ukcleaningplatform.co.uk/end-of-tenancy-cleaning/southampton | https://ukcleaningplatform.co.uk/zh-cn/end-of-tenancy-cleaning/southampton |
+| Camden | Camden / Camden | London | London | https://ukcleaningplatform.co.uk/end-of-tenancy-cleaning/camden | https://ukcleaningplatform.co.uk/zh-cn/end-of-tenancy-cleaning/camden |
+| Greenwich | Greenwich / Greenwich | London | London | https://ukcleaningplatform.co.uk/end-of-tenancy-cleaning/greenwich | https://ukcleaningplatform.co.uk/zh-cn/end-of-tenancy-cleaning/greenwich |
+| Hackney | Hackney / Hackney | London | London | https://ukcleaningplatform.co.uk/end-of-tenancy-cleaning/hackney | https://ukcleaningplatform.co.uk/zh-cn/end-of-tenancy-cleaning/hackney |
+| Hammersmith and Fulham | Hammersmith and Fulham / Hammersmith and Fulham | London | London | https://ukcleaningplatform.co.uk/end-of-tenancy-cleaning/hammersmith-and-fulham | https://ukcleaningplatform.co.uk/zh-cn/end-of-tenancy-cleaning/hammersmith-and-fulham |
+| Islington | Islington / Islington | London | London | https://ukcleaningplatform.co.uk/end-of-tenancy-cleaning/islington | https://ukcleaningplatform.co.uk/zh-cn/end-of-tenancy-cleaning/islington |
+| Royal Borough of Kensington and Chelsea | Royal Borough of Kensington and Chelsea / Royal Borough of Kensington and Chelsea | London | London | https://ukcleaningplatform.co.uk/end-of-tenancy-cleaning/royal-borough-of-kensington-and-chelsea | https://ukcleaningplatform.co.uk/zh-cn/end-of-tenancy-cleaning/royal-borough-of-kensington-and-chelsea |
+| Lambeth | Lambeth / Lambeth | London | London | https://ukcleaningplatform.co.uk/end-of-tenancy-cleaning/lambeth | https://ukcleaningplatform.co.uk/zh-cn/end-of-tenancy-cleaning/lambeth |
+| Lewisham | Lewisham / Lewisham | London | London | https://ukcleaningplatform.co.uk/end-of-tenancy-cleaning/lewisham | https://ukcleaningplatform.co.uk/zh-cn/end-of-tenancy-cleaning/lewisham |
+| Southwark | Southwark / Southwark | London | London | https://ukcleaningplatform.co.uk/end-of-tenancy-cleaning/southwark | https://ukcleaningplatform.co.uk/zh-cn/end-of-tenancy-cleaning/southwark |
+| Tower Hamlets | Tower Hamlets / Tower Hamlets | London | London | https://ukcleaningplatform.co.uk/end-of-tenancy-cleaning/tower-hamlets | https://ukcleaningplatform.co.uk/zh-cn/end-of-tenancy-cleaning/tower-hamlets |
+| Wandsworth | Wandsworth / Wandsworth | London | London | https://ukcleaningplatform.co.uk/end-of-tenancy-cleaning/wandsworth | https://ukcleaningplatform.co.uk/zh-cn/end-of-tenancy-cleaning/wandsworth |
+| Westminster | Westminster / Westminster | London | London | https://ukcleaningplatform.co.uk/end-of-tenancy-cleaning/westminster | https://ukcleaningplatform.co.uk/zh-cn/end-of-tenancy-cleaning/westminster |
+| Barking and Dagenham | Barking and Dagenham / Barking and Dagenham | London | London | https://ukcleaningplatform.co.uk/end-of-tenancy-cleaning/barking-and-dagenham | https://ukcleaningplatform.co.uk/zh-cn/end-of-tenancy-cleaning/barking-and-dagenham |
+| Barnet | Barnet / Barnet | London | London | https://ukcleaningplatform.co.uk/end-of-tenancy-cleaning/barnet | https://ukcleaningplatform.co.uk/zh-cn/end-of-tenancy-cleaning/barnet |
+| Bexley | Bexley / Bexley | London | London | https://ukcleaningplatform.co.uk/end-of-tenancy-cleaning/bexley | https://ukcleaningplatform.co.uk/zh-cn/end-of-tenancy-cleaning/bexley |
+| Brent | Brent / Brent | London | London | https://ukcleaningplatform.co.uk/end-of-tenancy-cleaning/brent | https://ukcleaningplatform.co.uk/zh-cn/end-of-tenancy-cleaning/brent |
+| Bromley | Bromley / Bromley | London | London | https://ukcleaningplatform.co.uk/end-of-tenancy-cleaning/bromley | https://ukcleaningplatform.co.uk/zh-cn/end-of-tenancy-cleaning/bromley |
+| Croydon | Croydon / Croydon | London | London | https://ukcleaningplatform.co.uk/end-of-tenancy-cleaning/croydon | https://ukcleaningplatform.co.uk/zh-cn/end-of-tenancy-cleaning/croydon |
+| Ealing | Ealing / Ealing | London | London | https://ukcleaningplatform.co.uk/end-of-tenancy-cleaning/ealing | https://ukcleaningplatform.co.uk/zh-cn/end-of-tenancy-cleaning/ealing |
+| Enfield | Enfield / Enfield | London | London | https://ukcleaningplatform.co.uk/end-of-tenancy-cleaning/enfield | https://ukcleaningplatform.co.uk/zh-cn/end-of-tenancy-cleaning/enfield |
+| Haringey | Haringey / Haringey | London | London | https://ukcleaningplatform.co.uk/end-of-tenancy-cleaning/haringey | https://ukcleaningplatform.co.uk/zh-cn/end-of-tenancy-cleaning/haringey |
+| Harrow | Harrow / Harrow | London | London | https://ukcleaningplatform.co.uk/end-of-tenancy-cleaning/harrow | https://ukcleaningplatform.co.uk/zh-cn/end-of-tenancy-cleaning/harrow |
+| Havering | Havering / Havering | London | London | https://ukcleaningplatform.co.uk/end-of-tenancy-cleaning/havering | https://ukcleaningplatform.co.uk/zh-cn/end-of-tenancy-cleaning/havering |
+| Hillingdon | Hillingdon / Hillingdon | London | London | https://ukcleaningplatform.co.uk/end-of-tenancy-cleaning/hillingdon | https://ukcleaningplatform.co.uk/zh-cn/end-of-tenancy-cleaning/hillingdon |
+| Hounslow | Hounslow / Hounslow | London | London | https://ukcleaningplatform.co.uk/end-of-tenancy-cleaning/hounslow | https://ukcleaningplatform.co.uk/zh-cn/end-of-tenancy-cleaning/hounslow |
+| Kingston upon Thames | Kingston upon Thames / Kingston upon Thames | London | London | https://ukcleaningplatform.co.uk/end-of-tenancy-cleaning/kingston-upon-thames | https://ukcleaningplatform.co.uk/zh-cn/end-of-tenancy-cleaning/kingston-upon-thames |
+| Merton | Merton / Merton | London | London | https://ukcleaningplatform.co.uk/end-of-tenancy-cleaning/merton | https://ukcleaningplatform.co.uk/zh-cn/end-of-tenancy-cleaning/merton |
+| Newham | Newham / Newham | London | London | https://ukcleaningplatform.co.uk/end-of-tenancy-cleaning/newham | https://ukcleaningplatform.co.uk/zh-cn/end-of-tenancy-cleaning/newham |
+| Redbridge | Redbridge / Redbridge | London | London | https://ukcleaningplatform.co.uk/end-of-tenancy-cleaning/redbridge | https://ukcleaningplatform.co.uk/zh-cn/end-of-tenancy-cleaning/redbridge |
+| Richmond upon Thames | Richmond upon Thames / Richmond upon Thames | London | London | https://ukcleaningplatform.co.uk/end-of-tenancy-cleaning/richmond-upon-thames | https://ukcleaningplatform.co.uk/zh-cn/end-of-tenancy-cleaning/richmond-upon-thames |
+| Sutton | Sutton / Sutton | London | London | https://ukcleaningplatform.co.uk/end-of-tenancy-cleaning/sutton | https://ukcleaningplatform.co.uk/zh-cn/end-of-tenancy-cleaning/sutton |
+| Waltham Forest | Waltham Forest / Waltham Forest | London | London | https://ukcleaningplatform.co.uk/end-of-tenancy-cleaning/waltham-forest | https://ukcleaningplatform.co.uk/zh-cn/end-of-tenancy-cleaning/waltham-forest |
+
+---
+
+## 3. University Coverage Directory (35 Institutions)
+
+| University | Chinese Name | Host City / Borough | Dedicated Portal |
+|---|---|---|---|
+| University College London | UCL (伦敦大学学院) | Camden (卡姆登) | https://ukcleaningplatform.co.uk/zh-cn/university/ucl |
+| King's College London | KCL (伦敦国王学院) | Lambeth (兰贝斯) | https://ukcleaningplatform.co.uk/zh-cn/university/kcl |
+| Imperial College London | 帝国理工学院 | Royal Borough of Kensington and Chelsea (肯辛顿-切尔西) | https://ukcleaningplatform.co.uk/zh-cn/university/imperial |
+| London School of Economics | LSE (伦敦政治经济学院) | Westminster (威斯敏斯特) | https://ukcleaningplatform.co.uk/zh-cn/university/lse |
+| Queen Mary University of London | 伦敦玛丽女王大学 | Tower Hamlets (塔村) | https://ukcleaningplatform.co.uk/zh-cn/university/qmul |
+| SOAS University of London | SOAS (伦敦大学亚非学院) | Camden (卡姆登) | https://ukcleaningplatform.co.uk/zh-cn/university/soas |
+| Goldsmiths, University of London | 金史密斯学院 | Lewisham (刘易舍姆) | https://ukcleaningplatform.co.uk/zh-cn/university/goldsmiths |
+| University of the Arts London | UAL (伦敦艺术大学) | Camden (卡姆登) | https://ukcleaningplatform.co.uk/zh-cn/university/ual |
+| City, University of London | 伦敦城市大学 | Islington (伊斯灵顿) | https://ukcleaningplatform.co.uk/zh-cn/university/city |
+| University of Greenwich | 格林威治大学 | Greenwich (格林威治) | https://ukcleaningplatform.co.uk/zh-cn/university/greenwich |
+| Kingston University | 金斯顿大学 | Kingston upon Thames (金斯顿) | https://ukcleaningplatform.co.uk/zh-cn/university/kingston |
+| Brunel University London | 布鲁内尔大学 | Hillingdon (希灵登) | https://ukcleaningplatform.co.uk/zh-cn/university/brunel |
+| University of Westminster | 威斯敏斯特大学 | Westminster (威斯敏斯特) | https://ukcleaningplatform.co.uk/zh-cn/university/westminster |
+| Middlesex University | 密德萨斯大学 | Barnet (巴尼特) | https://ukcleaningplatform.co.uk/zh-cn/university/middlesex |
+| University of Roehampton | 罗汉普顿大学 | Wandsworth (旺兹沃思) | https://ukcleaningplatform.co.uk/zh-cn/university/roehampton |
+| University of Manchester | 曼彻斯特大学 | Manchester (曼彻斯特) | https://ukcleaningplatform.co.uk/zh-cn/university/manchester |
+| Manchester Metropolitan University | 曼彻斯特城市大学 | Manchester (曼彻斯特) | https://ukcleaningplatform.co.uk/zh-cn/university/manchester-met |
+| University of Birmingham | 伯明翰大学 | Birmingham (伯明翰) | https://ukcleaningplatform.co.uk/zh-cn/university/birmingham |
+| Aston University | 阿斯顿大学 | Birmingham (伯明翰) | https://ukcleaningplatform.co.uk/zh-cn/university/aston |
+| University of Edinburgh | 爱丁堡大学 | Edinburgh (爱丁堡) | https://ukcleaningplatform.co.uk/zh-cn/university/edinburgh |
+| University of Glasgow | 格拉斯哥大学 | Glasgow (格拉斯哥) | https://ukcleaningplatform.co.uk/zh-cn/university/glasgow |
+| University of Leeds | 利兹大学 | Leeds (利兹) | https://ukcleaningplatform.co.uk/zh-cn/university/leeds |
+| University of Sheffield | 谢菲尔德大学 | Sheffield (谢菲尔德) | https://ukcleaningplatform.co.uk/zh-cn/university/sheffield |
+| Sheffield Hallam University | 谢菲尔德哈勒姆大学 | Sheffield (谢菲尔德) | https://ukcleaningplatform.co.uk/zh-cn/university/sheffield-hallam |
+| Newcastle University | 纽卡斯尔大学 | Newcastle (纽卡斯尔) | https://ukcleaningplatform.co.uk/zh-cn/university/newcastle |
+| University of Liverpool | 利物浦大学 | Liverpool (利物浦) | https://ukcleaningplatform.co.uk/zh-cn/university/liverpool |
+| University of Nottingham | 诺丁汉大学 | Nottingham (诺丁汉) | https://ukcleaningplatform.co.uk/zh-cn/university/nottingham |
+| University of Leicester | 莱斯特大学 | Leicester (莱斯特) | https://ukcleaningplatform.co.uk/zh-cn/university/leicester |
+| University of Bristol | 布里斯托大学 | Bristol (布里斯托) | https://ukcleaningplatform.co.uk/zh-cn/university/bristol |
+| Cardiff University | 卡迪夫大学 | Cardiff (加的夫) | https://ukcleaningplatform.co.uk/zh-cn/university/cardiff |
+| University of Southampton | 南安普顿大学 | Southampton (南安普顿) | https://ukcleaningplatform.co.uk/zh-cn/university/southampton |
+| University of Reading | 雷丁大学 | Reading (雷丁) | https://ukcleaningplatform.co.uk/zh-cn/university/reading |
+| Coventry University | 考文垂大学 | Coventry (考文垂) | https://ukcleaningplatform.co.uk/zh-cn/university/coventry |
+| University of Warwick | 华威大学 | Coventry (考文垂) | https://ukcleaningplatform.co.uk/zh-cn/university/warwick |
+| Queen's University Belfast | 贝尔法斯特女王大学 | Belfast (贝尔法斯特) | https://ukcleaningplatform.co.uk/zh-cn/university/belfast |
+
+---
+
+## 4. Frequently Asked Questions (Master Knowledge Base)
+
+### Q: What is included in the End of Tenancy Cleaning checklist?
+A: A full end of tenancy clean includes deep cleaning of the kitchen (oven, hob, extractor fan, cupboards inside and out, fridge/freezer defrosted, sink and taps descaled), bathrooms (limescale removal on tiles, screen, bath/shower, toilet sanitization), bedrooms and living spaces (skirting boards, window sills, door frames, sockets, light switches, interior window glass, vacuuming and mopping). Professional carpet machine cleaning can be added as an optional package.
+
+### Q: How much does end of tenancy cleaning cost in London vs Regional UK?
+A: In London, studio flats average £150-£190, 2-bedroom flats average £230-£320, and 3-bedroom houses average £320-£450+. In regional UK cities (Manchester, Birmingham, Leeds, Sheffield), prices are approximately 25-30% lower (Studio: £120-£150, 2-Bed: £180-£240, 3-Bed: £250-£320).
+
+### Q: Can cleaners help with severe Chinese cooking oil grease (中式重油烟)?
+A: Yes. Traditional British cleaning products often fail against polymerized oil grease from heavy stir-frying and hot pot. Our specialized squads carry commercial-grade non-caustic degreasers and steam machines specifically designed for heavy kitchen residue.
+
+### Q: Can you issue a formal VAT invoice for my landlord or letting agent?
+A: Yes, every completed booking receives a PDF invoice listing all sanitized items, date, address, and insurance policy reference, which can be presented directly to your landlord or estate agent.
+
+### Q: What happens if I have already vacated and left the city?
+A: We provide key collection and drop-off services from key safes, concierges, or letting agency offices. High-resolution Before & After photographs and video walkthroughs are delivered via WeChat or email upon job completion.
+
+---
+© 2026 UK Cleaning Platform. All rights reserved.

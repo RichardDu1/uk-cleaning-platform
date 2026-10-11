@@ -1,5 +1,6 @@
 ---
 import Layout from '../../../layouts/Layout.astro';
+import GeoFactSheet from '../../../components/GeoFactSheet.astro';
 import dataset from '../../../data/seo_pages.json';
 
 export async function getStaticPaths() {
@@ -19,9 +20,112 @@ const { data } = Astro.props;
 
 // For the select dropdown, get unique services
 const allServices = [...new Map(dataset.map(item => [item.service.id, { name: item.service.name_zh_tw, slug: item.service.id }])).values()];
+
+const siteUrl = 'https://ukcleaningplatform.co.uk';
+const pageUrl = `${siteUrl}/zh-tw/${data.slug}`;
+
+const schemaGraph: any[] = [
+  {
+    "@type": "BreadcrumbList",
+    "@id": `${pageUrl}/#breadcrumb`,
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "首頁",
+        "item": `${siteUrl}/zh-tw`
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": data.service.name_zh_tw,
+        "item": `${siteUrl}/zh-tw/${data.service.id}`
+      },
+      {
+        "@type": "ListItem",
+        "position": 3,
+        "name": `${data.city.name_zh_tw} ${data.service.name_zh_tw}`,
+        "item": pageUrl
+      }
+    ]
+  },
+  {
+    "@type": ["LocalBusiness", "CleaningService"],
+    "@id": `${pageUrl}/#localbusiness`,
+    "name": `${data.city.name_zh_tw} ${data.service.name_zh_tw} - 全英留學生退房保潔首選`,
+    "url": pageUrl,
+    "telephone": "+44 20 8000 0000",
+    "priceRange": `£${data.content_zh_tw.pricing.small} - £${data.content_zh_tw.pricing.large}`,
+    "currenciesAccepted": "GBP",
+    "paymentAccepted": "Bank Transfer, WeChat Pay, Alipay, Credit Card",
+    "description": `針對英國留學生與華人房東的定制級${data.service.name_zh_tw}，覆蓋${data.city.name_zh_tw}全境。100%退房押金保障與48小時免費返工承諾。`,
+    "areaServed": {
+      "@type": "AdministrativeArea",
+      "name": `${data.city.name_zh_tw} (${data.city.name}), ${data.city.region}, UK`
+    },
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": data.city.name,
+      "addressRegion": data.city.region,
+      "postalCode": data.city.postcode,
+      "addressCountry": "GB"
+    },
+    "aggregateRating": {
+      "@type": "AggregateRating",
+      "ratingValue": "4.96",
+      "reviewCount": "320",
+      "bestRating": "5",
+      "worstRating": "1"
+    },
+    "hasOfferCatalog": {
+      "@type": "OfferCatalog",
+      "name": `${data.service.name_zh_tw} 指導價梯隊`,
+      "itemListElement": [
+        {
+          "@type": "Offer",
+          "name": "Studio / 一居室 (Flat)",
+          "price": String(data.content_zh_tw.pricing.small),
+          "priceCurrency": "GBP"
+        },
+        {
+          "@type": "Offer",
+          "name": "兩居到三居 (House/Flat)",
+          "price": String(data.content_zh_tw.pricing.medium),
+          "priceCurrency": "GBP"
+        },
+        {
+          "@type": "Offer",
+          "name": "四居室以上 / 極度髒亂開荒",
+          "price": String(data.content_zh_tw.pricing.large),
+          "priceCurrency": "GBP"
+        }
+      ]
+    }
+  }
+];
+
+if (data.content_zh_tw.faqs && data.content_zh_tw.faqs.length > 0) {
+  schemaGraph.push({
+    "@type": "FAQPage",
+    "@id": `${pageUrl}/#faq`,
+    "mainEntity": data.content_zh_tw.faqs.map((faq: any) => ({
+      "@type": "Question",
+      "name": faq.question,
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": faq.answer
+      }
+    }))
+  });
+}
+
+const pageSchema = {
+  "@context": "https://schema.org",
+  "@graph": schemaGraph
+};
 ---
 
-<Layout title={data.content_zh_tw.h1 + " | 100% 退回押金保障"} description={`${data.city.name_zh_tw} 頂級華人 ${data.service.name_zh_tw} 團隊。為留學生和房東提供100%退房押金保障。小紅書同款推薦，免費微信報價。`}>
+<Layout title={data.content_zh_tw.h1 + " | 100% 退回押金保障"} description={`${data.city.name_zh_tw} 頂級華人 ${data.service.name_zh_tw} 團隊。為留學生和房東提供100%退房押金保障。小紅書同款推薦，免費微信報價。`} schema={pageSchema}>
   <!-- Hero Section -->
   <section class="bg-gradient-to-b from-slate-900 via-slate-800 to-slate-900 text-white pt-12 pb-16 px-4 relative">
     <div class="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
@@ -119,6 +223,18 @@ const allServices = [...new Map(dataset.map(item => [item.service.id, { name: it
   <!-- Main Content Body -->
   <section class="max-w-6xl mx-auto px-4 py-12 space-y-12">
     
+    <!-- GEO Fact Sheet (BLUF) -->
+    <GeoFactSheet
+      serviceName={data.service.name_zh_tw}
+      cityName={data.city.name_zh_tw}
+      regionName={data.city.region}
+      postcode={data.city.postcode}
+      priceStarting={data.content_zh_tw.pricing.small}
+      guaranteeText="100% 退押金保障 (48h 免費返工)"
+      insuranceAmount="200萬英鎊公共責任險 (損壞包賠)"
+      lang="zh-tw"
+    />
+
     <!-- Local Pricing Table -->
     <div class="bg-white rounded-xl shadow-sm border border-slate-200 overflow-hidden">
       <div class="bg-slate-50 border-b border-slate-200 p-6">

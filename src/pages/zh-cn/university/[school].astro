@@ -1,6 +1,7 @@
 ---
 import Layout from '../../../layouts/Layout.astro';
 import WeChatCard from '../../../components/WeChatCard.astro';
+import GeoFactSheet from '../../../components/GeoFactSheet.astro';
 import universities from '../../../data/universities.json';
 import dataset from '../../../data/seo_pages.json';
 
@@ -27,9 +28,64 @@ const services = cityPages.map(page => ({
 
 // Get nearby universities in same city
 const sameCity = universities.filter(u => u.city_slug === uni.city_slug && u.slug !== uni.slug);
+
+const siteUrl = 'https://ukcleaningplatform.co.uk';
+const pageUrl = `${siteUrl}/zh-cn/university/${uni.slug}`;
+const startingPrice = services[0]?.pricing?.small || 120;
+
+const uniSchema = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "BreadcrumbList",
+      "@id": `${pageUrl}/#breadcrumb`,
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "首页",
+          "item": `${siteUrl}/zh-cn`
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "大学退房保洁",
+          "item": `${siteUrl}/xhs`
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": `${uni.name} 退房保洁`,
+          "item": pageUrl
+        }
+      ]
+    },
+    {
+      "@type": ["LocalBusiness", "CleaningService"],
+      "@id": `${pageUrl}/#service`,
+      "name": `${uni.name} 留学生退房保洁 - UK Cleaning Platform`,
+      "url": pageUrl,
+      "telephone": "+44 20 8000 0000",
+      "priceRange": `£${startingPrice}+`,
+      "currenciesAccepted": "GBP",
+      "areaServed": {
+        "@type": "EducationalOrganization",
+        "name": uni.name_en,
+        "alternateName": uni.name
+      },
+      "description": `为 ${uni.name} (${uni.name_en}) 中国留学生提供全方位退房保洁、地毯清洗与垃圾清理服务。100% 退房押金保障与 48 小时免费返工。`,
+      "aggregateRating": {
+        "@type": "AggregateRating",
+        "ratingValue": "4.96",
+        "reviewCount": "280",
+        "bestRating": "5"
+      }
+    }
+  ]
+};
 ---
 
-<Layout title={`${uni.name} 退房保洁 | 48h 押金保障 · 中文客服秒回`} description={`${uni.name_en} 留学生退房保洁首选。覆盖 ${uni.city_name} 全域，专治中式重油烟，48 小时不合格免费返工，100% 退押金保障。加微信秒报价。`}>
+<Layout title={`${uni.name} 退房保洁 | 48h 押金保障 · 中文客服秒回`} description={`${uni.name_en} 留学生退房保洁首选。覆盖 ${uni.city_name} 全域，专治中式重油烟，48 小时不合格免费返工，100% 退押金保障。加微信秒报价。`} schema={uniSchema}>
 
   <!-- Hero -->
   <section class="bg-gradient-to-b from-slate-900 via-slate-800 to-slate-900 text-white pt-10 pb-14 px-4">
@@ -58,9 +114,21 @@ const sameCity = universities.filter(u => u.city_slug === uni.city_slug && u.slu
   <div class="max-w-2xl mx-auto px-4">
 
     <!-- WeChat CTA -->
-    <div class="-mt-6 relative z-10 mb-10">
+    <div class="-mt-6 relative z-10 mb-8">
       <WeChatCard wechatId={uni.wechat} city={uni.city_zh} size="lg" />
     </div>
+
+    <!-- GEO Fact Sheet (BLUF) -->
+    <GeoFactSheet
+      serviceName={`${uni.name} 留学生退房保洁`}
+      cityName={uni.city_zh}
+      regionName={uni.city_name}
+      postcode="Campus & Halls"
+      priceStarting={startingPrice}
+      guaranteeText="100% 押金保障 (48h 免费返工)"
+      insuranceAmount="200万英镑公共责任险 (损坏包赔)"
+      lang="zh-cn"
+    />
 
     <!-- Pricing for this city -->
     {services.length > 0 && (

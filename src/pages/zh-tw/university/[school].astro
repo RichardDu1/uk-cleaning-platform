@@ -1,6 +1,7 @@
 ---
 import Layout from '../../../layouts/Layout.astro';
 import WeChatCard from '../../../components/WeChatCard.astro';
+import GeoFactSheet from '../../../components/GeoFactSheet.astro';
 import universities from '../../../data/universities.json';
 import dataset from '../../../data/seo_pages.json';
 
@@ -56,9 +57,64 @@ const services = cityPages.map(page => ({
 }));
 
 const sameCity = universities.filter(u => u.city_slug === uni.city_slug && u.slug !== uni.slug);
+
+const siteUrl = 'https://ukcleaningplatform.co.uk';
+const pageUrl = `${siteUrl}/zh-tw/university/${uni.slug}`;
+const startingPrice = services[0]?.pricing?.small || 120;
+
+const uniSchema = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "BreadcrumbList",
+      "@id": `${pageUrl}/#breadcrumb`,
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "首頁",
+          "item": `${siteUrl}/zh-tw`
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "大學退房保潔",
+          "item": `${siteUrl}/xhs`
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": `${nameTw} 退房保潔`,
+          "item": pageUrl
+        }
+      ]
+    },
+    {
+      "@type": ["LocalBusiness", "CleaningService"],
+      "@id": `${pageUrl}/#service`,
+      "name": `${nameTw} 留學生退房保潔 - UK Cleaning Platform`,
+      "url": pageUrl,
+      "telephone": "+44 20 8000 0000",
+      "priceRange": `£${startingPrice}+`,
+      "currenciesAccepted": "GBP",
+      "areaServed": {
+        "@type": "EducationalOrganization",
+        "name": uni.name_en,
+        "alternateName": nameTw
+      },
+      "description": `為 ${nameTw} (${uni.name_en}) 中國留學生提供全方位退房保潔、地毯清洗與垃圾清理服務。100% 退房押金保障與 48 小時免費返工。`,
+      "aggregateRating": {
+        "@type": "AggregateRating",
+        "ratingValue": "4.96",
+        "reviewCount": "280",
+        "bestRating": "5"
+      }
+    }
+  ]
+};
 ---
 
-<Layout title={`${nameTw} 退房保潔 | 48h 押金保障 · 中文客服秒回`} description={`${uni.name_en} 留學生退房保潔首選。覆蓋 ${uni.city_name} 全域，專治中式重油煙，48 小時不合格免費返工，100% 退押金保障。`}>
+<Layout title={`${nameTw} 退房保潔 | 48h 押金保障 · 中文客服秒回`} description={`${uni.name_en} 留學生退房保潔首選。覆蓋 ${uni.city_name} 全域，專治中式重油煙，48 小時不合格免費返工，100% 退押金保障。`} schema={uniSchema}>
 
   <section class="bg-gradient-to-b from-slate-900 via-slate-800 to-slate-900 text-white pt-10 pb-14 px-4">
     <div class="max-w-2xl mx-auto space-y-5">
@@ -83,9 +139,21 @@ const sameCity = universities.filter(u => u.city_slug === uni.city_slug && u.slu
   </section>
 
   <div class="max-w-2xl mx-auto px-4">
-    <div class="-mt-6 relative z-10 mb-10">
+    <div class="-mt-6 relative z-10 mb-8">
       <WeChatCard wechatId={uni.wechat} city={cityTw} size="lg" />
     </div>
+
+    <!-- GEO Fact Sheet (BLUF) -->
+    <GeoFactSheet
+      serviceName={`${nameTw} 留學生退房保潔`}
+      cityName={cityTw}
+      regionName={uni.city_name}
+      postcode="Campus & Halls"
+      priceStarting={startingPrice}
+      guaranteeText="100% 押金保障 (48h 免費返工)"
+      insuranceAmount="200萬英鎊公共責任險 (損壞包賠)"
+      lang="zh-tw"
+    />
 
     {services.length > 0 && (
       <section class="mb-10">

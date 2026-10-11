@@ -1,0 +1,38 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+import dataset from '../../../data/seo_pages.json';
+
+// Extract unique cities and group by region
+const allCities = [...new Map(dataset.map(item => [item.city.name, {
+  city: item.city.name_zh_cn || item.city.name,
+  city_en: item.city.name,
+  slug: item.city.name.toLowerCase().replace(/ /g, '-'),
+  region: item.city.region
+}])).values()];
+const regions = [...new Set(allCities.map(c => c.region))].sort();
+---
+<Layout title="英国服务覆盖区域网络 | 全英 116 城华人保洁团队" description="查找您所在城市的本地退房保洁团队。覆盖伦敦 32 个行政区、曼彻斯特、伯明翰、爱丁堡等全英 116 个主要城市与大学城。">
+  <div class="max-w-6xl mx-auto px-4 py-16">
+    <div class="inline-flex items-center space-x-2 bg-emerald-950 text-emerald-400 border border-emerald-800 text-xs font-semibold px-3 py-1 rounded-full mb-4">
+      <span>📍 全英覆盖 • 116 个城市与行政区 • 本地车队上门</span>
+    </div>
+    <h1 class="text-3xl md:text-4xl font-extrabold text-slate-900 mb-4">全英服务覆盖网络</h1>
+    <p class="text-base text-slate-600 mb-12">我们的严选保洁专家与清运车队覆盖全英各大主要城市及大学城。选择您所在的区域，直达本地团队报价与排期：</p>
+    
+    <div class="space-y-12">
+      {regions.map((region) => (
+        <div>
+          <h2 class="text-xl md:text-2xl font-bold text-slate-800 mb-6 border-b pb-2">{region}</h2>
+          <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4">
+            {allCities.filter(c => c.region === region).sort((a: any, b: any) => a.city.localeCompare(b.city)).map((city: any) => (
+              <a href={`/zh-cn/end-of-tenancy-cleaning/${city.slug}`} class="text-xs md:text-sm text-slate-700 hover:text-sky-700 font-medium p-2.5 rounded-lg border border-slate-200/80 hover:border-sky-300 bg-white transition flex flex-col">
+                <span class="font-bold text-slate-900">{city.city}</span>
+                <span class="text-[10px] text-slate-400">{city.city_en}</span>
+              </a>
+            ))}
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</Layout>

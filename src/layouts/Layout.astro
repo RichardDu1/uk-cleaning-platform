@@ -42,6 +42,40 @@ const t = {
   legal: isCn ? "法律与安全" : isTw ? "法律與安全" : "Legal & Security",
   footer_sec: isCn ? "所有平台保洁团队均提供200万镑责任险及退房押金保障。" : isTw ? "所有平台保潔團隊均提供200萬鎊責任險及退房押金保障。" : "All member cleaners are verified with £2M+ Public Liability Insurance and backed by our Deposit Return Guarantee."
 };
+
+const siteUrl = 'https://ukcleaningplatform.co.uk';
+const canonicalURL = new URL(pathname, siteUrl).href;
+const enHref = new URL(enUrl, siteUrl).href;
+const cnHref = new URL(cnUrl, siteUrl).href;
+const twHref = new URL(twUrl, siteUrl).href;
+
+const ogLocale = isCn ? 'zh_CN' : isTw ? 'zh_TW' : 'en_GB';
+
+// Default Organization & WebSite JSON-LD if none passed
+const defaultSchema = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": `${siteUrl}/#organization`,
+      "name": "UK Cleaning Platform",
+      "url": siteUrl,
+      "logo": `${siteUrl}/favicon.svg`,
+      "description": "Nationwide professional end of tenancy cleaning and waste clearance network in the UK.",
+      "areaServed": "GB",
+      "knowsLanguage": ["en", "zh-CN", "zh-TW"]
+    },
+    {
+      "@type": "WebSite",
+      "@id": `${siteUrl}/#website`,
+      "url": siteUrl,
+      "name": "UK Cleaning Platform",
+      "publisher": { "@id": `${siteUrl}/#organization` },
+      "inLanguage": lang === 'en' ? 'en-GB' : lang === 'zh-cn' ? 'zh-CN' : 'zh-TW'
+    }
+  ]
+};
+const activeSchema = schema || defaultSchema;
 ---
 
 <!DOCTYPE html>
@@ -50,14 +84,38 @@ const t = {
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    
+    <!-- Title & Meta Description -->
     <title>{title}</title>
     <meta name="description" content={description} />
+    
+    <!-- Canonical & Multilingual Hreflang Alternates -->
+    <link rel="canonical" href={canonicalURL} />
+    <link rel="alternate" hreflang="en" href={enHref} />
+    <link rel="alternate" hreflang="zh-CN" href={cnHref} />
+    <link rel="alternate" hreflang="zh-TW" href={twHref} />
+    <link rel="alternate" hreflang="x-default" href={enHref} />
+
+    <!-- LLM Context & Semantic Discovery -->
+    <link rel="help" type="text/plain" href="/llms.txt" title="LLMs.txt Context" />
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={canonicalURL} />
+    <meta property="og:site_name" content="UK Cleaning Platform" />
+    <meta property="og:locale" content={ogLocale} />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
-    <meta property="og:type" content="website" />
-    {schema && (
-      <script type="application/ld+json" set:html={JSON.stringify(schema)} />
-    )}
+    <meta property="og:image" content={`${siteUrl}/favicon.svg`} />
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={`${siteUrl}/favicon.svg`} />
+
+    <!-- Structured Data (Schema.org JSON-LD) -->
+    <script type="application/ld+json" set:html={JSON.stringify(activeSchema)} />
   </head>
   <body class="bg-slate-50 text-slate-900 font-sans antialiased min-h-screen flex flex-col">
     <!-- Top Trust Bar -->
