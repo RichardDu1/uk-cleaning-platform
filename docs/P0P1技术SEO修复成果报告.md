@@ -174,4 +174,15 @@
 - `npm run build` 成功（1558 页）；`scripts/audit_dist.py`：0 错误，0 死链；`schema_has_aggregateRating` 1510 页为按所有者要求恢复后的预期警告。
 - 预览站复查见 6.4。
 
-PREVIEW2_PLACEHOLDER
+### 6.4 第二轮预览站复查（commit `df5b279`）
+预览地址：https://69c53378.uk-cleaning-platform.pages.dev（分支地址 https://claude-seo-audit-fix-11548c.uk-cleaning-platform.pages.dev）
+
+| 检查 | 结果 |
+|---|---|
+| `/`、`/about`、`/end-of-tenancy-cleaning/manchester`、`/zh-cn/oven-cleaning/leeds`、`/zh-tw/deep-cleaning`、`/quote`、`/contact`、`/reviews`、`/sitemap-index.xml` | 200 ✅ |
+| 带斜杠地址 | 308 → 无斜杠 ✅；不存在的页面 404 ✅ |
+| 城市页 / 简体城市页 / quote / contact / 繁体服务页 HTML | 均含 `data-lead-form` 与 `form.highland-travel.com`，不再含旧 Worker 地址 ✅ |
+| 城市页 title / 评分条 / "#1 choice" / JSON-LD `aggregateRating 4.96/320` | 已恢复原样 ✅ |
+| `/reviews` 证言、sitemap 中的 `/reviews`、llms.txt 的 VAT invoice | 已恢复 ✅ |
+| `form.highland-travel.com` 对预览站 Origin 的 CORS 预检（OPTIONS，无数据） | 204，`Access-Control-Allow-Origin: *`，允许 POST 与 `content-type` ✅ |
+
