@@ -21,7 +21,7 @@ const xhsSchema = {
       "@id": `${siteUrl}/xhs/#webpage`,
       "url": `${siteUrl}/xhs`,
       "name": "全英留学生退房保洁 | 小红书同款推荐 · 48h 退押金保障",
-      "description": "小红书爆款推荐！全英 116 城覆盖，专业退房清洁团队。加微信秒报一口价，48 小时不合格免费返工，100% 退房押金保障。",
+      "description": "小红书爆款推荐！全英 48 城覆盖，专业退房清洁团队。加微信秒报一口价，48 小时不合格免费返工，100% 退房押金保障。",
       "inLanguage": "zh-CN"
     },
     {
@@ -74,7 +74,7 @@ const xhsSchema = {
 };
 ---
 
-<Layout title="全英留学生退房保洁 | 小红书同款推荐 · 48h 退押金保障" description="小红书爆款推荐！全英 116 城覆盖，专业退房清洁团队。加微信秒报一口价，48 小时不合格免费返工，100% 退房押金保障。" schema={xhsSchema}>
+<Layout lang="zh-cn" langs={[]} title="全英留学生退房保洁 | 小红书同款推荐 · 48h 退押金保障" description="小红书爆款推荐！全英 48 城覆盖，专业退房清洁团队。加微信秒报一口价，48 小时不合格免费返工，100% 退房押金保障。" schema={xhsSchema}>
   
   <!-- Hero: Mobile-First, Impact-First -->
   <section class="bg-gradient-to-b from-rose-600 via-rose-500 to-pink-500 text-white pt-10 pb-14 px-4 relative overflow-hidden">
@@ -92,7 +92,7 @@ const xhsSchema = {
       
       <p class="text-rose-100 text-sm leading-relaxed max-w-sm mx-auto">
         已帮助 3000+ 留学生顺利退房拿回全部押金<br/>
-        覆盖全英 116 个城市 · 中文客服秒回
+        覆盖全英 48 个城市 · 中文客服秒回
       </p>
 
       <!-- Trust Badges -->
@@ -113,7 +113,7 @@ const xhsSchema = {
   <section class="max-w-lg mx-auto px-4 pt-4">
     <GeoFactSheet
       serviceName="全英留学生退房深度保洁"
-      cityName="全英 116 城"
+      cityName="全英 48 城"
       regionName="英国各大大学城"
       postcode="UK Nationwide"
       priceStarting="120"
@@ -253,7 +253,7 @@ const xhsSchema = {
     </h3>
     <div class="grid grid-cols-2 gap-2 mb-6">
       {londonUnis.map(uni => (
-        <a href={`/zh-cn/university/${uni.slug}?utm_source=xiaohongshu`} class="bg-white hover:bg-rose-50 border border-slate-200 hover:border-rose-300 p-3 rounded-xl text-center text-xs font-medium text-slate-700 hover:text-rose-700 shadow-sm transition">
+        <a href={`/zh-cn/university/${uni.slug}`} class="bg-white hover:bg-rose-50 border border-slate-200 hover:border-rose-300 p-3 rounded-xl text-center text-xs font-medium text-slate-700 hover:text-rose-700 shadow-sm transition">
           <span class="block font-bold text-sm">{uni.name.split('(')[0].split(' ')[0]}</span>
           {uni.name.includes('(') && <span class="text-[10px] text-slate-400">{uni.name.match(/\(([^)]+)\)/)?.[1]}</span>}
         </a>
@@ -266,7 +266,7 @@ const xhsSchema = {
     </h3>
     <div class="grid grid-cols-2 gap-2">
       {otherUnis.map(uni => (
-        <a href={`/zh-cn/university/${uni.slug}?utm_source=xiaohongshu`} class="bg-white hover:bg-sky-50 border border-slate-200 hover:border-sky-300 p-3 rounded-xl text-center text-xs font-medium text-slate-700 hover:text-sky-700 shadow-sm transition">
+        <a href={`/zh-cn/university/${uni.slug}`} class="bg-white hover:bg-sky-50 border border-slate-200 hover:border-sky-300 p-3 rounded-xl text-center text-xs font-medium text-slate-700 hover:text-sky-700 shadow-sm transition">
           <span class="block font-bold text-sm">{uni.name.split('(')[0].split(' ')[0]}</span>
           <span class="text-[10px] text-slate-400">{uni.city_zh}</span>
         </a>
@@ -280,7 +280,7 @@ const xhsSchema = {
       <h2 class="text-xl font-extrabold text-slate-900 text-center mb-6">🧹 我们提供的服务</h2>
       <div class="grid grid-cols-2 gap-2">
         {uniqueServices.map(svc => (
-          <a href={`/zh-cn/${svc.slug}?utm_source=xiaohongshu`} class="bg-white hover:bg-sky-50 border border-slate-200 p-3 rounded-xl text-center text-xs font-bold text-slate-700 hover:text-sky-700 shadow-sm transition">
+          <a href={`/zh-cn/${svc.slug}`} class="bg-white hover:bg-sky-50 border border-slate-200 p-3 rounded-xl text-center text-xs font-bold text-slate-700 hover:text-sky-700 shadow-sm transition">
             {svc.name}
           </a>
         ))}

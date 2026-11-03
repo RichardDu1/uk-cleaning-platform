@@ -1,0 +1,23 @@
+---
+// Presence of dist/404.html makes Cloudflare Pages return a real 404 status
+// instead of serving the homepage (soft 404) for unknown URLs.
+import Layout from '../layouts/Layout.astro';
+import dataset from '../data/seo_pages.json';
+
+const services = [...new Map(dataset.map((item) => [item.service.id, item.service])).values()];
+---
+<Layout langs={[]} noindex title="Page Not Found | UK Cleaning Platform" description="The page you requested does not exist. Browse cleaning services and areas covered by UK Cleaning Platform.">
+  <div class="max-w-3xl mx-auto px-4 py-16">
+    <h1 class="text-4xl font-extrabold text-slate-900 mb-3">Page not found · 页面不存在</h1>
+    <p class="text-slate-600 mb-8">The page may have moved, or we don't cover that area yet. 您访问的页面不存在，可能该城市暂未开通。</p>
+    <div class="flex flex-wrap gap-3 mb-10">
+      <a href="/areas" class="bg-sky-700 hover:bg-sky-800 text-white font-bold px-5 py-2.5 rounded-lg transition">Areas we cover</a>
+      <a href="/zh-cn/areas" class="bg-white border border-slate-300 hover:bg-slate-50 font-bold px-5 py-2.5 rounded-lg transition">覆盖区域（中文）</a>
+      <a href="/quote" class="bg-amber-500 hover:bg-amber-600 text-slate-900 font-bold px-5 py-2.5 rounded-lg transition">Get a quote</a>
+    </div>
+    <h2 class="text-lg font-bold text-slate-900 mb-3">Services</h2>
+    <ul class="grid grid-cols-1 sm:grid-cols-2 gap-2 text-sm">
+      {services.map((svc) => <li><a href={`/${svc.id}`} class="text-sky-700 hover:underline">{svc.name}</a></li>)}
+    </ul>
+  </div>
+</Layout>

@@ -1,39 +1,56 @@
 ---
+import { SITE_URL, ALL_LANGS, absUrl, langPath, type Lang } from '../lib/site';
+import dataset from '../data/seo_pages.json';
+
 interface Props {
   title: string;
   description: string;
-  schema?: object;
+  schema?: { '@graph'?: object[] } & Record<string, unknown>;
+  /** Languages this page exists in; drives hreflang and the language switcher. */
+  langs?: Lang[];
+  /** Override the language detected from the URL (e.g. the Chinese-only /xhs page). */
+  lang?: Lang;
+  noindex?: boolean;
 }
 
-const { title, description, schema } = Astro.props;
-const { pathname } = Astro.url;
+const { title, description, schema, langs = ALL_LANGS, noindex = false } = Astro.props;
+
+// Normalise the current path: no `.html`, no trailing slash (matches build.format 'file').
+let pathname = Astro.url.pathname.replace(/\.html$/, '').replace(/\/index$/, '');
+if (pathname !== '/') pathname = pathname.replace(/\/+$/, '') || '/';
 
 // Detect language from URL
-let lang = 'en';
-if (pathname.startsWith('/zh-cn')) lang = 'zh-cn';
-else if (pathname.startsWith('/zh-tw')) lang = 'zh-tw';
-
-// Strip language prefix to get base path for the switcher
-let basePath = pathname;
-if (lang !== 'en') {
-  basePath = pathname.replace(`/${lang}`, '') || '/';
+let lang: Lang = Astro.props.lang ?? 'en';
+if (!Astro.props.lang) {
+  if (pathname === '/zh-cn' || pathname.startsWith('/zh-cn/')) lang = 'zh-cn';
+  else if (pathname === '/zh-tw' || pathname.startsWith('/zh-tw/')) lang = 'zh-tw';
 }
-const enUrl = basePath === '' ? '/' : basePath;
-const cnUrl = `/zh-cn${basePath === '/' ? '' : basePath}`;
-const twUrl = `/zh-tw${basePath === '/' ? '' : basePath}`;
+
+// Language-neutral base path, e.g. `/oven-cleaning/leeds`
+let basePath = pathname;
+if (pathname === '/zh-cn' || pathname === '/zh-tw') basePath = '/';
+else if (/^\/zh-(cn|tw)\//.test(pathname)) basePath = pathname.slice(6);
+
+// Only link to language versions that exist; otherwise fall back to that language's home.
+const altPath = (l: Lang) => (langs.includes(l) ? langPath(l, basePath) : langPath(l, '/'));
+const enUrl = altPath('en');
+const cnUrl = altPath('zh-cn');
+const twUrl = altPath('zh-tw');
 
 const isCn = lang === 'zh-cn';
 const isTw = lang === 'zh-tw';
 const isZh = isCn || isTw;
+const homeHref = langPath(lang, '/');
 
 const t = {
   trust1: isCn ? "全英房东与留学生评分 4.96/5" : isTw ? "全英房東與留學生評分 4.96/5" : "Rated 4.96/5 by UK Landlords & Students",
   trust2: isCn ? "200万英镑公共责任险" : isTw ? "200萬英鎊公共責任險" : "£2,000,000 Public Liability Insured",
   trust3: isCn ? "48小时无条件返工保押金" : isTw ? "48小時無條件返工保押金" : "48-Hour Deposit Return Guarantee",
   trust4: isCn ? "100% 透明一口价" : isTw ? "100% 透明一口價" : "100% Fixed Price Quotes",
-  menu_services: isZh ? "服务项目" : "Services",
-  menu_areas: isZh ? "覆盖区域" : "Areas Covered",
-  menu_about: isZh ? "关于我们" : "About Us",
+  menu_services: isCn ? "服务项目" : isTw ? "服務項目" : "Services",
+  menu_areas: isCn ? "覆盖区域" : isTw ? "覆蓋區域" : "Areas Covered",
+  menu_quote: isCn ? "免费报价" : isTw ? "免費報價" : "Get a Quote",
+  menu_about: isCn ? "关于我们" : isTw ? "關於我們" : "About Us",
   platform_sub: isCn ? "全英华人退房保洁首选" : isTw ? "全英華人退房保潔首選" : "UK's Verified Cleaning Network",
   footer_desc: isCn ? "连接英国留学生、租客与华人房东的严选保洁专家。专注退房清洁、深度保洁及垃圾清理。" : isTw ? "連接英國留學生、租客與華人房東的嚴選保潔專家。專注退房清潔、深度保潔及垃圾清理。" : "Connecting UK tenants and landlords with verified cleaning specialists. End of tenancy, deep cleaning, and waste clearance.",
   verified_badge: isCn ? "✓ 实名认证保洁团队" : isTw ? "✓ 實名認證保潔團隊" : "✓ Verified Vetted Cleaners",
@@ -43,61 +60,70 @@ const t = {
   footer_sec: isCn ? "所有平台保洁团队均提供200万镑责任险及退房押金保障。" : isTw ? "所有平台保潔團隊均提供200萬鎊責任險及退房押金保障。" : "All member cleaners are verified with £2M+ Public Liability Insurance and backed by our Deposit Return Guarantee."
 };
 
-const siteUrl = 'https://ukcleaningplatform.co.uk';
-const canonicalURL = new URL(pathname, siteUrl).href;
-const enHref = new URL(enUrl, siteUrl).href;
-const cnHref = new URL(cnUrl, siteUrl).href;
-const twHref = new URL(twUrl, siteUrl).href;
+const serviceName = (svc: any) => (isCn ? svc.name_zh_cn : isTw ? svc.name_zh_tw : svc.name);
+const footerServices = ['end-of-tenancy-cleaning', 'deep-cleaning', 'professional-carpet-cleaning', 'oven-cleaning', 'rubbish-waste-clearance']
+  .map((id) => dataset.find((item) => item.service.id === id)?.service)
+  .filter(Boolean);
 
+const canonicalURL = absUrl(pathname);
+const htmlLang = { en: 'en-GB', 'zh-cn': 'zh-CN', 'zh-tw': 'zh-TW' }[lang];
 const ogLocale = isCn ? 'zh_CN' : isTw ? 'zh_TW' : 'en_GB';
+const hreflangs = ([['en-GB', 'en'], ['zh-CN', 'zh-cn'], ['zh-TW', 'zh-tw']] as const)
+  .filter(([, l]) => langs.includes(l))
+  .map(([code, l]) => ({ code, href: absUrl(langPath(l, basePath)) }));
+const xDefault = langs.includes('en') ? absUrl(basePath) : hreflangs[0]?.href;
 
-// Default Organization & WebSite JSON-LD if none passed
-const defaultSchema = {
-  "@context": "https://schema.org",
-  "@graph": [
-    {
-      "@type": "Organization",
-      "@id": `${siteUrl}/#organization`,
-      "name": "UK Cleaning Platform",
-      "url": siteUrl,
-      "logo": `${siteUrl}/favicon.svg`,
-      "description": "Nationwide professional end of tenancy cleaning and waste clearance network in the UK.",
-      "areaServed": "GB",
-      "knowsLanguage": ["en", "zh-CN", "zh-TW"]
-    },
-    {
-      "@type": "WebSite",
-      "@id": `${siteUrl}/#website`,
-      "url": siteUrl,
-      "name": "UK Cleaning Platform",
-      "publisher": { "@id": `${siteUrl}/#organization` },
-      "inLanguage": lang === 'en' ? 'en-GB' : lang === 'zh-cn' ? 'zh-CN' : 'zh-TW'
-    }
-  ]
-};
-const activeSchema = schema || defaultSchema;
+// Organization & WebSite JSON-LD on every page; page-level nodes are appended to the graph.
+const baseGraph = [
+  {
+    "@type": "Organization",
+    "@id": `${SITE_URL}/#organization`,
+    "name": "UK Cleaning Platform",
+    "url": SITE_URL,
+    "logo": `${SITE_URL}/favicon.svg`,
+    "description": "Cleaning network for UK tenants, students and landlords: end of tenancy cleaning, deep cleaning and waste clearance, with English and Chinese support.",
+    "areaServed": { "@type": "Country", "name": "United Kingdom" },
+    "knowsLanguage": ["en", "zh-CN", "zh-TW"]
+  },
+  {
+    "@type": "WebSite",
+    "@id": `${SITE_URL}/#website`,
+    "url": SITE_URL,
+    "name": "UK Cleaning Platform",
+    "publisher": { "@id": `${SITE_URL}/#organization` },
+    "inLanguage": ["en-GB", "zh-CN", "zh-TW"]
+  }
+];
+const pageGraph = schema ? (schema['@graph'] ?? [Object.fromEntries(Object.entries(schema).filter(([k]) => k !== '@context'))]) : [];
+const activeSchema = { "@context": "https://schema.org", "@graph": [...baseGraph, ...pageGraph] };
+
+// Analytics / webmaster verification: only rendered when configured (Cloudflare Pages env vars).
+const GA4_ID = import.meta.env.PUBLIC_GA4_ID;
+const CF_BEACON = import.meta.env.PUBLIC_CF_BEACON_TOKEN;
+const GSC_VERIFICATION = import.meta.env.PUBLIC_GSC_VERIFICATION;
+const BING_VERIFICATION = import.meta.env.PUBLIC_BING_VERIFICATION;
 ---
 
 <!DOCTYPE html>
-<html lang={lang} class="scroll-smooth">
+<html lang={htmlLang} class="scroll-smooth">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    
+
     <!-- Title & Meta Description -->
     <title>{title}</title>
     <meta name="description" content={description} />
-    
-    <!-- Canonical & Multilingual Hreflang Alternates -->
+    {noindex && <meta name="robots" content="noindex, follow" />}
+
+    <!-- Canonical & Multilingual Hreflang Alternates (only for versions that exist) -->
     <link rel="canonical" href={canonicalURL} />
-    <link rel="alternate" hreflang="en" href={enHref} />
-    <link rel="alternate" hreflang="zh-CN" href={cnHref} />
-    <link rel="alternate" hreflang="zh-TW" href={twHref} />
-    <link rel="alternate" hreflang="x-default" href={enHref} />
+    {hreflangs.length > 1 && hreflangs.map((h) => <link rel="alternate" hreflang={h.code} href={h.href} />)}
+    {hreflangs.length > 1 && xDefault && <link rel="alternate" hreflang="x-default" href={xDefault} />}
 
     <!-- LLM Context & Semantic Discovery -->
     <link rel="help" type="text/plain" href="/llms.txt" title="LLMs.txt Context" />
+    <link rel="sitemap" type="application/xml" href="/sitemap-index.xml" />
 
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website" />
@@ -106,13 +132,26 @@ const activeSchema = schema || defaultSchema;
     <meta property="og:locale" content={ogLocale} />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
-    <meta property="og:image" content={`${siteUrl}/favicon.svg`} />
 
     <!-- Twitter Card -->
     <meta name="twitter:card" content="summary" />
     <meta name="twitter:title" content={title} />
     <meta name="twitter:description" content={description} />
-    <meta name="twitter:image" content={`${siteUrl}/favicon.svg`} />
+
+    {GSC_VERIFICATION && <meta name="google-site-verification" content={GSC_VERIFICATION} />}
+    {BING_VERIFICATION && <meta name="msvalidate.01" content={BING_VERIFICATION} />}
+    {GA4_ID && (
+      <Fragment>
+        <script async src={`https://www.googletagmanager.com/gtag/js?id=${GA4_ID}`}></script>
+        <script is:inline define:vars={{ GA4_ID }}>
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+          gtag('config', GA4_ID);
+        </script>
+      </Fragment>
+    )}
+    {CF_BEACON && <script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon={JSON.stringify({ token: CF_BEACON })}></script>}
 
     <!-- Structured Data (Schema.org JSON-LD) -->
     <script type="application/ld+json" set:html={JSON.stringify(activeSchema)} />
@@ -129,7 +168,7 @@ const activeSchema = schema || defaultSchema;
           <span class="hidden sm:inline text-slate-400">|</span>
           <span class="hidden sm:inline">🛡️ {t.trust2}</span>
         </div>
-        <div class="flex items-center space-x-3 text-slate-300">
+        <div class="hidden sm:flex items-center space-x-3 text-slate-300">
           <span>✓ {t.trust3}</span>
           <span>✓ {t.trust4}</span>
         </div>
@@ -138,26 +177,25 @@ const activeSchema = schema || defaultSchema;
 
     <!-- Navigation Header -->
     <header class="bg-white shadow-sm sticky top-0 z-40">
-      <div class="max-w-6xl mx-auto px-4 py-3.5 flex justify-between items-center">
-        <a href={lang === 'en' ? '/' : `/${lang}`} class="flex items-center space-x-2">
+      <div class="max-w-6xl mx-auto px-4 py-3 flex flex-wrap justify-between items-center gap-y-2">
+        <a href={homeHref} class="flex items-center space-x-2">
           <div class="bg-sky-700 text-white p-2 rounded-lg font-bold text-xl leading-none">CP</div>
           <div>
-            <span class="font-extrabold text-xl text-slate-900 tracking-tight">UKCleaning<span class="text-sky-700">Platform</span></span>
+            <span class="font-extrabold text-lg sm:text-xl text-slate-900 tracking-tight">UKCleaning<span class="text-sky-700">Platform</span></span>
             <span class="block text-[10px] uppercase tracking-wider font-semibold text-slate-500">{t.platform_sub}</span>
           </div>
         </a>
 
-        <div class="flex items-center space-x-6">
-          <nav class="hidden md:flex space-x-4 text-sm font-medium text-slate-600 items-center">
-            <a href={lang === 'en' ? '/services' : `/${lang}/services`} class="hover:text-sky-700 transition">{t.menu_services}</a>
-            <a href={lang === 'en' ? '/areas' : `/${lang}/areas`} class="hover:text-sky-700 transition">{t.menu_areas}</a>
-            <div class="h-4 w-px bg-slate-300 mx-2"></div>
-            <!-- Dynamic Language Switchers -->
-            <a href={enUrl} class={`transition text-xs font-bold ${lang==='en' ? 'text-sky-700' : 'hover:text-sky-700'}`} title="English">EN</a>
-            <a href={cnUrl} class={`transition text-xs font-bold ${lang==='zh-cn' ? 'text-sky-700' : 'hover:text-sky-700'}`} title="Simplified Chinese">简</a>
-            <a href={twUrl} class={`transition text-xs font-bold ${lang==='zh-tw' ? 'text-sky-700' : 'hover:text-sky-700'}`} title="Traditional Chinese">繁</a>
-          </nav>
-        </div>
+        <nav class="flex flex-wrap gap-x-4 gap-y-1 text-sm font-medium text-slate-600 items-center" aria-label="Main">
+          <a href={langPath(lang, '/services')} class="hover:text-sky-700 transition">{t.menu_services}</a>
+          <a href={langPath(lang, '/areas')} class="hover:text-sky-700 transition">{t.menu_areas}</a>
+          <a href="/quote" class="hidden sm:inline hover:text-sky-700 transition">{t.menu_quote}</a>
+          <span class="h-4 w-px bg-slate-300" aria-hidden="true"></span>
+          <!-- Language switcher: links to the same page when it exists in that language -->
+          <a href={enUrl} hreflang="en-GB" class={`transition text-xs font-bold ${lang==='en' ? 'text-sky-700' : 'hover:text-sky-700'}`} title="English">EN</a>
+          <a href={cnUrl} hreflang="zh-CN" class={`transition text-xs font-bold ${lang==='zh-cn' ? 'text-sky-700' : 'hover:text-sky-700'}`} title="简体中文">简</a>
+          <a href={twUrl} hreflang="zh-TW" class={`transition text-xs font-bold ${lang==='zh-tw' ? 'text-sky-700' : 'hover:text-sky-700'}`} title="繁體中文">繁</a>
+        </nav>
       </div>
     </header>
 
@@ -168,7 +206,7 @@ const activeSchema = schema || defaultSchema;
 
     <!-- Footer -->
     <footer class="bg-slate-900 text-slate-400 py-12 border-t border-slate-800">
-      <div class="max-w-6xl mx-auto px-4 grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
+      <div class="max-w-6xl mx-auto px-4 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8 mb-8">
         <div>
           <span class="font-extrabold text-xl text-white tracking-tight">UKCleaning<span class="text-sky-500">Platform</span></span>
           <p class="text-xs text-slate-400 mt-2">{t.footer_desc}</p>
@@ -179,16 +217,20 @@ const activeSchema = schema || defaultSchema;
         <div>
           <h4 class="text-sm font-semibold text-white uppercase tracking-wider mb-3">{t.pop_services}</h4>
           <ul class="space-y-2 text-xs">
-            <li><a href={lang === 'en' ? '/end-of-tenancy-cleaning' : `/${lang}/end-of-tenancy-cleaning`} class="hover:text-white transition">End of Tenancy Cleaning</a></li>
-            <li><a href={lang === 'en' ? '/professional-carpet-cleaning' : `/${lang}/professional-carpet-cleaning`} class="hover:text-white transition">Carpet Cleaning</a></li>
-            <li><a href={lang === 'en' ? '/rubbish-waste-clearance' : `/${lang}/rubbish-waste-clearance`} class="hover:text-white transition">Rubbish Clearance</a></li>
+            {footerServices.map((svc: any) => (
+              <li><a href={langPath(lang, `/${svc.id}`)} class="hover:text-white transition">{serviceName(svc)}</a></li>
+            ))}
           </ul>
         </div>
         <div>
           <h4 class="text-sm font-semibold text-white uppercase tracking-wider mb-3">{t.company}</h4>
           <ul class="space-y-2 text-xs">
-            <li><a href={lang === 'en' ? '/about' : `/${lang}/about`} class="hover:text-white transition">{t.menu_about}</a></li>
-            <li><a href={lang === 'en' ? '/areas' : `/${lang}/areas`} class="hover:text-white transition">{t.menu_areas}</a></li>
+            <li><a href="/about" class="hover:text-white transition">{t.menu_about}</a></li>
+            <li><a href={langPath(lang, '/areas')} class="hover:text-white transition">{t.menu_areas}</a></li>
+            <li><a href="/pricing" class="hover:text-white transition">Pricing Guide</a></li>
+            <li><a href="/quote" class="hover:text-white transition">{t.menu_quote}</a></li>
+            <li><a href="/contact" class="hover:text-white transition">Contact</a></li>
+            {isZh && <li><a href="/xhs" class="hover:text-white transition">{isCn ? '大学留学生专区' : '大學留學生專區'}</a></li>}
           </ul>
         </div>
         <div>

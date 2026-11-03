@@ -1,65 +1,67 @@
-﻿---
-import Layout from '../layouts/Layout.astro';
-import TrustBadges from '../components/TrustBadges.astro';
-import PriceCalculator from '../components/PriceCalculator.astro';
 ---
+import Layout from '../layouts/Layout.astro';
+import dataset from '../data/seo_pages.json';
 
-<Layout title="UK cleaning Price Guide 2026 | Transparent Labour & Material Costs" description="Comprehensive guide to wall and floor cleaning costs across the UK in 2026. Daily labour rates, square metre prices, and full bathroom cleaning breakdown.">
-  <div class="max-w-5xl mx-auto px-4 py-12 space-y-12">
+// Guide-price summary per service, derived from the published city pages.
+const services = [...new Map(dataset.map((item) => [item.service.id, item.service])).values()];
+const rows = services.map((svc) => {
+  const items = dataset.filter((item) => item.service.id === svc.id);
+  const range = (key: 'small' | 'medium' | 'large') => {
+    const values = items.map((item) => item.content.pricing[key]);
+    return { min: Math.min(...values), max: Math.max(...values) };
+  };
+  return { svc, cities: items.length, small: range('small'), medium: range('medium'), large: range('large') };
+});
+const fmt = (r: { min: number; max: number }) => (r.min === r.max ? `£${r.min}` : `£${r.min} – £${r.max}`);
+---
+<Layout langs={['en']} title="Cleaning Prices UK 2026: End of Tenancy, Carpet & Deep Cleaning | UK Cleaning Platform" description="Guide starting prices for end of tenancy, deep, carpet, oven and other cleaning services across UK cities and London boroughs, by property size.">
+  <div class="max-w-5xl mx-auto px-4 py-12 space-y-10">
     <div class="text-center max-w-2xl mx-auto">
       <span class="bg-sky-100 text-sky-800 text-xs font-bold px-3 py-1 rounded-full uppercase">Transparent Pricing</span>
-      <h1 class="text-3xl sm:text-4xl font-extrabold text-slate-900 mt-3">UK cleaning & Renovation Cost Guide 2026</h1>
-      <p class="text-xs text-slate-600 mt-2">No rogue trader surcharges. Here is the realistic benchmark of what professional master cleaners charge across England.</p>
+      <h1 class="text-3xl sm:text-4xl font-extrabold text-slate-900 mt-3">UK Cleaning Price Guide</h1>
+      <p class="text-sm text-slate-600 mt-2">Starting prices by property size, taken from our city pages. Each range shows the lowest and highest starting price across the areas we list; your fixed quote depends on size, number of bathrooms and condition.</p>
     </div>
 
-    <!-- Pricing Table -->
     <div class="bg-white rounded-xl shadow-sm border border-slate-200 overflow-hidden">
-      <div class="px-6 py-4 bg-slate-900 text-white flex justify-between items-center">
-        <h3 class="font-bold text-sm">Typical Average cleaning Project Costs in the UK</h3>
-        <span class="text-xs text-slate-400">Updated August 2026</span>
-      </div>
-
       <div class="overflow-x-auto">
-        <table class="w-full text-xs text-left">
-          <thead class="bg-slate-50 text-slate-700 font-bold border-b border-slate-200">
+        <table class="w-full text-sm text-left">
+          <thead class="bg-slate-900 text-white">
             <tr>
-              <th class="p-4">Project Type</th>
-              <th class="p-4">Average Scope</th>
-              <th class="p-4">Typical Duration</th>
-              <th class="p-4">Estimated Labour Range</th>
+              <th class="p-4">Service</th>
+              <th class="p-4">Studio / 1-Bed</th>
+              <th class="p-4">2–3 Bed</th>
+              <th class="p-4">4+ Bed / Deep Clean</th>
             </tr>
           </thead>
           <tbody class="divide-y divide-slate-100 text-slate-700">
-            <tr>
-              <td class="p-4 font-semibold text-slate-900">Kitchen Splashback (Metro/Herringbone)</td>
-              <td class="p-4">3 - 6 sqm around worktops</td>
-              <td class="p-4">1 Day</td>
-              <td class="p-4 font-bold text-sky-800">£250 - £420</td>
-            </tr>
-            <tr>
-              <td class="p-4 font-semibold text-slate-900">Standard Bathroom end of tenancy cleaning</td>
-              <td class="p-4">15 - 20 sqm full cleaning</td>
-              <td class="p-4">2 - 4 Days</td>
-              <td class="p-4 font-bold text-sky-800">£600 - £950</td>
-            </tr>
-            <tr>
-              <td class="p-4 font-semibold text-slate-900">Large Kitchen / Hallway Floor cleaning</td>
-              <td class="p-4">20 - 35 sqm Porcelain / Stone</td>
-              <td class="p-4">3 - 5 Days</td>
-              <td class="p-4 font-bold text-sky-800">£800 - £1,400</td>
-            </tr>
-            <tr>
-              <td class="p-4 font-semibold text-slate-900">Full Wet Room Tanking & Waterproofing</td>
-              <td class="p-4">Complete enclosure + level tray</td>
-              <td class="p-4">4 - 6 Days</td>
-              <td class="p-4 font-bold text-sky-800">£1,200 - £1,850</td>
-            </tr>
+            {rows.map((row) => (
+              <tr>
+                <td class="p-4 font-semibold text-slate-900"><a href={`/${row.svc.id}`} class="hover:text-sky-700">{row.svc.name}</a><span class="block text-xs font-normal text-slate-500">{row.cities} areas</span></td>
+                <td class="p-4">{fmt(row.small)}</td>
+                <td class="p-4">{fmt(row.medium)}</td>
+                <td class="p-4">{fmt(row.large)}</td>
+              </tr>
+            ))}
           </tbody>
         </table>
       </div>
     </div>
 
-    <!-- Calculator -->
-    <PriceCalculator city="Reading" postcode="RG1" />
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 text-sm text-slate-700">
+      <div class="bg-white p-6 rounded-xl border border-slate-200">
+        <h2 class="text-lg font-bold text-slate-900 mb-2">What changes the price?</h2>
+        <ul class="list-disc pl-5 space-y-1">
+          <li>Number of bedrooms and bathrooms</li>
+          <li>Oven, hob and extractor condition (heavy grease takes longer)</li>
+          <li>Whether carpets need steam cleaning</li>
+          <li>London boroughs are usually priced higher than regional cities</li>
+        </ul>
+      </div>
+      <div class="bg-white p-6 rounded-xl border border-slate-200">
+        <h2 class="text-lg font-bold text-slate-900 mb-2">Get your exact price</h2>
+        <p class="mb-4">Send your postcode and property size and we will reply with a fixed quote.</p>
+        <a href="/quote" class="inline-block bg-amber-500 hover:bg-amber-600 text-slate-900 font-bold px-5 py-2.5 rounded-lg transition">Get a free fixed quote →</a>
+      </div>
+    </div>
   </div>
 </Layout>

@@ -1,5 +1,8 @@
 ---
 import Layout from '../../../layouts/Layout.astro';
+import { toSlug } from '../../../lib/site';
+import QuoteForm from '../../../components/QuoteForm.astro';
+import LeadFormScript from '../../../components/LeadFormScript.astro';
 import dataset from '../../../data/seo_pages.json';
 
 export async function getStaticPaths() {
@@ -21,15 +24,56 @@ const citiesByRegion = serviceData.reduce((acc: any, item: any) => {
   return acc;
 }, {});
 const regions = Object.keys(citiesByRegion).sort();
+
+// Guide-price summary derived from the city pages (no figures beyond what those pages publish).
+const tierKeys = ['small', 'medium', 'large'] as const;
+const tierNames = ['Studio / 一居室', '两居到三居', '四居室以上 / 深度开荒'];
+const tiers = tierKeys.map((key, i) => {
+  const sorted = [...serviceData].sort((a: any, b: any) => a.content.pricing[key] - b.content.pricing[key]);
+  const first: any = sorted[0];
+  const last: any = sorted[sorted.length - 1];
+  return {
+    name: tierNames[i],
+    min: first.content.pricing[key],
+    max: last.content.pricing[key],
+    minArea: first.city.name_zh_cn,
+    maxArea: last.city.name_zh_cn,
+  };
+});
 ---
 
-<Layout title={`${service.name_zh_cn} | 选择您的城市`} description={`我们在全英 116 个城市及行政区提供专业的${service.name_zh_cn}。100%退房押金保障。`}>
+<Layout title={`${service.name_zh_cn}价格一览（全英 ${serviceData.length} 城）£${tiers[0].min} 起 | UK Cleaning Platform`} description={`全英 ${serviceData.length} 个城市与伦敦行政区的${service.name_zh_cn}指导价：一居室 £${tiers[0].min} 起，两到三居 £${tiers[1].min} 起，四居以上 £${tiers[2].min} 起。选择城市查看本地报价。100%退房押金保障。`}>
   <div class="bg-slate-900 py-12 px-4">
     <div class="max-w-6xl mx-auto text-center">
       <h1 class="text-3xl md:text-5xl font-extrabold text-white mb-4">
         {service.name_zh_cn}
       </h1>
       <p class="text-slate-300 text-lg">请在下方选择您所在的城市或行政区，获取本地团队报价</p>
+    </div>
+  </div>
+
+  <div class="max-w-6xl mx-auto px-4 pt-12">
+    <div class="bg-white rounded-xl shadow-sm border border-slate-200 overflow-hidden">
+      <div class="bg-slate-50 border-b border-slate-200 p-6">
+        <h2 class="text-2xl font-bold text-slate-900">{service.name_zh_cn}：全英 {serviceData.length} 个地区指导价</h2>
+        <p class="text-sm text-slate-600 mt-2">数据来自各城市页公布的起步价（英镑），最终一口价取决于房屋大小与脏乱程度。</p>
+      </div>
+      <div class="overflow-x-auto">
+        <table class="w-full text-sm text-left">
+          <thead class="bg-slate-50 text-slate-700 font-bold border-b border-slate-200">
+            <tr><th class="p-4">房型</th><th class="p-4">最低起步价</th><th class="p-4">最高起步价</th></tr>
+          </thead>
+          <tbody class="divide-y divide-slate-100 text-slate-700">
+            {tiers.map((tier) => (
+              <tr>
+                <td class="p-4 font-semibold text-slate-900">{tier.name}</td>
+                <td class="p-4"><span class="font-bold text-sky-800">£{tier.min}</span> <span class="text-xs text-slate-500">(价格最低地区: {tier.minArea})</span></td>
+                <td class="p-4"><span class="font-bold text-sky-800">£{tier.max}</span> <span class="text-xs text-slate-500">(价格最高地区: {tier.maxArea})</span></td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
     </div>
   </div>
 
@@ -40,7 +84,7 @@ const regions = Object.keys(citiesByRegion).sort();
           <h2 class="text-2xl font-bold text-slate-800 mb-6 border-b pb-2">{region}</h2>
           <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-3">
             {citiesByRegion[region].sort((a: any, b: any) => a.name_zh_cn.localeCompare(b.name_zh_cn)).map((city: any) => (
-              <a href={`/zh-cn/${service.id}/${city.name.toLowerCase().replace(/ /g, '-')}`} class="bg-white hover:bg-sky-50 border border-slate-200 p-3 rounded-lg text-center text-sm font-medium text-slate-800 hover:text-sky-800 shadow-sm transition">
+              <a href={`/zh-cn/${service.id}/${toSlug(city.name)}`} class="bg-white hover:bg-sky-50 border border-slate-200 p-3 rounded-lg text-center text-sm font-medium text-slate-800 hover:text-sky-800 shadow-sm transition">
                 {city.name_zh_cn}
               </a>
             ))}
@@ -49,4 +93,8 @@ const regions = Object.keys(citiesByRegion).sort();
       ))}
     </div>
   </div>
+  <div class="max-w-3xl mx-auto px-4 pb-16">
+    <QuoteForm lang="zh-cn" serviceId={service.id} formName="service_page" />
+  </div>
+  <LeadFormScript />
 </Layout>
