@@ -1,0 +1,83 @@
+---
+/**
+ * Compact quote form for pages without a dedicated form (contact page, service hubs).
+ * Submitted by LeadFormScript (include it once on the page) to the Highland Travel form system.
+ */
+import dataset from '../data/seo_pages.json';
+import { FORM_ENDPOINT, type Lang } from '../lib/site';
+
+interface Props {
+  lang?: Lang;
+  /** Service id to preselect, e.g. 'oven-cleaning'. */
+  serviceId?: string;
+  formName: string;
+}
+
+const { lang = 'en', serviceId, formName } = Astro.props;
+const isCn = lang === 'zh-cn';
+const isTw = lang === 'zh-tw';
+const pick = (en: string, cn: string, tw: string) => (isCn ? cn : isTw ? tw : en);
+
+const services = [...new Map(dataset.map((item) => [item.service.id, item.service])).values()];
+const serviceLabel = (svc: any) => (isCn ? svc.name_zh_cn : isTw ? svc.name_zh_tw : svc.name);
+
+const t = {
+  title: pick('Get a Free Fixed Quote', '免费获取一口价报价', '免費獲取一口價報價'),
+  hint: pick('Leave at least one of phone, WeChat or email.', '电话、微信、邮箱至少填写一项。', '電話、微信、郵箱至少填寫一項。'),
+  name: pick('Name', '称呼', '稱呼'),
+  phone: pick('Phone / WhatsApp', '电话 / WhatsApp', '電話 / WhatsApp'),
+  wechat: pick('WeChat ID', '微信号', '微信號'),
+  email: pick('Email', '邮箱', '郵箱'),
+  postcode: pick('Postcode', '房屋邮编', '房屋郵編'),
+  date: pick('Preferred date', '期望日期', '期望日期'),
+  service: pick('Service', '服务类型', '服務類型'),
+  size: pick('Property size', '房型', '房型'),
+  sizes: [
+    pick('Studio / 1-Bed Flat', 'Studio / 一居室', 'Studio / 一居室'),
+    pick('2-3 Bed House / Flat', '两居到三居', '兩居到三居'),
+    pick('4+ Bed House', '四居室以上', '四居室以上'),
+    pick('Single item / Other', '单件物品 / 其他', '單件物品 / 其他'),
+  ],
+  any: pick('Any — whichever you filled in', '任意（按您填写的方式）', '任意（按您填寫的方式）'),
+  method: pick('Preferred contact', '优先联系方式', '優先聯絡方式'),
+  message: pick('Details (optional)', '补充说明（可选）', '補充說明（可選）'),
+  submit: pick('Get My Free Quote →', '提交获取报价 →', '提交獲取報價 →'),
+};
+const input = 'w-full bg-slate-50 border border-slate-300 rounded-lg p-2.5 text-sm font-medium focus:ring-2 focus:ring-sky-500';
+const label = 'block text-xs font-semibold text-slate-700 mb-1';
+---
+<form action={FORM_ENDPOINT} method="POST" class="bg-white rounded-xl border border-slate-200 shadow-sm p-6 space-y-4" data-lead-form data-lang={lang} data-form-name={formName}>
+  <div>
+    <h2 class="text-xl font-bold text-slate-900">{t.title}</h2>
+    <p class="text-xs text-slate-500 mt-1">{t.hint}</p>
+  </div>
+  <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+    <label class="block"><span class={label}>{t.name}</span><input type="text" name="name" required class={input} /></label>
+    <label class="block"><span class={label}>{t.phone}</span><input type="tel" name="phone" class={input} /></label>
+    <label class="block"><span class={label}>{t.wechat}</span><input type="text" name="wechat" class={input} /></label>
+    <label class="block"><span class={label}>{t.email}</span><input type="email" name="email" class={input} /></label>
+    <label class="block"><span class={label}>{t.postcode}</span><input type="text" name="address" class={`${input} uppercase`} placeholder="e.g. M14 5RS" /></label>
+    <label class="block"><span class={label}>{t.date}</span><input type="date" name="start_date" class={input} /></label>
+    <label class="block"><span class={label}>{t.service}</span>
+      <select name="service" class={input}>
+        {services.map((svc: any) => <option value={svc.id} data-name={svc.name} selected={svc.id === serviceId}>{serviceLabel(svc)}</option>)}
+      </select>
+    </label>
+    <label class="block"><span class={label}>{t.size}</span>
+      <select name="extra_property_size" data-label="Property size" class={input}>
+        {t.sizes.map((size) => <option value={size}>{size}</option>)}
+      </select>
+    </label>
+    <label class="block sm:col-span-2"><span class={label}>{t.method}</span>
+      <select name="contact_method" class={input}>
+        <option value="">{t.any}</option>
+        <option value={isCn || isTw ? 'WeChat' : 'Phone'}>{isCn || isTw ? t.wechat : t.phone}</option>
+        <option value={isCn || isTw ? 'Phone' : 'WeChat'}>{isCn || isTw ? t.phone : t.wechat}</option>
+        <option value="Email">{t.email}</option>
+      </select>
+    </label>
+    <label class="block sm:col-span-2"><span class={label}>{t.message}</span><textarea name="message" rows="3" class={input}></textarea></label>
+  </div>
+  <button type="submit" class="w-full bg-amber-500 hover:bg-amber-600 text-slate-900 font-bold py-3 rounded-lg shadow text-sm transition">{t.submit}</button>
+  <div data-form-status hidden role="status" aria-live="polite"></div>
+</form>

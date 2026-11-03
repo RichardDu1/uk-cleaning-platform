@@ -7,7 +7,7 @@ import sitemap from '@astrojs/sitemap';
 const SITE_URL = (process.env.SITE_URL || 'https://ukcleaningplatform.co.uk').replace(/\/$/, '');
 
 // Pages that must not be submitted to search engines.
-const SITEMAP_EXCLUDE = ['/404', '/reviews'];
+const SITEMAP_EXCLUDE = ['/404'];
 
 // https://astro.build/config
 export default defineConfig({

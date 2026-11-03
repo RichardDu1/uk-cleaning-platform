@@ -14,14 +14,15 @@ interface CityServiceSchemaInput {
   tierNames: [string, string, string];
   faqs?: Faq[];
   inLanguage: string;
+  aggregateRating?: { ratingValue: string; reviewCount: string; bestRating?: string; worstRating?: string };
 }
 
 /**
  * JSON-LD for a "service × city" page.
  *
  * Uses `Service` with the Organization as provider instead of a per-city
- * `LocalBusiness`: the platform has no verified premises, phone number or
- * review data per city, so no address, telephone or aggregateRating is emitted.
+ * `LocalBusiness` with a placeholder telephone and per-city address.
+ * The rating block is kept as supplied by the owner (see docs/ fix report).
  */
 export function cityServiceSchema(input: CityServiceSchemaInput) {
   const { pageUrl } = input;
@@ -45,6 +46,7 @@ export function cityServiceSchema(input: CityServiceSchemaInput) {
       url: pageUrl,
       inLanguage: input.inLanguage,
       provider: { '@id': `${SITE_URL}/#organization` },
+      ...(input.aggregateRating ? { aggregateRating: { '@type': 'AggregateRating', ...input.aggregateRating } } : {}),
       areaServed: { '@type': 'City', name: input.areaName },
       offers: input.tierNames.map((tier, i) => ({
         '@type': 'Offer',

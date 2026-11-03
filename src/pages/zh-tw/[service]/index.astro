@@ -1,6 +1,8 @@
 ---
 import Layout from '../../../layouts/Layout.astro';
 import { toSlug } from '../../../lib/site';
+import QuoteForm from '../../../components/QuoteForm.astro';
+import LeadFormScript from '../../../components/LeadFormScript.astro';
 import dataset from '../../../data/seo_pages.json';
 
 export async function getStaticPaths() {
@@ -40,7 +42,7 @@ const tiers = tierKeys.map((key, i) => {
 });
 ---
 
-<Layout title={`${service.name_zh_tw}價格一覽（全英 ${serviceData.length} 城）£${tiers[0].min} 起 | UK Cleaning Platform`} description={`全英 ${serviceData.length} 個城市與倫敦行政區的${service.name_zh_tw}指導價：一居室 £${tiers[0].min} 起，兩到三居 £${tiers[1].min} 起，四居以上 £${tiers[2].min} 起。選擇城市查看本地報價。`}>
+<Layout title={`${service.name_zh_tw}價格一覽（全英 ${serviceData.length} 城）£${tiers[0].min} 起 | UK Cleaning Platform`} description={`全英 ${serviceData.length} 個城市與倫敦行政區的${service.name_zh_tw}指導價：一居室 £${tiers[0].min} 起，兩到三居 £${tiers[1].min} 起，四居以上 £${tiers[2].min} 起。選擇城市查看本地報價。100%退房押金保障。`}>
   <div class="bg-slate-900 py-12 px-4">
     <div class="max-w-6xl mx-auto text-center">
       <h1 class="text-3xl md:text-5xl font-extrabold text-white mb-4">
@@ -91,4 +93,8 @@ const tiers = tierKeys.map((key, i) => {
       ))}
     </div>
   </div>
+  <div class="max-w-3xl mx-auto px-4 pb-16">
+    <QuoteForm lang="zh-tw" serviceId={service.id} formName="service_page" />
+  </div>
+  <LeadFormScript />
 </Layout>

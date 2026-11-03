@@ -1,17 +1,18 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import dataset from '../data/seo_pages.json';
-import { LEAD_ENDPOINT } from '../lib/site';
+import { FORM_ENDPOINT } from '../lib/site';
+import LeadFormScript from '../components/LeadFormScript.astro';
 
 const services = [...new Map(dataset.map((item) => [item.service.id, item.service])).values()];
 ---
 
-<Layout langs={['en']} title="Get a Free Fixed-Price Cleaning Quote | UK Cleaning Platform" description="Request a free fixed-price quote for end of tenancy, deep, carpet or oven cleaning and rubbish clearance. Reply by SMS, WhatsApp or WeChat.">
+<Layout langs={['en']} title="Get a Free Fixed-Price Cleaning Quote | UK Cleaning Platform" description="Get a free, transparent fixed-price quote from an approved local master cleaner. £2M insured. 12-month workmanship guarantee.">
   <div class="max-w-3xl mx-auto px-4 py-12">
     <div class="text-center mb-8">
       <span class="bg-emerald-100 text-emerald-800 text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider">100% Free & Fixed Price Guarantee</span>
       <h1 class="text-3xl sm:text-4xl font-extrabold text-slate-900 mt-3">Request Your Free Cleaning Quote</h1>
-      <p class="text-xs text-slate-500 mt-1 max-w-lg mx-auto">Tell us your postcode, service and property size. We reply with a fixed price — no hidden extras.</p>
+      <p class="text-xs text-slate-500 mt-1 max-w-lg mx-auto">Get matched with a verified, £2M insured master cleaner in your local UK town. Fixed labour quotes with zero rogue trader surprises.</p>
     </div>
 
     <div class="bg-white rounded-2xl shadow-xl border border-slate-200 p-6 md:p-10">
@@ -19,20 +20,19 @@ const services = [...new Map(dataset.map((item) => [item.service.id, item.servic
       <div id="success-message" class="hidden text-center py-8 space-y-4">
         <div class="w-16 h-16 bg-emerald-100 text-emerald-700 rounded-full flex items-center justify-center mx-auto text-2xl font-bold">✓</div>
         <h3 class="text-2xl font-extrabold text-slate-900">Thank You! Quote Request Received</h3>
-        <p class="text-xs text-slate-600 max-w-md mx-auto">Your enquiry has been sent to the local cleaning team for your area. You will receive an SMS and WhatsApp quotation with verified fixed pricing shortly.</p>
+        <p class="text-xs text-slate-600 max-w-md mx-auto">Your enquiry has been dispatched to our approved local master cleaner in your area. You will receive an SMS and WhatsApp quotation with verified fixed pricing shortly.</p>
         <div class="pt-4">
           <a href="/" class="text-xs font-bold text-sky-700 hover:text-sky-900 underline">← Return to Homepage</a>
         </div>
       </div>
 
-      <!-- Lead Capture Form (Dual-Engine: Native POST + AJAX Enhanced) -->
-      <form id="lead-form" action={LEAD_ENDPOINT} method="POST" class="space-y-6">
-        <input type="hidden" name="source_title" value="Quote page" />
+      <!-- Lead Capture Form: JSON POST to the Highland Travel form system (see LeadFormScript) -->
+      <form id="lead-form" action={FORM_ENDPOINT} method="POST" class="space-y-6" data-lead-form data-lang="en" data-form-name="quote_page" data-success-target="success-message">
 
         <!-- 1. Postcode -->
         <div>
           <label class="block text-xs font-bold uppercase tracking-wider text-slate-700 mb-2">1. Property Postcode *</label>
-          <input type="text" id="lead-postcode" name="postcode" required placeholder="e.g. RG1 2AB or SW1A 1AA" class="w-full bg-slate-50 border border-slate-300 rounded-lg p-3 text-sm font-bold uppercase focus:ring-2 focus:ring-sky-500" />
+          <input type="text" id="lead-postcode" name="address" required placeholder="e.g. RG1 2AB or SW1A 1AA" class="w-full bg-slate-50 border border-slate-300 rounded-lg p-3 text-sm font-bold uppercase focus:ring-2 focus:ring-sky-500" />
         </div>
 
         <!-- 2. Service Type -->
@@ -40,7 +40,7 @@ const services = [...new Map(dataset.map((item) => [item.service.id, item.servic
           <label for="lead-service" class="block text-xs font-bold uppercase tracking-wider text-slate-700 mb-2">2. Service Type *</label>
           <select id="lead-service" name="service" required class="w-full bg-slate-50 border border-slate-300 rounded-lg p-2.5 text-sm font-medium focus:ring-2 focus:ring-sky-500">
             {services.map((svc) => (
-              <option value={svc.name} data-slug={svc.id}>{svc.name} ({svc.name_zh_cn})</option>
+              <option value={svc.name} data-slug={svc.id} data-name={svc.name}>{svc.name} ({svc.name_zh_cn})</option>
             ))}
           </select>
         </div>
@@ -49,7 +49,7 @@ const services = [...new Map(dataset.map((item) => [item.service.id, item.servic
         <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
           <div>
             <label for="lead-area" class="block text-xs font-bold uppercase tracking-wider text-slate-700 mb-2">3. Property Size</label>
-            <select id="lead-area" name="area_size" class="w-full bg-slate-50 border border-slate-300 rounded-lg p-2.5 text-xs font-medium focus:ring-2 focus:ring-sky-500">
+            <select id="lead-area" name="extra_property_size" data-label="Property size" class="w-full bg-slate-50 border border-slate-300 rounded-lg p-2.5 text-xs font-medium focus:ring-2 focus:ring-sky-500">
               <option value="Studio / 1-Bed Flat">Studio / 1-Bed Flat</option>
               <option value="2-3 Bed House / Flat" selected>2-3 Bed House / Flat</option>
               <option value="4+ Bed House">4+ Bed House</option>
@@ -59,7 +59,7 @@ const services = [...new Map(dataset.map((item) => [item.service.id, item.servic
 
           <div>
             <label class="block text-xs font-bold uppercase tracking-wider text-slate-700 mb-2">4. When do you need it?</label>
-            <select id="lead-timeframe" name="timeframe" class="w-full bg-slate-50 border border-slate-300 rounded-lg p-2.5 text-xs font-medium focus:ring-2 focus:ring-sky-500">
+            <select id="lead-timeframe" name="extra_timeframe" data-label="Timeframe" class="w-full bg-slate-50 border border-slate-300 rounded-lg p-2.5 text-xs font-medium focus:ring-2 focus:ring-sky-500">
               <option value="Urgent (Within 48 Hours)">Urgent (Within 48 Hours)</option>
               <option value="Within 1 - 2 Weeks" selected>Within 1 - 2 Weeks</option>
               <option value="Next Month (2 - 4 Weeks)">Next Month (2 - 4 Weeks)</option>
@@ -71,29 +71,47 @@ const services = [...new Map(dataset.map((item) => [item.service.id, item.servic
         <!-- 5. Job Notes -->
         <div>
           <label class="block text-xs font-bold uppercase tracking-wider text-slate-700 mb-1">5. Job Details (Optional)</label>
-          <textarea id="lead-notes" name="notes" rows="2" placeholder="e.g. Check-out inspection on Friday, 2 bathrooms, heavy oven grease, carpets need steam cleaning." class="w-full bg-slate-50 border border-slate-300 rounded-lg p-3 text-xs focus:ring-2 focus:ring-sky-500"></textarea>
+          <textarea id="lead-notes" name="message" rows="2" placeholder="e.g. Check-out inspection on Friday, 2 bathrooms, heavy oven grease, carpets need steam cleaning." class="w-full bg-slate-50 border border-slate-300 rounded-lg p-3 text-xs focus:ring-2 focus:ring-sky-500"></textarea>
+        </div>
+
+        <div>
+          <label for="lead-date" class="block text-xs font-bold uppercase tracking-wider text-slate-700 mb-1">Preferred Date (Optional)</label>
+          <input type="date" id="lead-date" name="start_date" class="w-full sm:w-1/2 bg-slate-50 border border-slate-300 rounded-lg p-2.5 text-xs font-medium focus:ring-2 focus:ring-sky-500" />
         </div>
 
         <!-- 6. Contact Details -->
         <div class="border-t border-slate-200 pt-6">
-          <label class="block text-xs font-bold uppercase tracking-wider text-slate-700 mb-3">6. Where should we send your fixed quote? *</label>
-          <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
+          <label class="block text-xs font-bold uppercase tracking-wider text-slate-700 mb-3">6. Where should we send your fixed quote? * <span class="normal-case font-medium text-slate-500">(at least one of phone, WeChat or email)</span></label>
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
             <div>
               <span class="block text-[11px] font-semibold text-slate-600 mb-1">Your Full Name *</span>
               <input type="text" id="lead-name" name="name" required placeholder="e.g. David Miller" class="w-full bg-slate-50 border border-slate-300 rounded-lg p-2.5 text-xs font-medium" />
             </div>
             <div>
-              <span class="block text-[11px] font-semibold text-slate-600 mb-1">UK Phone / WhatsApp *</span>
-              <input type="tel" id="lead-phone" name="phone" required placeholder="e.g. 07891 123456" class="w-full bg-slate-50 border border-slate-300 rounded-lg p-2.5 text-xs font-medium" />
+              <span class="block text-[11px] font-semibold text-slate-600 mb-1">UK Phone / WhatsApp</span>
+              <input type="tel" id="lead-phone" name="phone" placeholder="e.g. 07891 123456" class="w-full bg-slate-50 border border-slate-300 rounded-lg p-2.5 text-xs font-medium" />
             </div>
             <div>
               <span class="block text-[11px] font-semibold text-slate-600 mb-1">Email Address (Optional)</span>
               <input type="email" id="lead-email" name="email" placeholder="e.g. david@example.co.uk" class="w-full bg-slate-50 border border-slate-300 rounded-lg p-2.5 text-xs font-medium" />
             </div>
+            <div>
+              <span class="block text-[11px] font-semibold text-slate-600 mb-1">WeChat ID / 微信号 (Optional)</span>
+              <input type="text" id="lead-wechat" name="wechat" placeholder="e.g. lilei_2026" class="w-full bg-slate-50 border border-slate-300 rounded-lg p-2.5 text-xs font-medium" />
+            </div>
+          </div>
+          <div class="mt-3">
+            <span class="block text-[11px] font-semibold text-slate-600 mb-1">Preferred contact method</span>
+            <select name="contact_method" class="w-full sm:w-1/2 bg-slate-50 border border-slate-300 rounded-lg p-2.5 text-xs font-medium">
+              <option value="">Any — whichever you filled in</option>
+              <option value="Phone">Phone / WhatsApp</option>
+              <option value="WeChat">WeChat / 微信</option>
+              <option value="Email">Email</option>
+            </select>
           </div>
         </div>
 
-        <div id="error-box" class="hidden p-3 bg-rose-50 border border-rose-200 text-rose-700 text-xs rounded-lg font-medium"></div>
+        <div data-form-status hidden role="status" aria-live="polite"></div>
 
         <button type="submit" id="submit-btn" class="w-full bg-amber-500 hover:bg-amber-600 text-slate-950 font-extrabold text-sm py-3.5 rounded-xl shadow-lg transition flex items-center justify-center cursor-pointer">
           <span id="btn-text">Get Free Fixed Quote & Check Availability →</span>
@@ -127,46 +145,6 @@ const services = [...new Map(dataset.map((item) => [item.service.id, item.servic
       }
     } catch (e) {}
 
-    // 3. Progressive AJAX Submission
-    const form = document.getElementById('lead-form');
-    form?.addEventListener('submit', async function(e) {
-      // If JS is active, intercept and submit via fetch with FormData
-      e.preventDefault();
-      
-      const btn = document.getElementById('submit-btn');
-      const btnText = document.getElementById('btn-text');
-      const errorBox = document.getElementById('error-box');
-      const successMsg = document.getElementById('success-message');
-
-      if (errorBox) errorBox.classList.add('hidden');
-      if (btnText) btnText.innerText = 'Submitting your request...';
-      if (btn) btn.disabled = true;
-
-      try {
-        const formData = new FormData(form);
-        const payload = Object.fromEntries(formData.entries());
-        payload.timestamp = new Date().toISOString();
-
-        const endpoint = form.getAttribute('action');
-        const response = await fetch(endpoint, {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify(payload)
-        });
-
-        const result = await response.json();
-
-        if (response.ok && result.success) {
-          form.classList.add('hidden');
-          if (successMsg) successMsg.classList.remove('hidden');
-        } else {
-          throw new Error(result.error || 'Server error (' + response.status + ')');
-        }
-      } catch (err) {
-        console.warn('AJAX submit failed, falling back to native POST...', err);
-        // Fallback: If fetch had any issue (e.g. adblocker blocking fetch), submit natively!
-        form.submit();
-      }
-    });
   </script>
+  <LeadFormScript />
 </Layout>

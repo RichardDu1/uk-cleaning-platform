@@ -43,21 +43,21 @@ const isZh = isCn || isTw;
 const homeHref = langPath(lang, '/');
 
 const t = {
-  trust1: isCn ? "中英双语沟通 · 支持微信" : isTw ? "中英雙語溝通 · 支援微信" : "English & Chinese (中文) Support",
+  trust1: isCn ? "全英房东与留学生评分 4.96/5" : isTw ? "全英房東與留學生評分 4.96/5" : "Rated 4.96/5 by UK Landlords & Students",
   trust2: isCn ? "200万英镑公共责任险" : isTw ? "200萬英鎊公共責任險" : "£2,000,000 Public Liability Insured",
-  trust3: isCn ? "48小时免费返工" : isTw ? "48小時免費返工" : "48-Hour Free Re-clean Guarantee",
-  trust4: isCn ? "透明一口价" : isTw ? "透明一口價" : "Fixed Price Quotes",
+  trust3: isCn ? "48小时无条件返工保押金" : isTw ? "48小時無條件返工保押金" : "48-Hour Deposit Return Guarantee",
+  trust4: isCn ? "100% 透明一口价" : isTw ? "100% 透明一口價" : "100% Fixed Price Quotes",
   menu_services: isCn ? "服务项目" : isTw ? "服務項目" : "Services",
   menu_areas: isCn ? "覆盖区域" : isTw ? "覆蓋區域" : "Areas Covered",
   menu_quote: isCn ? "免费报价" : isTw ? "免費報價" : "Get a Quote",
   menu_about: isCn ? "关于我们" : isTw ? "關於我們" : "About Us",
-  platform_sub: isCn ? "全英华人退房保洁" : isTw ? "全英華人退房保潔" : "UK Cleaning Network",
-  footer_desc: isCn ? "连接英国留学生、租客与华人房东的保洁服务平台。专注退房清洁、深度保洁及垃圾清理。" : isTw ? "連接英國留學生、租客與華人房東的保潔服務平台。專注退房清潔、深度保潔及垃圾清理。" : "Connecting UK tenants and landlords with cleaning specialists. End of tenancy, deep cleaning, and waste clearance.",
-  verified_badge: isCn ? "✓ 中英双语客服" : isTw ? "✓ 中英雙語客服" : "✓ Bilingual Support",
+  platform_sub: isCn ? "全英华人退房保洁首选" : isTw ? "全英華人退房保潔首選" : "UK's Verified Cleaning Network",
+  footer_desc: isCn ? "连接英国留学生、租客与华人房东的严选保洁专家。专注退房清洁、深度保洁及垃圾清理。" : isTw ? "連接英國留學生、租客與華人房東的嚴選保潔專家。專注退房清潔、深度保潔及垃圾清理。" : "Connecting UK tenants and landlords with verified cleaning specialists. End of tenancy, deep cleaning, and waste clearance.",
+  verified_badge: isCn ? "✓ 实名认证保洁团队" : isTw ? "✓ 實名認證保潔團隊" : "✓ Verified Vetted Cleaners",
   pop_services: isCn ? "热门服务" : isTw ? "熱門服務" : "Popular Services",
   company: isCn ? "公司信息" : isTw ? "公司資訊" : "Company",
   legal: isCn ? "法律与安全" : isTw ? "法律與安全" : "Legal & Security",
-  footer_sec: isCn ? "平台保洁团队提供200万镑责任险及48小时免费返工保障。" : isTw ? "平台保潔團隊提供200萬鎊責任險及48小時免費返工保障。" : "Member cleaners carry £2M Public Liability Insurance and are backed by our 48-hour free re-clean guarantee."
+  footer_sec: isCn ? "所有平台保洁团队均提供200万镑责任险及退房押金保障。" : isTw ? "所有平台保潔團隊均提供200萬鎊責任險及退房押金保障。" : "All member cleaners are verified with £2M+ Public Liability Insurance and backed by our Deposit Return Guarantee."
 };
 
 const serviceName = (svc: any) => (isCn ? svc.name_zh_cn : isTw ? svc.name_zh_tw : svc.name);
@@ -161,7 +161,10 @@ const BING_VERIFICATION = import.meta.env.PUBLIC_BING_VERIFICATION;
     <div class="bg-slate-900 text-slate-200 text-xs py-2 px-4 border-b border-slate-800">
       <div class="max-w-6xl mx-auto flex flex-wrap justify-between items-center gap-2">
         <div class="flex items-center space-x-4">
-          <span class="flex items-center text-emerald-400 font-medium">💬 {t.trust1}</span>
+          <span class="flex items-center text-emerald-400 font-medium">
+            <svg class="w-4 h-4 mr-1 fill-current" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+            {t.trust1}
+          </span>
           <span class="hidden sm:inline text-slate-400">|</span>
           <span class="hidden sm:inline">🛡️ {t.trust2}</span>
         </div>

@@ -3,9 +3,11 @@ import dataset from '../data/seo_pages.json';
 /** Canonical origin, from `site` in astro.config.mjs (no trailing slash). */
 export const SITE_URL = (import.meta.env.SITE || 'https://ukcleaningplatform.co.uk').replace(/\/$/, '');
 
-/** Lead-capture endpoint already used by /quote (Cloudflare Worker form hub). */
-export const LEAD_ENDPOINT =
-  'https://roamglade-form-hub.dwx168200.workers.dev/api/form?service=cleaning&list_id=10&inbox_id=wSE3K4odsBvsv6gYzeLTh9et';
+/** Highland Travel group form system: JSON POST, CORS open, source site recorded from Origin. */
+export const FORM_ENDPOINT = 'https://form.highland-travel.com';
+
+/** Shown when a form submission fails (the site-wide WeChat ID). */
+export const FALLBACK_WECHAT = 'ukclean_london';
 
 export type Lang = 'en' | 'zh-cn' | 'zh-tw';
 export const ALL_LANGS: Lang[] = ['en', 'zh-cn', 'zh-tw'];

@@ -1,35 +1,115 @@
 ---
 /**
- * Progressive enhancement for lead forms marked with `data-lead-form`.
- * Posts JSON to the form's `action` (the Cloudflare Worker form hub used by /quote),
- * then sends the visitor to the /quote thank-you state. Falls back to a native POST.
+ * Submits every `form[data-lead-form]` on the page to the Highland Travel form system
+ * (https://form.highland-travel.com) as JSON.
+ *
+ * API fields: name, phone, wechat, email, address, start_date, end_date, tour, contact_method, message.
+ * - tour    = "<service name> - <city>"; service from the `service` select (option `data-name`,
+ *             else option text), city from `data-city` on the form, else the address field.
+ * - fields named `extra_*` (with `data-label`) are appended to `message`.
+ * - at least one of phone / wechat / email is required (the API returns 400 otherwise).
+ * Success is shown only when `response.ok`; otherwise a fallback contact is shown.
  */
+import { FORM_ENDPOINT, FALLBACK_WECHAT } from '../lib/site';
 ---
-<script is:inline>
-  document.querySelectorAll('form[data-lead-form]').forEach(function (form) {
-    form.addEventListener('submit', async function (e) {
+<script is:inline define:vars={{ FORM_ENDPOINT, FALLBACK_WECHAT }}>
+  const TEXT = {
+    en: {
+      sending: 'Sending…',
+      needContact: 'Please leave at least one way to reach you: phone, WeChat or email.',
+      success: 'Thank you! Your request has been received. We will contact you shortly with a fixed quote.',
+      error: `Sorry, the form could not be sent. Please add us on WeChat: ${FALLBACK_WECHAT}, or try again in a few minutes.`
+    },
+    'zh-cn': {
+      sending: '正在提交…',
+      needContact: '请至少留下一种联系方式：电话、微信或邮箱。',
+      success: '提交成功！我们已收到您的需求，客服会尽快通过您留下的联系方式报价。',
+      error: `提交失败，请直接添加客服微信：${FALLBACK_WECHAT}，或稍后再试。`
+    },
+    'zh-tw': {
+      sending: '正在提交…',
+      needContact: '請至少留下一種聯絡方式：電話、微信或郵箱。',
+      success: '提交成功！我們已收到您的需求，客服會盡快通過您留下的聯絡方式報價。',
+      error: `提交失敗，請直接添加客服微信：${FALLBACK_WECHAT}，或稍後再試。`
+    }
+  };
+  const FIELDS = ['name', 'phone', 'wechat', 'email', 'address', 'start_date', 'end_date', 'contact_method'];
+
+  function buildPayload(form) {
+    const data = new FormData(form);
+    const value = (key) => String(data.get(key) || '').trim();
+    const payload = {};
+    FIELDS.forEach((key) => { payload[key] = value(key); });
+
+    const select = form.querySelector('[name="service"]');
+    let service = value('service');
+    if (select && select.tagName === 'SELECT') {
+      const option = select.options[select.selectedIndex];
+      service = (option && (option.dataset.name || option.text)) || service;
+    }
+    const place = form.dataset.city || payload.address;
+    payload.tour = [service, place].filter(Boolean).join(' - ');
+
+    const lines = [];
+    form.querySelectorAll('[name^="extra_"]').forEach((el) => {
+      const v = String(el.value || '').trim();
+      if (v) lines.push(`${el.dataset.label || el.name.slice(6)}: ${v}`);
+    });
+    const note = value('message');
+    if (note) lines.push(note);
+    lines.push(`Page: ${location.pathname}`);
+    payload.message = lines.join('\n');
+
+    if (!payload.contact_method) {
+      payload.contact_method = payload.wechat ? 'WeChat' : payload.phone ? 'Phone' : 'Email';
+    }
+    return payload;
+  }
+
+  function showStatus(form, kind, text) {
+    const box = form.querySelector('[data-form-status]');
+    if (!box) return;
+    box.textContent = text;
+    box.className = kind === 'success'
+      ? 'mt-3 p-3 rounded-lg text-sm font-medium bg-emerald-50 border border-emerald-200 text-emerald-800'
+      : 'mt-3 p-3 rounded-lg text-sm font-medium bg-rose-50 border border-rose-200 text-rose-700';
+    box.hidden = false;
+  }
+
+  document.querySelectorAll('form[data-lead-form]').forEach((form) => {
+    const t = TEXT[form.dataset.lang] || TEXT.en;
+    form.addEventListener('submit', async (e) => {
       e.preventDefault();
-      var btn = form.querySelector('button[type="submit"]');
-      if (btn) { btn.disabled = true; btn.dataset.label = btn.textContent; btn.textContent = '…'; }
+      const payload = buildPayload(form);
+      if (!payload.phone && !payload.wechat && !payload.email) {
+        showStatus(form, 'error', t.needContact);
+        return;
+      }
+      const btn = form.querySelector('button[type="submit"]');
+      const label = btn ? btn.innerHTML : '';
+      if (btn) { btn.disabled = true; btn.textContent = t.sending; }
       try {
-        var payload = Object.fromEntries(new FormData(form).entries());
-        payload.timestamp = new Date().toISOString();
-        payload.page = location.pathname;
-        var res = await fetch(form.getAttribute('action'), {
+        const res = await fetch(FORM_ENDPOINT, {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify(payload)
         });
-        var result = await res.json();
-        if (res.ok && result.success) {
-          if (window.gtag) window.gtag('event', 'generate_lead', { form: 'city_page' });
-          location.href = '/quote?success=true';
-          return;
+        if (!res.ok) throw new Error('HTTP ' + res.status);
+        if (window.gtag) window.gtag('event', 'generate_lead', { form: form.dataset.formName || 'quote', tour: payload.tour });
+        const target = form.dataset.successTarget && document.getElementById(form.dataset.successTarget);
+        if (target) {
+          form.classList.add('hidden');
+          target.classList.remove('hidden');
+        } else {
+          form.querySelectorAll('input, select, textarea, button').forEach((el) => { el.disabled = true; });
+          showStatus(form, 'success', t.success);
         }
-        throw new Error(result.error || 'Server error ' + res.status);
       } catch (err) {
-        console.warn('AJAX submit failed, falling back to native POST', err);
-        form.submit();
+        console.warn('Lead form submit failed', err);
+        showStatus(form, 'error', t.error);
+        if (btn) btn.disabled = false;
+      } finally {
+        if (btn) btn.innerHTML = label;
       }
     });
   });

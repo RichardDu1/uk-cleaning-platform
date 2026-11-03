@@ -1,6 +1,8 @@
 ---
 import Layout from '../../layouts/Layout.astro';
 import { toSlug } from '../../lib/site';
+import QuoteForm from '../../components/QuoteForm.astro';
+import LeadFormScript from '../../components/LeadFormScript.astro';
 import dataset from '../../data/seo_pages.json';
 
 export async function getStaticPaths() {
@@ -40,7 +42,7 @@ const tiers = tierKeys.map((key, i) => {
 });
 ---
 
-<Layout title={`${service.name} Prices by City (UK 2026) – From £${tiers[0].min} | UK Cleaning Platform`} description={`${service.name} across ${serviceData.length} UK cities and London boroughs. Guide prices: studio from £${tiers[0].min}, 2-3 bed from £${tiers[1].min}, 4+ bed from £${tiers[2].min}. Choose your city for local prices.`}>
+<Layout title={`${service.name} Prices by City (UK 2026) – From £${tiers[0].min} | UK Cleaning Platform`} description={`${service.name} across ${serviceData.length} UK cities and London boroughs. Guide prices: studio from £${tiers[0].min}, 2-3 bed from £${tiers[1].min}, 4+ bed from £${tiers[2].min}. 100% deposit return guarantee.`}>
   <div class="bg-slate-900 py-12 px-4">
     <div class="max-w-6xl mx-auto text-center">
       <h1 class="text-3xl md:text-5xl font-extrabold text-white mb-4">
@@ -91,4 +93,8 @@ const tiers = tierKeys.map((key, i) => {
       ))}
     </div>
   </div>
+  <div class="max-w-3xl mx-auto px-4 pb-16">
+    <QuoteForm lang="en" serviceId={service.id} formName="service_page" />
+  </div>
+  <LeadFormScript />
 </Layout>

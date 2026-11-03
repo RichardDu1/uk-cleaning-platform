@@ -1,5 +1,7 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import QuoteForm from '../components/QuoteForm.astro';
+import LeadFormScript from '../components/LeadFormScript.astro';
 ---
 <Layout langs={['en']} title="Contact UK Cleaning Platform | Cleaning Quotes & Support" description="Contact UK Cleaning Platform about end of tenancy, deep cleaning or rubbish clearance, or to join our cleaner network. Opening hours and quote form.">
   <div class="max-w-4xl mx-auto px-4 py-16 grid grid-cols-1 md:grid-cols-2 gap-12">
@@ -20,12 +22,10 @@ import Layout from '../layouts/Layout.astro';
       </div>
     </div>
     
-    <div class="bg-white p-8 rounded-xl shadow-lg border border-slate-100">
-      <h3 class="text-xl font-bold mb-4">Need a Quote?</h3>
-      <p class="text-sm text-slate-600 mb-6">If you are looking for pricing on a cleaning job, please use our dedicated quote form for the fastest response.</p>
-      <a href="/quote" class="block w-full text-center bg-sky-700 hover:bg-sky-800 text-white font-bold py-3 rounded-lg transition">
-        Go to Quote Request Form
-      </a>
+    <div>
+      <QuoteForm lang="en" formName="contact_page" />
+      <p class="text-xs text-slate-500 mt-3">Need more options (property size, timeframe)? Use the <a href="/quote" class="text-sky-700 underline">full quote form</a>.</p>
     </div>
   </div>
+  <LeadFormScript />
 </Layout>

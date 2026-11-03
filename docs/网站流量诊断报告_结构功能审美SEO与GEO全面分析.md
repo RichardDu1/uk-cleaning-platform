@@ -78,6 +78,8 @@ $ curl -s https://uk-cleaning-platform.pages.dev | grep canonical
 
 ### 2.4 ❌ P1：结构化数据编造（虚假评价 / 电话 / 地址）
 
+> **所有者决定（2026-11-03）**：评分、评价数量、证言与各项承诺暂时保持原样不动；下述内容作为风险记录保留。占位电话与每城地址已在修复中移除。
+
 `[service]/[city].astro`（三语）与 `university/[school].astro`（两语）中每页都输出：
 ```json
 "@type": ["LocalBusiness","CleaningService"],
@@ -157,6 +159,8 @@ $ curl -s https://uk-cleaning-platform.pages.dev | grep canonical
 | `/terms` | "12-month workmanship guarantee against defects in installation (e.g., loose tiles, failing grout)"，与全站"48 小时免费返工"矛盾 |
 
 ### 4.3 ❌ 信任表述无法核实或前后矛盾
+
+> **所有者决定（2026-11-03）**：以下评分、证言与承诺暂不调整，本节仅作风险提示。
 
 - "Rated 4.96/5"、"#1 choice for Chinese students"、"UK's most trusted network"、"小红书爆款推荐""神仙保洁团队"——均无证据；
 - "116 个城市""over 100 verified local cleaning teams"——数据中只有 48 个地区；
