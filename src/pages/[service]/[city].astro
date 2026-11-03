@@ -1,7 +1,10 @@
 ---
 import Layout from '../../layouts/Layout.astro';
 import GeoFactSheet from '../../components/GeoFactSheet.astro';
+import LeadFormScript from '../../components/LeadFormScript.astro';
 import dataset from '../../data/seo_pages.json';
+import { absUrl, toSlug, CITY_SLUGS, LEAD_ENDPOINT } from '../../lib/site';
+import { cityServiceSchema } from '../../lib/schema';
 
 export async function getStaticPaths() {
   return dataset.map((item) => {
@@ -21,111 +24,37 @@ const { data } = Astro.props;
 // For the select dropdown, get unique services
 const allServices = [...new Map(dataset.map(item => [item.service.id, { name: item.service.name, slug: item.service.id }])).values()];
 
-const siteUrl = 'https://ukcleaningplatform.co.uk';
-const pageUrl = `${siteUrl}/${data.slug}`;
+const pageUrl = absUrl(`/${data.slug}`);
+const citySlug = toSlug(data.city.name);
 
-const schemaGraph: any[] = [
-  {
-    "@type": "BreadcrumbList",
-    "@id": `${pageUrl}/#breadcrumb`,
-    "itemListElement": [
-      {
-        "@type": "ListItem",
-        "position": 1,
-        "name": "Home",
-        "item": siteUrl
-      },
-      {
-        "@type": "ListItem",
-        "position": 2,
-        "name": data.service.name,
-        "item": `${siteUrl}/${data.service.id}`
-      },
-      {
-        "@type": "ListItem",
-        "position": 3,
-        "name": `${data.service.name} in ${data.city.name}`,
-        "item": pageUrl
-      }
-    ]
-  },
-  {
-    "@type": ["LocalBusiness", "CleaningService"],
-    "@id": `${pageUrl}/#localbusiness`,
-    "name": `${data.service.name} in ${data.city.name} - UK Cleaning Platform`,
-    "url": pageUrl,
-    "telephone": "+44 20 8000 0000",
-    "priceRange": `£${data.content.pricing.small} - £${data.content.pricing.large}`,
-    "currenciesAccepted": "GBP",
-    "paymentAccepted": "Bank Transfer, Credit Card, WeChat Pay, Alipay",
-    "description": data.service.description,
-    "areaServed": {
-      "@type": "AdministrativeArea",
-      "name": `${data.city.name}, ${data.city.region}, UK`
-    },
-    "address": {
-      "@type": "PostalAddress",
-      "addressLocality": data.city.name,
-      "addressRegion": data.city.region,
-      "postalCode": data.city.postcode,
-      "addressCountry": "GB"
-    },
-    "aggregateRating": {
-      "@type": "AggregateRating",
-      "ratingValue": "4.96",
-      "reviewCount": "320",
-      "bestRating": "5",
-      "worstRating": "1"
-    },
-    "hasOfferCatalog": {
-      "@type": "OfferCatalog",
-      "name": `${data.service.name} Pricing Tiers`,
-      "itemListElement": [
-        {
-          "@type": "Offer",
-          "name": "Studio / 1-Bed Flat",
-          "price": String(data.content.pricing.small),
-          "priceCurrency": "GBP"
-        },
-        {
-          "@type": "Offer",
-          "name": "2-3 Bed House / Flat",
-          "price": String(data.content.pricing.medium),
-          "priceCurrency": "GBP"
-        },
-        {
-          "@type": "Offer",
-          "name": "4+ Bed / Deep Clean",
-          "price": String(data.content.pricing.large),
-          "priceCurrency": "GBP"
-        }
-      ]
-    }
-  }
-];
+// Same service in other cities of the same region (only pages that exist).
+const regionPeers = dataset
+  .filter((item) => item.service.id === data.service.id && item.city.region === data.city.region && item.city.name !== data.city.name)
+  .slice(0, 12)
+  .map((item) => ({ name: item.city.name, href: `/${item.slug}` }));
 
-if (data.content.faqs && data.content.faqs.length > 0) {
-  schemaGraph.push({
-    "@type": "FAQPage",
-    "@id": `${pageUrl}/#faq`,
-    "mainEntity": data.content.faqs.map((faq: any) => ({
-      "@type": "Question",
-      "name": faq.question,
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": faq.answer
-      }
-    }))
-  });
-}
-
-const pageSchema = {
-  "@context": "https://schema.org",
-  "@graph": schemaGraph
-};
+const pageSchema = cityServiceSchema({
+  pageUrl,
+  breadcrumbs: [
+    { name: 'Home', url: absUrl('/') },
+    { name: data.service.name, url: absUrl(`/${data.service.id}`) },
+    { name: `${data.service.name} in ${data.city.name}`, url: pageUrl },
+  ],
+  name: `${data.service.name} in ${data.city.name}`,
+  serviceType: data.service.name,
+  description: data.service.description,
+  areaName: `${data.city.name}, ${data.city.region}, UK`,
+  pricing: data.content.pricing,
+  tierNames: ['Studio / 1-Bed Flat', '2-3 Bed House / Flat', '4+ Bed / Deep Clean'],
+  faqs: data.content.faqs,
+  inLanguage: 'en-GB',
+});
+const pageTitle = `${data.service.name} in ${data.city.name} (${data.city.postcode}) – From £${data.content.pricing.small} | UK Cleaning Platform`;
+const descBase = `${data.service.name} in ${data.city.name}: guide prices from £${data.content.pricing.small} (studio) to £${data.content.pricing.large} (4+ bed). 48-hour free re-clean, £2M insured`;
+const pageDescription = descBase.length <= 128 ? `${descBase}, English & Chinese support.` : `${descBase}.`;
 ---
 
-<Layout title={data.content.h1 + " | Deposit Return Guaranteed"} description={`Top-rated ${data.service.name.toLowerCase()} in ${data.city.name}. We help landlords and students with a 100% deposit return guarantee. Free quote.`} schema={pageSchema}>
+<Layout title={pageTitle} description={pageDescription} schema={pageSchema}>
   <!-- Hero Section -->
   <section class="bg-gradient-to-b from-slate-900 via-slate-800 to-slate-900 text-white pt-12 pb-16 px-4 relative">
     <div class="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
@@ -137,7 +66,7 @@ const pageSchema = {
           {data.content.h1}
         </h1>
         <p class="text-slate-300 text-base leading-relaxed">
-          {data.service.description} We are the #1 choice for Chinese students and local landlords in {data.city.name}.
+          {data.service.description} Serving students, tenants and landlords in {data.city.name}, with English and Chinese (中文) support.
         </p>
         
         <!-- Local Pain Points Block -->
@@ -177,7 +106,9 @@ const pageSchema = {
         </div>
 
         <!-- Lead Capture Form -->
-        <form action="/api/submit-lead" method="POST" class="space-y-4" id="leadForm">
+        <form action={LEAD_ENDPOINT} method="POST" class="space-y-4" id="leadForm" data-lead-form>
+          <input type="hidden" name="source_title" value={`City page (en): ${data.service.name} in ${data.city.name}`} />
+          <input type="hidden" name="postcode" value={data.city.postcode} />
           <input type="hidden" name="city" value={data.city.name} />
           <input type="hidden" name="service" value={data.service.name} />
           
@@ -274,7 +205,7 @@ const pageSchema = {
       <p class="text-xs text-slate-600 mb-4">Looking for something else? Our {data.city.name} teams also provide:</p>
       <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-3">
         {allServices.filter(svc => svc.slug !== data.service.id).map((svc: any) => (
-          <a href={`/${svc.slug}/${data.city.name.toLowerCase().replace(/ /g, '-')}`} class="flex items-center space-x-2 text-sm text-slate-700 hover:text-sky-700 font-medium group transition">
+          <a href={`/${svc.slug}/${citySlug}`} class="flex items-center space-x-2 text-sm text-slate-700 hover:text-sky-700 font-medium group transition">
             <span class="text-sky-400 group-hover:text-sky-600">→</span>
             <span>{svc.name}</span>
           </a>
@@ -288,11 +219,28 @@ const pageSchema = {
       <p class="text-xs text-slate-600 mb-4">Our mobile cleaning squads operate across {data.city.region} and neighbouring districts:</p>
       <div class="flex flex-wrap gap-2">
         {data.content.nearby_areas.map((area: string) => (
-          <a href={`/${data.service.id}/${area.toLowerCase().replace(/ /g, '-')}`} class="text-xs bg-white hover:bg-sky-50 text-slate-700 hover:text-sky-800 border border-slate-300 px-3 py-1.5 rounded-md font-medium transition">
-            {area}
-          </a>
+          CITY_SLUGS.has(toSlug(area)) ? (
+            <a href={`/${data.service.id}/${toSlug(area)}`} class="text-xs bg-white hover:bg-sky-50 text-slate-700 hover:text-sky-800 border border-slate-300 px-3 py-1.5 rounded-md font-medium transition">
+              {area}
+            </a>
+          ) : (
+            <span class="text-xs bg-white text-slate-600 border border-slate-200 px-3 py-1.5 rounded-md">{area}</span>
+          )
         ))}
       </div>
     </div>
+
+    {regionPeers.length > 0 && (
+      <div class="bg-white rounded-xl p-6 border border-slate-200 shadow-sm">
+        <h3 class="text-lg font-bold text-slate-900 mb-3">{data.service.name} Elsewhere in {data.city.region}</h3>
+        <div class="flex flex-wrap gap-2">
+          {regionPeers.map((peer) => (
+            <a href={peer.href} class="text-xs bg-slate-50 hover:bg-sky-50 text-slate-700 hover:text-sky-800 border border-slate-300 px-3 py-1.5 rounded-md font-medium transition">{peer.name}</a>
+          ))}
+          <a href={`/${data.service.id}`} class="text-xs text-sky-700 hover:text-sky-900 font-semibold px-3 py-1.5">All cities →</a>
+        </div>
+      </div>
+    )}
   </section>
+  <LeadFormScript />
 </Layout>

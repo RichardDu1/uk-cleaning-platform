@@ -1,5 +1,6 @@
 ---
 import Layout from '../../../layouts/Layout.astro';
+import { SITE_URL } from '../../../lib/site';
 import WeChatCard from '../../../components/WeChatCard.astro';
 import GeoFactSheet from '../../../components/GeoFactSheet.astro';
 import universities from '../../../data/universities.json';
@@ -29,7 +30,7 @@ const services = cityPages.map(page => ({
 // Get nearby universities in same city
 const sameCity = universities.filter(u => u.city_slug === uni.city_slug && u.slug !== uni.slug);
 
-const siteUrl = 'https://ukcleaningplatform.co.uk';
+const siteUrl = SITE_URL;
 const pageUrl = `${siteUrl}/zh-cn/university/${uni.slug}`;
 const startingPrice = services[0]?.pricing?.small || 120;
 
@@ -38,7 +39,7 @@ const uniSchema = {
   "@graph": [
     {
       "@type": "BreadcrumbList",
-      "@id": `${pageUrl}/#breadcrumb`,
+      "@id": `${pageUrl}#breadcrumb`,
       "itemListElement": [
         {
           "@type": "ListItem",
@@ -61,31 +62,33 @@ const uniSchema = {
       ]
     },
     {
-      "@type": ["LocalBusiness", "CleaningService"],
-      "@id": `${pageUrl}/#service`,
+      "@type": "Service",
+      "@id": `${pageUrl}#service`,
       "name": `${uni.name} 留学生退房保洁 - UK Cleaning Platform`,
+      "serviceType": "End of Tenancy Cleaning",
       "url": pageUrl,
-      "telephone": "+44 20 8000 0000",
-      "priceRange": `£${startingPrice}+`,
-      "currenciesAccepted": "GBP",
+      "provider": { "@id": `${siteUrl}/#organization` },
       "areaServed": {
-        "@type": "EducationalOrganization",
-        "name": uni.name_en,
-        "alternateName": uni.name
+        "@type": "City",
+        "name": uni.city_name
+      },
+      "audience": {
+        "@type": "EducationalAudience",
+        "educationalRole": "student",
+        "name": uni.name_en
       },
       "description": `为 ${uni.name} (${uni.name_en}) 中国留学生提供全方位退房保洁、地毯清洗与垃圾清理服务。100% 退房押金保障与 48 小时免费返工。`,
-      "aggregateRating": {
-        "@type": "AggregateRating",
-        "ratingValue": "4.96",
-        "reviewCount": "280",
-        "bestRating": "5"
+      "offers": {
+        "@type": "Offer",
+        "priceCurrency": "GBP",
+        "priceSpecification": { "@type": "PriceSpecification", "minPrice": startingPrice, "priceCurrency": "GBP" }
       }
     }
   ]
 };
 ---
 
-<Layout title={`${uni.name} 退房保洁 | 48h 押金保障 · 中文客服秒回`} description={`${uni.name_en} 留学生退房保洁首选。覆盖 ${uni.city_name} 全域，专治中式重油烟，48 小时不合格免费返工，100% 退押金保障。加微信秒报价。`} schema={uniSchema}>
+<Layout langs={['zh-cn', 'zh-tw']} title={`${uni.name} 退房保洁 | 48h 押金保障 · 中文客服秒回`} description={`${uni.name_en} 留学生退房保洁首选。覆盖 ${uni.city_name} 全域，专治中式重油烟，48 小时不合格免费返工，100% 退押金保障。加微信秒报价。`} schema={uniSchema}>
 
   <!-- Hero -->
   <section class="bg-gradient-to-b from-slate-900 via-slate-800 to-slate-900 text-white pt-10 pb-14 px-4">
@@ -136,7 +139,7 @@ const uniSchema = {
         <h2 class="text-xl font-extrabold text-slate-900 mb-4">💰 {uni.city_zh} 留学生保洁报价</h2>
         <div class="space-y-3">
           {services.map(svc => (
-            <a href={`/zh-cn/${svc.slug}/${uni.city_slug}?utm_source=xiaohongshu&utm_campaign=university_${uni.slug}`} class="block bg-white hover:bg-sky-50 rounded-xl p-4 border border-slate-200 transition group">
+            <a href={`/zh-cn/${svc.slug}/${uni.city_slug}`} class="block bg-white hover:bg-sky-50 rounded-xl p-4 border border-slate-200 transition group">
               <div class="flex justify-between items-center">
                 <div>
                   <span class="font-bold text-slate-800 group-hover:text-sky-700 transition">{svc.name}</span>

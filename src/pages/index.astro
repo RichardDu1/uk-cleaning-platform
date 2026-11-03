@@ -7,9 +7,13 @@ const uniqueServices = [...new Map(dataset.map(item => [item.service.id, { name:
 
 // Get unique cities
 const uniqueCities = [...new Map(dataset.map(item => [item.city.name, { city: item.city.name, slug: item.city.name.toLowerCase().replace(/ /g, '-'), region: item.city.region }])).values()];
+const cityIndex = [...new Map(dataset.map((item) => [item.city.name, item.city])).values()].map((c: any) => ({
+  slug: c.name.toLowerCase().replace(/ /g, '-'),
+  names: [c.name, c.name_zh_cn, c.name_zh_tw].filter(Boolean).map((n: string) => n.toLowerCase()),
+}));
 ---
 
-<Layout title="UK Cleaning Platform | Professional End of Tenancy Cleaning" description="Find top-rated, vetted master cleaners in your local UK town. Fixed price quotes, £2M insured, 48-hour deposit return guarantee.">
+<Layout title="UK Cleaning Platform | Professional End of Tenancy Cleaning" description="End of tenancy, deep, carpet and oven cleaning in 48 UK cities and London boroughs. Fixed-price quotes, £2M insured, 48-hour free re-clean.">
   <!-- Hero Banner -->
   <section class="bg-slate-900 text-white pt-16 pb-20 px-4">
     <div class="max-w-5xl mx-auto text-center space-y-6">
@@ -76,11 +80,14 @@ const uniqueCities = [...new Map(dataset.map(item => [item.city.name, { city: it
   </section>
 </Layout>
 
-<script>
-  document.getElementById('home-search-btn')?.addEventListener('click', () => {
-    const val = (document.getElementById('home-postcode') as HTMLInputElement)?.value.toLowerCase().trim().replace(/ /g, '-');
-    if (val) {
-      window.location.href = `/end-of-tenancy-cleaning/${val}`;
-    }
-  });
+<script is:inline define:vars={{ cityIndex, prefix: '' }}>
+  // Match the typed city (English or Chinese name) to a page that exists; otherwise show all areas.
+  function goToCity() {
+    const raw = (document.getElementById('home-postcode')?.value || '').trim().toLowerCase();
+    if (!raw) return;
+    const hit = cityIndex.find((c) => c.names.some((n) => n === raw || n.startsWith(raw)));
+    window.location.href = hit ? `${prefix}/end-of-tenancy-cleaning/${hit.slug}` : `${prefix}/areas`;
+  }
+  document.getElementById('home-search-btn')?.addEventListener('click', goToCity);
+  document.getElementById('home-postcode')?.addEventListener('keydown', (e) => { if (e.key === 'Enter') goToCity(); });
 </script>

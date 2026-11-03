@@ -1,5 +1,6 @@
 ---
 import Layout from '../../../layouts/Layout.astro';
+import { SITE_URL } from '../../../lib/site';
 import WeChatCard from '../../../components/WeChatCard.astro';
 import GeoFactSheet from '../../../components/GeoFactSheet.astro';
 import universities from '../../../data/universities.json';
@@ -58,7 +59,7 @@ const services = cityPages.map(page => ({
 
 const sameCity = universities.filter(u => u.city_slug === uni.city_slug && u.slug !== uni.slug);
 
-const siteUrl = 'https://ukcleaningplatform.co.uk';
+const siteUrl = SITE_URL;
 const pageUrl = `${siteUrl}/zh-tw/university/${uni.slug}`;
 const startingPrice = services[0]?.pricing?.small || 120;
 
@@ -67,7 +68,7 @@ const uniSchema = {
   "@graph": [
     {
       "@type": "BreadcrumbList",
-      "@id": `${pageUrl}/#breadcrumb`,
+      "@id": `${pageUrl}#breadcrumb`,
       "itemListElement": [
         {
           "@type": "ListItem",
@@ -90,31 +91,33 @@ const uniSchema = {
       ]
     },
     {
-      "@type": ["LocalBusiness", "CleaningService"],
-      "@id": `${pageUrl}/#service`,
+      "@type": "Service",
+      "@id": `${pageUrl}#service`,
       "name": `${nameTw} 留學生退房保潔 - UK Cleaning Platform`,
+      "serviceType": "End of Tenancy Cleaning",
       "url": pageUrl,
-      "telephone": "+44 20 8000 0000",
-      "priceRange": `£${startingPrice}+`,
-      "currenciesAccepted": "GBP",
+      "provider": { "@id": `${siteUrl}/#organization` },
       "areaServed": {
-        "@type": "EducationalOrganization",
-        "name": uni.name_en,
-        "alternateName": nameTw
+        "@type": "City",
+        "name": uni.city_name
+      },
+      "audience": {
+        "@type": "EducationalAudience",
+        "educationalRole": "student",
+        "name": uni.name_en
       },
       "description": `為 ${nameTw} (${uni.name_en}) 中國留學生提供全方位退房保潔、地毯清洗與垃圾清理服務。100% 退房押金保障與 48 小時免費返工。`,
-      "aggregateRating": {
-        "@type": "AggregateRating",
-        "ratingValue": "4.96",
-        "reviewCount": "280",
-        "bestRating": "5"
+      "offers": {
+        "@type": "Offer",
+        "priceCurrency": "GBP",
+        "priceSpecification": { "@type": "PriceSpecification", "minPrice": startingPrice, "priceCurrency": "GBP" }
       }
     }
   ]
 };
 ---
 
-<Layout title={`${nameTw} 退房保潔 | 48h 押金保障 · 中文客服秒回`} description={`${uni.name_en} 留學生退房保潔首選。覆蓋 ${uni.city_name} 全域，專治中式重油煙，48 小時不合格免費返工，100% 退押金保障。`} schema={uniSchema}>
+<Layout langs={['zh-cn', 'zh-tw']} title={`${nameTw} 退房保潔 | 48h 押金保障 · 中文客服秒回`} description={`${uni.name_en} 留學生退房保潔首選。覆蓋 ${uni.city_name} 全域，專治中式重油煙，48 小時不合格免費返工，100% 退押金保障。`} schema={uniSchema}>
 
   <section class="bg-gradient-to-b from-slate-900 via-slate-800 to-slate-900 text-white pt-10 pb-14 px-4">
     <div class="max-w-2xl mx-auto space-y-5">

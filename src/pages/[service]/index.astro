@@ -1,5 +1,6 @@
 ---
 import Layout from '../../layouts/Layout.astro';
+import { toSlug } from '../../lib/site';
 import dataset from '../../data/seo_pages.json';
 
 export async function getStaticPaths() {
@@ -21,15 +22,56 @@ const citiesByRegion = serviceData.reduce((acc: any, item: any) => {
   return acc;
 }, {});
 const regions = Object.keys(citiesByRegion).sort();
+
+// Guide-price summary derived from the city pages (no figures beyond what those pages publish).
+const tierKeys = ['small', 'medium', 'large'] as const;
+const tierNames = ['Studio / 1-Bed Flat', '2-3 Bed House / Flat', '4+ Bed / Deep Clean'];
+const tiers = tierKeys.map((key, i) => {
+  const sorted = [...serviceData].sort((a: any, b: any) => a.content.pricing[key] - b.content.pricing[key]);
+  const first: any = sorted[0];
+  const last: any = sorted[sorted.length - 1];
+  return {
+    name: tierNames[i],
+    min: first.content.pricing[key],
+    max: last.content.pricing[key],
+    minArea: first.city.name,
+    maxArea: last.city.name,
+  };
+});
 ---
 
-<Layout title={`${service.name} | Select Your City`} description={`Professional ${service.name} services available across 116 UK cities and boroughs. 100% deposit return guarantee.`}>
+<Layout title={`${service.name} Prices by City (UK 2026) – From £${tiers[0].min} | UK Cleaning Platform`} description={`${service.name} across ${serviceData.length} UK cities and London boroughs. Guide prices: studio from £${tiers[0].min}, 2-3 bed from £${tiers[1].min}, 4+ bed from £${tiers[2].min}. Choose your city for local prices.`}>
   <div class="bg-slate-900 py-12 px-4">
     <div class="max-w-6xl mx-auto text-center">
       <h1 class="text-3xl md:text-5xl font-extrabold text-white mb-4">
         {service.name}
       </h1>
       <p class="text-slate-300 text-lg">Please select your city or region below to view local pricing and teams.</p>
+    </div>
+  </div>
+
+  <div class="max-w-6xl mx-auto px-4 pt-12">
+    <div class="bg-white rounded-xl shadow-sm border border-slate-200 overflow-hidden">
+      <div class="bg-slate-50 border-b border-slate-200 p-6">
+        <h2 class="text-2xl font-bold text-slate-900">{service.name}: Guide Prices Across {serviceData.length} UK Areas</h2>
+        <p class="text-sm text-slate-600 mt-2">Starting prices from our published city pages (GBP). The final fixed quote depends on property size and condition.</p>
+      </div>
+      <div class="overflow-x-auto">
+        <table class="w-full text-sm text-left">
+          <thead class="bg-slate-50 text-slate-700 font-bold border-b border-slate-200">
+            <tr><th class="p-4">Property size</th><th class="p-4">Lowest starting price</th><th class="p-4">Highest starting price</th></tr>
+          </thead>
+          <tbody class="divide-y divide-slate-100 text-slate-700">
+            {tiers.map((tier) => (
+              <tr>
+                <td class="p-4 font-semibold text-slate-900">{tier.name}</td>
+                <td class="p-4"><span class="font-bold text-sky-800">£{tier.min}</span> <span class="text-xs text-slate-500">(Lowest-priced area: {tier.minArea})</span></td>
+                <td class="p-4"><span class="font-bold text-sky-800">£{tier.max}</span> <span class="text-xs text-slate-500">(Highest-priced area: {tier.maxArea})</span></td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
     </div>
   </div>
 
@@ -40,7 +82,7 @@ const regions = Object.keys(citiesByRegion).sort();
           <h2 class="text-2xl font-bold text-slate-800 mb-6 border-b pb-2">{region}</h2>
           <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-3">
             {citiesByRegion[region].sort((a: any, b: any) => a.name.localeCompare(b.name)).map((city: any) => (
-              <a href={`/${service.id}/${city.name.toLowerCase().replace(/ /g, '-')}`} class="bg-white hover:bg-sky-50 border border-slate-200 p-3 rounded-lg text-center text-sm font-medium text-slate-800 hover:text-sky-800 shadow-sm transition">
+              <a href={`/${service.id}/${toSlug(city.name)}`} class="bg-white hover:bg-sky-50 border border-slate-200 p-3 rounded-lg text-center text-sm font-medium text-slate-800 hover:text-sky-800 shadow-sm transition">
                 {city.name}
               </a>
             ))}

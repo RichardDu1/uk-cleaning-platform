@@ -1,0 +1,36 @@
+---
+/**
+ * Progressive enhancement for lead forms marked with `data-lead-form`.
+ * Posts JSON to the form's `action` (the Cloudflare Worker form hub used by /quote),
+ * then sends the visitor to the /quote thank-you state. Falls back to a native POST.
+ */
+---
+<script is:inline>
+  document.querySelectorAll('form[data-lead-form]').forEach(function (form) {
+    form.addEventListener('submit', async function (e) {
+      e.preventDefault();
+      var btn = form.querySelector('button[type="submit"]');
+      if (btn) { btn.disabled = true; btn.dataset.label = btn.textContent; btn.textContent = '…'; }
+      try {
+        var payload = Object.fromEntries(new FormData(form).entries());
+        payload.timestamp = new Date().toISOString();
+        payload.page = location.pathname;
+        var res = await fetch(form.getAttribute('action'), {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(payload)
+        });
+        var result = await res.json();
+        if (res.ok && result.success) {
+          if (window.gtag) window.gtag('event', 'generate_lead', { form: 'city_page' });
+          location.href = '/quote?success=true';
+          return;
+        }
+        throw new Error(result.error || 'Server error ' + res.status);
+      } catch (err) {
+        console.warn('AJAX submit failed, falling back to native POST', err);
+        form.submit();
+      }
+    });
+  });
+</script>

@@ -1,18 +1,33 @@
-﻿---
-import Layout from '../layouts/Layout.astro';
 ---
-<Layout title="About Us | UKCleaningPlatform.co.uk" description="Learn about the UK's most trusted network of master cleaners.">
+import Layout from '../layouts/Layout.astro';
+import dataset from '../data/seo_pages.json';
+
+const services = [...new Map(dataset.map((item) => [item.service.id, item.service])).values()];
+const cityCount = new Set(dataset.map((item) => item.city.name)).size;
+---
+<Layout langs={['en']} title="About UK Cleaning Platform | End of Tenancy & Deep Cleaning Network" description={`UK Cleaning Platform connects tenants, students and landlords with local cleaning teams in ${cityCount} UK cities and London boroughs, with English and Chinese support.`}>
   <div class="max-w-4xl mx-auto px-4 py-16">
-    <h1 class="text-4xl font-extrabold text-slate-900 mb-6">Raising the Standard of UK cleaning</h1>
-    <div class="prose prose-slate max-w-none">
-      <p class="text-lg">UKCleaningPlatform.co.uk was founded to solve a simple problem: finding a reliable, highly-skilled cleaner is too difficult. We eliminate the risk of rogue traders by maintaining a strictly vetted network of master cleaners across the UK.</p>
-      
-      <h3 class="text-2xl font-bold mt-8 mb-4">Our Vetting Process</h3>
-      <ul class="space-y-4">
-        <li><strong>Insurance Verified:</strong> Every cleaner must prove active £2M+ Public Liability Insurance.</li>
-        <li><strong>Portfolio Review:</strong> We strictly assess previous workmanship, specifically checking for laser alignment, grout consistency, and proper subfloor preparation.</li>
-        <li><strong>Fixed Price Promise:</strong> Our network members sign an agreement to never charge hidden "rogue" fees. The quoted price is the final price.</li>
+    <h1 class="text-4xl font-extrabold text-slate-900 mb-6">About UK Cleaning Platform</h1>
+    <div class="space-y-6 text-slate-700">
+      <p class="text-lg">UK Cleaning Platform connects tenants, international students and landlords with local cleaning teams for move-out, move-in and one-off deep cleans. Quotes are fixed before the job starts, and support is available in English and Chinese (中文 / WeChat).</p>
+
+      <h2 class="text-2xl font-bold text-slate-900 pt-4">What we cover</h2>
+      <ul class="list-disc pl-6 space-y-1">
+        {services.map((svc) => (
+          <li><a href={`/${svc.id}`} class="text-sky-700 hover:underline font-medium">{svc.name}</a> — {svc.description}</li>
+        ))}
       </ul>
+      <p>Pages are currently published for <a href="/areas" class="text-sky-700 hover:underline">{cityCount} UK cities and London boroughs</a>.</p>
+
+      <h2 class="text-2xl font-bold text-slate-900 pt-4">How we work</h2>
+      <ul class="list-disc pl-6 space-y-2">
+        <li><strong>Insurance:</strong> member cleaners carry £2M public liability insurance.</li>
+        <li><strong>Fixed price:</strong> the quoted price is the price you pay unless you change the scope of the job.</li>
+        <li><strong>48-hour re-clean:</strong> if your letting agent or landlord flags a cleaning issue within 48 hours, the team returns to fix it free of charge.</li>
+        <li><strong>Checklist-based cleaning:</strong> end of tenancy cleans follow the items inventory clerks check at check-out (oven, hob, extractor, fridge, limescale, skirting boards, interior windows).</li>
+      </ul>
+
+      <p class="pt-4"><a href="/quote" class="inline-block bg-sky-700 hover:bg-sky-800 text-white font-bold px-6 py-3 rounded-lg transition">Get a free fixed quote</a></p>
     </div>
   </div>
 </Layout>

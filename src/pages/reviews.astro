@@ -1,42 +1,11 @@
-﻿---
+---
 import Layout from '../layouts/Layout.astro';
 ---
-<Layout title="Customer Reviews | UKCleaningPlatform.co.uk" description="Read what UK homeowners say about our verified cleaners.">
-  <div class="max-w-4xl mx-auto px-4 py-16">
-    <div class="text-center mb-12">
-      <h1 class="text-4xl font-extrabold text-slate-900 mb-4">Trusted by UK Homeowners</h1>
-      <p class="text-lg text-slate-600">Real feedback from verified cleaning projects across the country.</p>
-    </div>
-    
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-      <!-- Review 1 -->
-      <div class="bg-white p-6 rounded-xl border border-slate-200 shadow-sm">
-        <div class="flex text-amber-400 mb-2">★★★★�?/div>
-        <h4 class="font-bold text-slate-800 mb-2">"Flawless Victorian Pathway"</h4>
-        <p class="text-sm text-slate-600 mb-4">"The team did an incredible job restoring and recleaning our front Victorian pathway. The alignment is absolutely perfect. Clean, polite, and stuck exactly to the quoted price."</p>
-        <div class="text-xs text-slate-500 font-semibold">�?Sarah M., London</div>
-      </div>
-      <!-- Review 2 -->
-      <div class="bg-white p-6 rounded-xl border border-slate-200 shadow-sm">
-        <div class="flex text-amber-400 mb-2">★★★★�?/div>
-        <h4 class="font-bold text-slate-800 mb-2">"Bathroom Transformation"</h4>
-        <p class="text-sm text-slate-600 mb-4">"Booked through the site. The cleaner was superb—laser levelled the large format porcelain tiles beautifully and did a complete waterproof tanking system. Highly recommended."</p>
-        <div class="text-xs text-slate-500 font-semibold">�?James T., Manchester</div>
-      </div>
-      <!-- Review 3 -->
-      <div class="bg-white p-6 rounded-xl border border-slate-200 shadow-sm">
-        <div class="flex text-amber-400 mb-2">★★★★�?/div>
-        <h4 class="font-bold text-slate-800 mb-2">"Great Kitchen Splashback"</h4>
-        <p class="text-sm text-slate-600 mb-4">"Fast response and a very reasonable fixed quote. The herringbone cleaning in our kitchen looks stunning. They cleaned up perfectly afterwards."</p>
-        <div class="text-xs text-slate-500 font-semibold">�?Emma W., Bristol</div>
-      </div>
-      <!-- Review 4 -->
-      <div class="bg-white p-6 rounded-xl border border-slate-200 shadow-sm">
-        <div class="flex text-amber-400 mb-2">★★★★�?/div>
-        <h4 class="font-bold text-slate-800 mb-2">"Zero Hidden Costs"</h4>
-        <p class="text-sm text-slate-600 mb-4">"I was worried about rogue traders after a bad experience last year. The approved cleaner we got was professional, insured, and there were zero hidden extras on the final bill."</p>
-        <div class="text-xs text-slate-500 font-semibold">�?David P., Birmingham</div>
-      </div>
-    </div>
+<!-- No verified reviews yet: kept out of the index and sitemap until real reviews are published. -->
+<Layout langs={['en']} noindex title="Customer Reviews | UK Cleaning Platform" description="Verified customer reviews for UK Cleaning Platform will be published here.">
+  <div class="max-w-3xl mx-auto px-4 py-16 text-center">
+    <h1 class="text-4xl font-extrabold text-slate-900 mb-4">Customer Reviews</h1>
+    <p class="text-lg text-slate-600 mb-8">We only publish reviews from completed, verified bookings. This page will list them once they are collected.</p>
+    <a href="/quote" class="inline-block bg-sky-700 hover:bg-sky-800 text-white font-bold px-6 py-3 rounded-lg transition">Get a free fixed quote</a>
   </div>
 </Layout>

@@ -5,7 +5,7 @@
 ## 1. Platform Architecture & Service Specifications
 
 ### 1.1 Scope of Operations
-UK Cleaning Platform operates across England, Scotland, Wales, and Northern Ireland, maintaining a network of over 100 verified local cleaning teams. The platform manages:
+UK Cleaning Platform operates across England, Scotland, Wales, and Northern Ireland, with service pages for 48 areas. The platform manages:
 1. End of Tenancy Cleaning (End-of-lease guaranteed checkout cleans)
 2. Professional Carpet Steam Cleaning (Hot water extraction)
 3. Rubbish & Waste Clearance (Licensed waste carrier clearances)
@@ -128,13 +128,13 @@ Under the UK Tenancy Deposit Scheme (TDS), Tenancy Deposit Protection (DPS), and
 A: A full end of tenancy clean includes deep cleaning of the kitchen (oven, hob, extractor fan, cupboards inside and out, fridge/freezer defrosted, sink and taps descaled), bathrooms (limescale removal on tiles, screen, bath/shower, toilet sanitization), bedrooms and living spaces (skirting boards, window sills, door frames, sockets, light switches, interior window glass, vacuuming and mopping). Professional carpet machine cleaning can be added as an optional package.
 
 ### Q: How much does end of tenancy cleaning cost in London vs Regional UK?
-A: In London, studio flats average £150-£190, 2-bedroom flats average £230-£320, and 3-bedroom houses average £320-£450+. In regional UK cities (Manchester, Birmingham, Leeds, Sheffield), prices are approximately 25-30% lower (Studio: £120-£150, 2-Bed: £180-£240, 3-Bed: £250-£320).
+A: Guide starting prices on our pages — London boroughs: studio £155, 2-3 bed £195, 4+ bed £290. Other UK cities: studio £120–£140, 2-3 bed £150–£170, 4+ bed £225–£260.
 
 ### Q: Can cleaners help with severe Chinese cooking oil grease (中式重油烟)?
 A: Yes. Traditional British cleaning products often fail against polymerized oil grease from heavy stir-frying and hot pot. Our specialized squads carry commercial-grade non-caustic degreasers and steam machines specifically designed for heavy kitchen residue.
 
-### Q: Can you issue a formal VAT invoice for my landlord or letting agent?
-A: Yes, every completed booking receives a PDF invoice listing all sanitized items, date, address, and insurance policy reference, which can be presented directly to your landlord or estate agent.
+### Q: Can you issue an invoice for my landlord or letting agent?
+A: Yes, an invoice is emailed after the job and can be shown to your landlord or letting agent.
 
 ### Q: What happens if I have already vacated and left the city?
 A: We provide key collection and drop-off services from key safes, concierges, or letting agency offices. High-resolution Before & After photographs and video walkthroughs are delivered via WeChat or email upon job completion.

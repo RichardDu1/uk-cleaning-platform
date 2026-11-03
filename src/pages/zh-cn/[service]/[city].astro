@@ -1,7 +1,10 @@
 ---
 import Layout from '../../../layouts/Layout.astro';
 import GeoFactSheet from '../../../components/GeoFactSheet.astro';
+import LeadFormScript from '../../../components/LeadFormScript.astro';
 import dataset from '../../../data/seo_pages.json';
+import { absUrl, toSlug, CITY_SLUGS, LEAD_ENDPOINT } from '../../../lib/site';
+import { cityServiceSchema } from '../../../lib/schema';
 
 export async function getStaticPaths() {
   return dataset.map((item) => {
@@ -21,123 +24,48 @@ const { data } = Astro.props;
 // For the select dropdown, get unique services
 const allServices = [...new Map(dataset.map(item => [item.service.id, { name: item.service.name_zh_cn, slug: item.service.id }])).values()];
 
-const siteUrl = 'https://ukcleaningplatform.co.uk';
-const pageUrl = `${siteUrl}/zh-cn/${data.slug}`;
+const pageUrl = absUrl(`/zh-cn/${data.slug}`);
+const citySlug = toSlug(data.city.name);
 
-const schemaGraph: any[] = [
-  {
-    "@type": "BreadcrumbList",
-    "@id": `${pageUrl}/#breadcrumb`,
-    "itemListElement": [
-      {
-        "@type": "ListItem",
-        "position": 1,
-        "name": "首页",
-        "item": `${siteUrl}/zh-cn`
-      },
-      {
-        "@type": "ListItem",
-        "position": 2,
-        "name": data.service.name_zh_cn,
-        "item": `${siteUrl}/zh-cn/${data.service.id}`
-      },
-      {
-        "@type": "ListItem",
-        "position": 3,
-        "name": `${data.city.name_zh_cn} ${data.service.name_zh_cn}`,
-        "item": pageUrl
-      }
-    ]
-  },
-  {
-    "@type": ["LocalBusiness", "CleaningService"],
-    "@id": `${pageUrl}/#localbusiness`,
-    "name": `${data.city.name_zh_cn} ${data.service.name_zh_cn} - 全英留学生退房保洁首选`,
-    "url": pageUrl,
-    "telephone": "+44 20 8000 0000",
-    "priceRange": `£${data.content_zh_cn.pricing.small} - £${data.content_zh_cn.pricing.large}`,
-    "currenciesAccepted": "GBP",
-    "paymentAccepted": "Bank Transfer, WeChat Pay, Alipay, Credit Card",
-    "description": `针对英国留学生与华人房东的定制级${data.service.name_zh_cn}，覆盖${data.city.name_zh_cn}全境。100%退房押金保障与48小时免费返工承诺。`,
-    "areaServed": {
-      "@type": "AdministrativeArea",
-      "name": `${data.city.name_zh_cn} (${data.city.name}), ${data.city.region}, UK`
-    },
-    "address": {
-      "@type": "PostalAddress",
-      "addressLocality": data.city.name,
-      "addressRegion": data.city.region,
-      "postalCode": data.city.postcode,
-      "addressCountry": "GB"
-    },
-    "aggregateRating": {
-      "@type": "AggregateRating",
-      "ratingValue": "4.96",
-      "reviewCount": "320",
-      "bestRating": "5",
-      "worstRating": "1"
-    },
-    "hasOfferCatalog": {
-      "@type": "OfferCatalog",
-      "name": `${data.service.name_zh_cn} 指导价梯队`,
-      "itemListElement": [
-        {
-          "@type": "Offer",
-          "name": "Studio / 一居室 (Flat)",
-          "price": String(data.content_zh_cn.pricing.small),
-          "priceCurrency": "GBP"
-        },
-        {
-          "@type": "Offer",
-          "name": "两居到三居 (House/Flat)",
-          "price": String(data.content_zh_cn.pricing.medium),
-          "priceCurrency": "GBP"
-        },
-        {
-          "@type": "Offer",
-          "name": "四居室以上 / 极度脏乱开荒",
-          "price": String(data.content_zh_cn.pricing.large),
-          "priceCurrency": "GBP"
-        }
-      ]
-    }
-  }
-];
+// Same service in other cities of the same region (only pages that exist).
+const regionPeers = dataset
+  .filter((item) => item.service.id === data.service.id && item.city.region === data.city.region && item.city.name !== data.city.name)
+  .slice(0, 12)
+  .map((item) => ({ name: item.city.name_zh_cn, href: `/zh-cn/${item.slug}` }));
 
-if (data.content_zh_cn.faqs && data.content_zh_cn.faqs.length > 0) {
-  schemaGraph.push({
-    "@type": "FAQPage",
-    "@id": `${pageUrl}/#faq`,
-    "mainEntity": data.content_zh_cn.faqs.map((faq: any) => ({
-      "@type": "Question",
-      "name": faq.question,
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": faq.answer
-      }
-    }))
-  });
-}
-
-const pageSchema = {
-  "@context": "https://schema.org",
-  "@graph": schemaGraph
-};
+const pageSchema = cityServiceSchema({
+  pageUrl,
+  breadcrumbs: [
+    { name: '首页', url: absUrl('/zh-cn') },
+    { name: data.service.name_zh_cn, url: absUrl(`/zh-cn/${data.service.id}`) },
+    { name: `${data.city.name_zh_cn} ${data.service.name_zh_cn}`, url: pageUrl },
+  ],
+  name: `${data.city.name_zh_cn} ${data.service.name_zh_cn}`,
+  serviceType: data.service.name,
+  description: `${data.city.name_zh_cn}${data.service.name_zh_cn}服务，面向留学生、租客与华人房东，支持中文沟通。`,
+  areaName: `${data.city.name_zh_cn} (${data.city.name}), ${data.city.region}, UK`,
+  pricing: data.content_zh_cn.pricing,
+  tierNames: ['Studio / 一居室 (Flat)', '两居到三居 (House/Flat)', '四居室以上 / 深度开荒'],
+  faqs: data.content_zh_cn.faqs,
+  inLanguage: 'zh-CN',
+});
+const pageTitle = `${data.city.name_zh_cn}${data.service.name_zh_cn}价格 £${data.content_zh_cn.pricing.small} 起 | ${data.city.name} (${data.city.postcode}) | UK Cleaning Platform`;
+const pageDescription = `${data.city.name_zh_cn}（${data.city.name}，${data.city.region}）${data.service.name_zh_cn}指导价：一居室 £${data.content_zh_cn.pricing.small} 起，两到三居 £${data.content_zh_cn.pricing.medium} 起，四居以上 £${data.content_zh_cn.pricing.large} 起。48小时免费返工，中文微信沟通。`;
 ---
 
-<Layout title={data.content_zh_cn.h1 + " | 100% 退回押金保障"} description={`${data.city.name_zh_cn} 顶级华人 ${data.service.name_zh_cn} 团队。为留学生和房东提供100%退房押金保障。小红书同款推荐，免费微信报价。`} schema={pageSchema}>
+<Layout title={pageTitle} description={pageDescription} schema={pageSchema}>
   <!-- Hero Section -->
   <section class="bg-gradient-to-b from-slate-900 via-slate-800 to-slate-900 text-white pt-12 pb-16 px-4 relative">
     <div class="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
       <div class="lg:col-span-7 space-y-5">
         <div class="inline-flex items-center space-x-2 bg-rose-500/20 border border-rose-500/50 text-rose-300 text-xs font-semibold px-3 py-1.5 rounded-full">
-          <span>🔥 小红书爆款推荐：覆盖 {data.city.name_zh_cn} ({data.city.postcode}) 的神仙保洁团队</span>
+          <span>📍 覆盖 {data.city.name_zh_cn} ({data.city.postcode}) 及 {data.city.region} 周边</span>
         </div>
         <h1 class="text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight text-white leading-tight">
           {data.content_zh_cn.h1}
         </h1>
         <p class="text-slate-300 text-base leading-relaxed">
-          针对中国留学生的定制级退房保洁服务，专门解决重油烟、顽固污渍，包过中介检查，我们是 {data.city.name_zh_cn} 留学生和华人房东的安心首选。
+          {data.city.name_zh_cn}{data.service.name_zh_cn}，面向留学生、租客与华人房东，支持中文与微信沟通，按房型给出一口价。
         </p>
         
         <!-- Local Pain Points Block -->
@@ -182,7 +110,9 @@ const pageSchema = {
         </div>
 
         <!-- Lead Capture Form -->
-        <form action="/api/submit-lead" method="POST" class="space-y-4" id="leadForm">
+        <form action={LEAD_ENDPOINT} method="POST" class="space-y-4" id="leadForm" data-lead-form>
+          <input type="hidden" name="source_title" value={`City page (zh-cn): ${data.service.name} in ${data.city.name}`} />
+          <input type="hidden" name="postcode" value={data.city.postcode} />
           <input type="hidden" name="city" value={data.city.name_zh_cn} />
           <input type="hidden" name="service" value={data.service.name_zh_cn} />
           
@@ -281,7 +211,7 @@ const pageSchema = {
       <p class="text-xs text-slate-600 mb-4">还需要别的帮忙？我们 {data.city.name_zh_cn} 的本地团队同样提供以下服务：</p>
       <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-3">
         {allServices.filter(svc => svc.slug !== data.service.id).map((svc: any) => (
-          <a href={`/zh-cn/${svc.slug}/${data.city.name.toLowerCase().replace(/ /g, '-')}`} class="flex items-center space-x-2 text-sm text-slate-700 hover:text-sky-700 font-medium group transition">
+          <a href={`/zh-cn/${svc.slug}/${citySlug}`} class="flex items-center space-x-2 text-sm text-slate-700 hover:text-sky-700 font-medium group transition">
             <span class="text-sky-400 group-hover:text-sky-600">→</span>
             <span>{svc.name}</span>
           </a>
@@ -295,11 +225,28 @@ const pageSchema = {
       <p class="text-xs text-slate-600 mb-4">我们的流动清洁车队不仅服务市中心，还覆盖 {data.city.region} 及以下周边地区：</p>
       <div class="flex flex-wrap gap-2">
         {data.content_zh_cn.nearby_areas.map((area: string) => (
-          <a href={`/zh-cn/${data.service.id}/${area.toLowerCase().replace(/ /g, '-')}`} class="text-xs bg-white hover:bg-sky-50 text-slate-700 hover:text-sky-800 border border-slate-300 px-3 py-1.5 rounded-md font-medium transition">
-            {area}
-          </a>
+          CITY_SLUGS.has(toSlug(area)) ? (
+            <a href={`/zh-cn/${data.service.id}/${toSlug(area)}`} class="text-xs bg-white hover:bg-sky-50 text-slate-700 hover:text-sky-800 border border-slate-300 px-3 py-1.5 rounded-md font-medium transition">
+              {area}
+            </a>
+          ) : (
+            <span class="text-xs bg-white text-slate-600 border border-slate-200 px-3 py-1.5 rounded-md">{area}</span>
+          )
         ))}
       </div>
     </div>
+
+    {regionPeers.length > 0 && (
+      <div class="bg-white rounded-xl p-6 border border-slate-200 shadow-sm">
+        <h3 class="text-lg font-bold text-slate-900 mb-3">{data.city.region} 其他城市的{data.service.name_zh_cn}</h3>
+        <div class="flex flex-wrap gap-2">
+          {regionPeers.map((peer) => (
+            <a href={peer.href} class="text-xs bg-slate-50 hover:bg-sky-50 text-slate-700 hover:text-sky-800 border border-slate-300 px-3 py-1.5 rounded-md font-medium transition">{peer.name}</a>
+          ))}
+          <a href={`/zh-cn/${data.service.id}`} class="text-xs text-sky-700 hover:text-sky-900 font-semibold px-3 py-1.5">全部城市 →</a>
+        </div>
+      </div>
+    )}
   </section>
+  <LeadFormScript />
 </Layout>
