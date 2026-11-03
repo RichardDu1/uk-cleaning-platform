@@ -23,3 +23,6 @@ Thumbs.db
 .vscode/
 .idea/
 *.log
+
+# Wrangler local dev
+.wrangler/
